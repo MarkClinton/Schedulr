@@ -1,0 +1,48 @@
+.contain{
+    //text-align: center;
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+.containTask{
+    width: 600px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+img{
+    width: 150px;
+    height: 110px;
+}
+
+.mainContain{
+    width: 100%;
+    height: 500px;
+    
+}
+
+#dashboard{
+    width: 60%;
+    height: 500px;
+    //background: #ECF0F1;
+    display: inline-block;
+}
+
+#recents{
+    width: 35%;
+    height: 500px;
+    //background: #E8FFFA;
+    display: inline-block;
+    float: right;
+}
+
+[ng-click],
+[data-ng-click],
+[x-ng-click] {
+    cursor: pointer;
+}
