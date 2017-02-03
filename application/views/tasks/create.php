@@ -6,20 +6,17 @@
 
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title"> <input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text"></h3>
+                <h3 class="panel-title">Create Task</h3>
             </div>
        
             <div class="panel-body">
-                <p><input class="form-control" ng-model="data.inputTaskStart" placeholder="Task Start Date" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskEnd" placeholder="Task End Date" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskTime" placeholder="Task Time" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text"></p>
+                <p><input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text"></p>
+                <p><input class="form-control" ng-model="data.inputTaskStart" placeholder="Task Start Time" type="text"></p>
+                <p><input class="form-control" ng-model="data.inputTaskEnd" placeholder="Task End Time" type="text"></p>
+                <p><input class="form-control" ng-model="data.inputTaskDate" placeholder="Task Date" type="text" id="datepicker"></p>
+                <p><textarea class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text"></textarea></p>
                 
-                    <div class="navbar-header">
-                        <ul class="nav navbar-nav">
-                            <li><button type="submit" class="btn btn-warning btn-sm">Create</button></li>
-                        </ul>
-                    </div>
+                <div id="right"><button type="submit" class="btn btn-warning btn-sm">Create</button></div>
             </div>
         </div>
         </form>

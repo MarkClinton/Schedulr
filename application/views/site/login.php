@@ -14,7 +14,7 @@
       </div>
       
     </div>
-    <button type="submit" class="btn btn-primary">Sign In</button>
+    <div id="right"><button type="submit" class="btn btn-primary">Sign In</button></div>
   </fieldset>
     </form>
     

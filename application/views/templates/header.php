@@ -2,14 +2,16 @@
     <head>
         <title>Schedulr</title>
         <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/jquery-ui.min.js"></script>
         
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
         <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>/assets/js/validation.js"></script>
         <script src="<?php echo base_url()?>/assets/js/display.js"></script>
-        <script src="<?php echo base_url()?>/assets/js/tabs.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/main.js"></script>
         <script src="<?php echo base_url()?>/assets/js/task.js"></script>
         
     </head>

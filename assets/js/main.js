@@ -25,5 +25,10 @@ $(document).ready(function () {
             $("#grouptasks").show();
         }
     });
+    
+    $( function() {
+        $( "#datepicker" ).datepicker();
+    });
 
 });
+

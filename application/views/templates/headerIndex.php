@@ -2,6 +2,7 @@
     <head>
         <title>Schedulr</title>
         <link rel="stylesheet" href="https://bootswatch.com/flatly/bootstrap.min.css">
+        <!--<link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.css">-->
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
         
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">

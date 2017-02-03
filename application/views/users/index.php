@@ -9,7 +9,7 @@
 
 
             <ul class="nav navbar-right">
-                <li><a href="tasks/create">New</a></li>
+                <li><a href="tasks/create"><img class="add" src="<?php echo base_url()?>/assets/images/add.png" alt="add"/></a></li>
             </ul>
         </ul>
 
