@@ -11,9 +11,9 @@
        
             <div class="panel-body">
                 <p><input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskStart" placeholder="Task Start Time" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskEnd" placeholder="Task End Time" type="text"></p>
-                <p><input class="form-control" ng-model="data.inputTaskDate" placeholder="Task Date" type="text" id="datepicker"></p>
+                <p><input class="form-control" ng-model="data.inputTaskStart" placeholder="Task Start Time" type="text" id="selector"></p>
+                <p><input class="form-control" ng-model="data.inputTaskEnd" placeholder="Task End Time" type="text" id="selector2"></p>
+                <p><input class="form-control" ng-model="data.inputTaskTime" placeholder="Task Date" type="text" id="datepicker"></p>
                 <p><textarea class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text"></textarea></p>
                 
                 <div id="right"><button type="submit" class="btn btn-warning btn-sm">Create</button></div>

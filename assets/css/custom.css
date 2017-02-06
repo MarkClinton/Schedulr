@@ -10,6 +10,9 @@
     border-radius: 5px;
 }
 
+textarea{
+    resize: none;
+}
 #right{
     text-align: right;
 }

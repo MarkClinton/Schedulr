@@ -21,9 +21,9 @@ class Tasks extends CI_Controller {
         $task = array(
             'task_name' => $data[0]['TASK_NAME'],
             'task_info' => $data[0]['TASK_INFO'],
-            'start_date' => $data[0]['START_DATE'],
-            'end_date' => $data[0]['END_DATE'],
-            'task_time' => $data[0]['TASK_TIME']
+            'start_time' => $data[0]['START_TIME'],
+            'end_time' => $data[0]['END_TIME'],
+            'task_date' => $data[0]['TASK_DATE']
         );
         $this->load->view('templates/header');
         $this->load->view('tasks/task', $task);
@@ -61,7 +61,7 @@ class Tasks extends CI_Controller {
     public function createTask() {
        $_POST = json_decode(file_get_contents('php://input'), true);
        
-       
+       print_r($_GET);
        $task = array(
            'TASK_NAME' => $_POST['inputTaskName'],
            'START_DATE' => $_POST['inputTaskStart'],
@@ -70,6 +70,7 @@ class Tasks extends CI_Controller {
            'TASK_INFO' => $_POST['inputTaskInfo'],
            'ADMIN' => $this->session->userdata('email')
        );
+       
        
        $response = $this->Task_model->createNewTask($task);
         print json_encode($response);

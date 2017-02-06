@@ -13,20 +13,20 @@ INSERT INTO USER VALUES("john", "doe", "john@gmail.com", "12345");
 CREATE TABLE TASKS (
 	TASK_ID INTEGER AUTO_INCREMENT,
 	TASK_NAME VARCHAR(30),
-	TASK_INFO TEXT,
-	TASK_TIME VARCHAR (20),
 	ADMIN VARCHAR(60),
-	START_DATE DATE,
-	END_DATE DATE,
+	TASK_INFO TEXT,
+	TASK_DATE DATE,
+	START_TIME TIMESTAMP,
+	END_TIME TIMESTAMP,
 	PRIMARY KEY(TASK_ID),
 	FOREIGN KEY fk_task (ADMIN) REFERENCES USER (EMAIL) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=INNODB;
 
-INSERT INTO TASKS VALUES (NULL, "Meeting", "Meeting ", "15:00", "mark@gmail.com", "30-01-2017", "05-02-2017");
-INSERT INTO TASKS VALUES (NULL, "Dinner", "Dinner with family", "16:00", "mark@gmail.com",  "30-01-2017", "06-02-2017");
-INSERT INTO TASKS VALUES (NULL, "Meeting", "Lunch meeting", "13:00", "mark@gmail.com", "30-01-2017", "07-02-2017");
-INSERT INTO TASKS VALUES (NULL, "Task Review", "Team meeting", "12:00", "john@gmail.com", "30-01-2017", "07-02-2017");
-INSERT INTO TASKS VALUES (NULL, "Meeting", "Meeting with Jane", "17:00", "john@gmail.com", "30-01-2017", "07-02-2017");
+INSERT INTO TASKS VALUES (NULL, "Meeting", "mark@gmail.com", "Meeting with lawyer", "30-01-2017", "15:00", "16:00");
+INSERT INTO TASKS VALUES (NULL, "Meeting", "mark@gmail.com", "Meeting with lawyer", "30-01-2017", "15:00", "16:00");
+INSERT INTO TASKS VALUES (NULL, "Meeting", "mark@gmail.com", "Meeting with lawyer", "30-01-2017", "15:00", "16:00");
+INSERT INTO TASKS VALUES (NULL, "Meeting", "mark@gmail.com", "Meeting with lawyer", "30-01-2017", "15:00", "16:00");
+INSERT INTO TASKS VALUES (NULL, "Meeting", "john@gmail.com", "Meeting with lawyer", "30-01-2017", "15:00", "16:00");
 
 
 CREATE TABLE SHARE (

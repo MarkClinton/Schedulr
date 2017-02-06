@@ -8,9 +8,9 @@
             </div>
        
             <div class="panel-body">
-                <p><input class="form-control" id="inputTaskStart" value="<?= $start_date ?>" type="text"></p>
-                <p><input class="form-control" id="inputTaskEnd" value="<?= $start_date ?>" type="text"></p>
-                <p><input class="form-control" id="inputTaskTime" value="<?= $task_time ?>" type="text"></p>
+                <p><input class="form-control" id="inputTaskStart" value="<?= $start_time ?>" type="text"></p>
+                <p><input class="form-control" id="inputTaskEnd" value="<?= $end_time ?>" type="text"></p>
+                <p><input class="form-control" id="inputTaskTime" value="<?= $task_date ?>" type="text"></p>
                 <p><input class="form-control" id="inputTaskInfo" value="<?= $task_info ?>" type="text"></p>
                 
                     <div class="navbar-header">
