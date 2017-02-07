@@ -8,6 +8,7 @@ $route['users/displayGroupTasks'] = 'users/displayGroupTasks';
 $route['users/tasks/task?(:any)'] = 'tasks/task';
 $route['users/tasks/delete?(:any)'] = 'tasks/deleteTask';
 $route['users/tasks/viewTask'] = 'tasks/viewTask';
+$route['users/tasks/updateTask'] = 'tasks/updateTask';
 $route['users/tasks/createTask'] = 'tasks/createTask';
 $route['users/tasks/create'] = 'tasks/create';
 

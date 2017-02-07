@@ -39,4 +39,12 @@ class Task_model extends CI_Model {
         }  
         
     }
+    
+    public function updateTask($task, $task_id){
+        
+        $this->db->where('TASK_ID', $task_id);
+        $query = $this->db->update('TASKS', $task);
+        
+        return $query;  
+    }
 }
