@@ -64,9 +64,9 @@ class Tasks extends CI_Controller {
        print_r($_GET);
        $task = array(
            'TASK_NAME' => $_POST['inputTaskName'],
-           'START_DATE' => $_POST['inputTaskStart'],
-           'END_DATE' => $_POST['inputTaskEnd'],
-           'TASK_TIME' => $_POST['inputTaskTime'],
+           'START_TIME' => $_POST['inputTaskStart'],
+           'END_TIME' => $_POST['inputTaskEnd'],
+           'TASK_DATE' => $_POST['inputTaskDate'],
            'TASK_INFO' => $_POST['inputTaskInfo'],
            'ADMIN' => $this->session->userdata('email')
        );

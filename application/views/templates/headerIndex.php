@@ -10,10 +10,11 @@
     </head>
     
     <body>
+    <div class="home">
     <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand">Schedulr.</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
                 </div>
                 <div id="navbar">
                     <ul class="nav navbar-nav navbar-right">

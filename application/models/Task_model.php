@@ -32,10 +32,10 @@ class Task_model extends CI_Model {
         
         $query = $this->db->insert('tasks', $task); 
         
-        if($query){
-            return "Task Created Successfully";
-        } else {
+        if(!$query){
             return "Task Could Not Be Created";
+        } else {
+            return "Task Created Successfully";
         }  
         
     }

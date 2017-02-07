@@ -83,7 +83,8 @@ class User_model extends CI_Model{
         $limit=5;
         $start_row=0;
 
-        $this->db->order_by("end_date", "ASC");
+        $this->db->order_by("task_date", "ASC");
+        $this->db->order_by("start_time", "ASC");
         $query = $this->db->get($sql, $limit, $start_row);
         return $query->result_array();  
     } 

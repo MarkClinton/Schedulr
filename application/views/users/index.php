@@ -19,8 +19,8 @@
                     <tbody>   
                         <tr ng-repeat="tasks in userTasks">
                             <td ng-click="showTask(tasks)">{{tasks.TASK_NAME}}</td>
-                            <td ng-click="showTask(tasks)">{{tasks.START_DATE}}</td>
-                            <td ng-click="showTask(tasks)">{{tasks.TASK_TIME}}</td>
+                            <td ng-click="showTask(tasks)">{{tasks.START_TIME}}</td>
+                            <td ng-click="showTask(tasks)">{{tasks.TASK_DATE}}</td>
                             <td ng-click="showTask(tasks)">{{tasks.TASK_INFO}}</td>
                             <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks)">Delete</button></td>
                         </tr>
@@ -35,8 +35,8 @@
                     <tbody>   
                         <tr ng-repeat="tasks in groupTasks">
                             <td ng-click="showGroupTask(tasks)">{{tasks.TASK_NAME}}</td>
-                            <td ng-click="showGroupTask(tasks)">{{tasks.START_DATE}}</td>
-                            <td ng-click="showGroupTask(tasks)">{{tasks.TASK_TIME}}</td>
+                            <td ng-click="showGroupTask(tasks)">{{tasks.START_TIME}}</td>
+                            <td ng-click="showGroupTask(tasks)">{{tasks.TASK_DATE}}</td>
                             <td ng-click="showGroupTask(tasks)">{{tasks.TASK_INFO}}</td>
                             <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks)">Delete</button></td>
                         </tr>
@@ -57,8 +57,8 @@
                         <tbody>   
                             <tr ng-repeat="tasks in upcomingTasks" ng-click="showUpcomingTask(tasks)">
                                 <td>{{tasks.TASK_NAME}}</td>
-                                <td>{{tasks.START_DATE}}</td>
-                                <td>{{tasks.TASK_TIME}}</td>
+                                <td>{{tasks.START_TIME}}</td>
+                                <td>{{tasks.TASK_DATE}}</td>
                             </tr>
                         </tbody>
                     </table>   

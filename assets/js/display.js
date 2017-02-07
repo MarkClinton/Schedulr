@@ -80,8 +80,8 @@ fetch.directive('modal', function () {
                                 '<h4 class="modal-title">{{task.TASK_NAME}}</h4>' +
                             '</div>' +
                             '<div class="modal-body">' +
-                            '<p> {{task.START_DATE}} </p>' +
-                            '<p> {{task.TASK_TIME}} </p>' +
+                            '<p> {{task.START_TIME}} </p>' +
+                            '<p> {{task.TASK_DATE}} </p>' +
                             '<p> {{task.TASK_INFO}}</p>' +
                             '</div>' +
                             '<div class="modal-footer">' +
