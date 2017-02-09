@@ -19,13 +19,10 @@ class Users extends CI_Controller {
     }
     
     public function register() {
-        $data = $this->input->post();
+        $data = json_decode(file_get_contents('php://input'), true);
         
-            if($this->User_model->create_user($data)){
-                $this->session->set_flashdata('registered', 'Thanks for registering. Please sign in');
-                redirect('login');
-            }
-        
+        $response = $this->User_model->create_user($data);
+        print json_encode($response);
     }
     
     public function index(){
@@ -35,15 +32,10 @@ class Users extends CI_Controller {
     }
     
 
-    public function login() {
-        $data = $this->input->post();
-        
-        if($this->User_model->login($data)){
-            redirect('users/index');
-        } else {
-            redirect('login');   
-        }
-        
+    public function login() {        
+        $user = json_decode(file_get_contents('php://input'), true);
+        $response = $this->User_model->login($user);
+        print json_encode($response);
     }
     
     public function logout(){

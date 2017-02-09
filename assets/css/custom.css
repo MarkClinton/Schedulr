@@ -81,6 +81,21 @@ img.add{
     float: right;
 }
 
+#date{
+    width: auto;
+    height: 30px;
+    margin-left: 5px;
+    margin-right: 10px;
+    display: inline-block;
+}
+
+#time{
+    width: auto;
+    height: 30px;
+    margin-left: 5px;
+    display: inline-block;
+}
+
 [ng-click],
 [data-ng-click],
 [x-ng-click] {

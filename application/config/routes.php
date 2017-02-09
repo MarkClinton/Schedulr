@@ -4,6 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['users/displayTasks'] = 'users/displayTasks';
 $route['users/displayUpcomingTasks'] = 'users/displayUpcomingTasks';
 $route['users/displayGroupTasks'] = 'users/displayGroupTasks';
+$route['users/login'] = 'users/login';
+$route['users/register'] = 'users/register';
 
 $route['users/tasks/task?(:any)'] = 'tasks/task';
 $route['users/tasks/delete?(:any)'] = 'tasks/deleteTask';

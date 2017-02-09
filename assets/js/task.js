@@ -1,6 +1,6 @@
-var task = angular.module('task', ['720kb.datepicker']);
+var task = angular.module('task', ['720kb.datepicker', 'cgNotify']);
 
-task.controller('taskCtrl', ['$scope', '$http', function ($scope, $http) {
+task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
         $scope.data = {};
         
         function getQueryVariable(variable)
@@ -62,7 +62,13 @@ task.controller('taskCtrl', ['$scope', '$http', function ($scope, $http) {
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })).then(function (response) {
                 
-                window.location.href = "../index";
+                var status = JSON.stringify(response.data.status);
+                if(status == 200){
+                    notify({ message:'Task Updated successfully'} );
+                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                } else {
+                    notify({ message:'Task Could Not Be Created. Please Try Again.'} );
+                } 
             });
 
         };
@@ -70,7 +76,7 @@ task.controller('taskCtrl', ['$scope', '$http', function ($scope, $http) {
 
     }]);
 
-task.controller('createCtrl', ['$scope', '$http', function ($scope, $http) {
+task.controller('createCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
 
         $('#selector').wickedpicker({
             twentyFour: true,
@@ -105,7 +111,14 @@ task.controller('createCtrl', ['$scope', '$http', function ($scope, $http) {
                 data: $scope.data, //forms user object
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })).then(function (response) {
-                window.location.href = "../index";
+                    
+                var status = JSON.stringify(response.data.status);
+                if(status == 200){
+                    notify({ message:'Task Created successfully'} );
+                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                } else {
+                    notify({ message:'Task Could Not Be Created. Please Try Again.'} );
+                }   
             });
 
         };

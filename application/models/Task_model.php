@@ -21,10 +21,10 @@ class Task_model extends CI_Model {
         $this->db->where('TASK_ID', $task_id);
         $query = $this->db->delete('tasks'); 
         
-        if($query){
-            return "Task Deleted Successfully";
+        if(!$query){
+            return 400;
         } else {
-            return "Task Could Not Be Deleted";
+            return 200;
         }  
     }
     
@@ -33,9 +33,9 @@ class Task_model extends CI_Model {
         $query = $this->db->insert('tasks', $task); 
         
         if(!$query){
-            return "Task Could Not Be Created";
+            return 400;
         } else {
-            return "Task Created Successfully";
+            return 200;
         }  
         
     }
@@ -45,6 +45,10 @@ class Task_model extends CI_Model {
         $this->db->where('TASK_ID', $task_id);
         $query = $this->db->update('TASKS', $task);
         
-        return $query;  
+        if(!$query){
+            return 400;
+        } else {
+            return 200;
+        }  
     }
 }

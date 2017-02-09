@@ -60,20 +60,20 @@ class Tasks extends CI_Controller {
         );
         $task_id = $_POST['id'];
 
-        $response = $this->Task_model->updateTask($task, $task_id);
+        $response['status'] = $this->Task_model->updateTask($task, $task_id);
         print json_encode($response);
     }
 
     public function deleteTask() {
         $task_id = filter_input(INPUT_GET, 'id');
 
-        $response = $this->Task_model->deleteTask($task_id);
+        $response['status'] = $this->Task_model->deleteTask($task_id);
         print json_encode($response);
     }
 
     public function createTask() {
         $_POST = json_decode(file_get_contents('php://input'), true);
-
+        
         $task = array(
             'TASK_NAME' => $_POST['inputTaskName'],
             'START_TIME' => $_POST['inputTaskStart'],
@@ -84,7 +84,7 @@ class Tasks extends CI_Controller {
         );
 
 
-        $response = $this->Task_model->createNewTask($task);
+        $response['status'] = $this->Task_model->createNewTask($task);
         print json_encode($response);
     }
 

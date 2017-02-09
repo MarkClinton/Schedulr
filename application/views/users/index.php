@@ -22,7 +22,7 @@
                             <td ng-click="showTask(tasks)">{{tasks.START_TIME}}</td>
                             <td ng-click="showTask(tasks)">{{tasks.TASK_DATE}}</td>
                             <td ng-click="showTask(tasks)">{{tasks.TASK_INFO}}</td>
-                            <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks)">Delete</button></td>
+                            <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks, $index)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table> 
@@ -38,7 +38,7 @@
                             <td ng-click="showGroupTask(tasks)">{{tasks.START_TIME}}</td>
                             <td ng-click="showGroupTask(tasks)">{{tasks.TASK_DATE}}</td>
                             <td ng-click="showGroupTask(tasks)">{{tasks.TASK_INFO}}</td>
-                            <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks)">Delete</button></td>
+                            <td><button class="btn btn-danger btn-sm" ng-click="delete(tasks, $index)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table> 
@@ -47,6 +47,10 @@
     </div>
 
     <div id="recents">
+        <div>
+            <i class="fa fa-calendar" aria-hidden="true"><div id="date"> </div></i>
+            <i class="fa fa-clock-o" aria-hidden="true"><div id="time">  </div></i>
+        </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <h3 class="panel-title">Upcoming Tasks</h3>
@@ -64,7 +68,6 @@
                     </table>   
                     <modal visible="showModal">
                     
-                        WHATEVER
                     </modal>
                 </div> 
             </div>

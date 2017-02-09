@@ -6,7 +6,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
         
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
+        <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/angular-notify.css">
+        
         <script src="<?php echo base_url()?>/assets/js/validation.js" /></script>
+    <script src="<?php echo base_url()?>/assets/js/angular-notify.js"></script>
     </head>
     
     <body>

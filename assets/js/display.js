@@ -1,8 +1,8 @@
 
-var fetch = angular.module('fetch', []);
+var fetch = angular.module('fetch', ['cgNotify']);
 
 
-fetch.controller('displayUserCtrl', ['$scope', '$http', function ($scope, $http) {
+fetch.controller('displayUserCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
         var userTasks = $http.get('displayTasks');
         
         userTasks.then(function (response) {
@@ -14,13 +14,19 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', function ($scope, $http)
             window.location.href = "tasks/task?id=" + data.TASK_ID;
         };
         
-        $scope.delete = function(data) {
+        $scope.delete = function(data, index) {
             
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
-                alert(response.data);
-                window.location.href = "";
+                var status = JSON.stringify(response.data.status);
+                if(status == 200){
+                    $scope.userTasks.splice(index, 1);
+                    notify({ message:'Task Deleted successfully'} );
+                    //window.setTimeout(function(){window.location.href = ""},1000); 
+                } else {
+                    notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );
+                } 
             });
             
         };
@@ -28,7 +34,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', function ($scope, $http)
         
 }]);
 
-fetch.controller('displayGroupCtrl', ['$scope', '$http', function ($scope, $http){
+fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify){
         var groupTasks = $http.get('displayGroupTasks');
         
         groupTasks.then(function (response) {
@@ -40,13 +46,19 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', function ($scope, $http
             window.location.href = "tasks/task?id=" + data.TASK_ID; 
         }; 
         
-        $scope.delete = function(data) {
+        $scope.delete = function(data, index) {
             
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
-                alert(response.data);
-                window.location.href = "";
+                var status = JSON.stringify(response.data.status);
+                if(status == 200){
+                    $scope.groupTasks.splice(index, 1);
+                    notify({ message:'Task Deleted successfully'} );
+                    //window.setTimeout(function(){window.location.href = ""},1000); 
+                } else {
+                    notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );
+                }
             });
             
         };
@@ -80,13 +92,10 @@ fetch.directive('modal', function () {
                                 '<h4 class="modal-title">{{task.TASK_NAME}}</h4>' +
                             '</div>' +
                             '<div class="modal-body">' +
-                            '<p> {{task.START_TIME}} </p>' +
                             '<p> {{task.TASK_DATE}} </p>' +
+                            '<p> {{task.START_TIME}} - {{task.END_TIME}} </p>' +
                             '<p> {{task.TASK_INFO}}</p>' +
                             '</div>' +
-                            '<div class="modal-footer">' +
-                            '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-                            '</div>'+
                         '</div>'+
                     '</div>'+
                 '</div>',

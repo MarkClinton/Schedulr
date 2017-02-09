@@ -7,40 +7,45 @@ class User_model extends CI_Model{
     }
     
     public function create_user($data){
+        //$md_pword = md5($data['password']);
         
-        $md_pword = md5($data['inputPassword']);
         $input = array(
-            'first_name' => $data['inputFname'],
-            'last_name'  => $data['inputLname'],
-            'email'      => $data['inputEmail'],
-            'password'   => $md_pword
+            'first_name' => $data['firstName'],
+            'last_name'  => $data['lastName'],
+            'email'      => $data['email'],
+            'password'   => $data['password']
         );
         
         $query = $this->db->insert('user', $input);
-        return $query;
-        
+        if(!$query){
+            return 401;
+        } else {
+            return 200;
+        }  
     }
     
     public function login($data){
         
-        $email =  $data['inputEmail'];
-        $password = $data['inputPassword'];
+        $email =  $data['email'];
+        $password = $data['password'];
 
         $user = $this->getUser($email);
         
-        $usrEmail = $user[0]['EMAIL'];
-        $usrPword = $user[0]['PASSWORD'];
-        
-        //md5 for emails
-        
-        if(($email == $usrEmail) && ($password == $usrPword)){
-            $this->setSession($email);
+        if(!$user){
+            return 401;
+        } else {
             
-            return true;
-            
-        }   
-        else {
-            return false;
+            $usrPword = $user[0]['PASSWORD'];
+
+            //md5 for emails
+
+            if($password == $usrPword){
+                $this->setSession($email);
+                return 200;  
+            }   
+            else {
+                return 401;
+            }
         }
     }
     
@@ -48,11 +53,12 @@ class User_model extends CI_Model{
         
         $sql = "SELECT * FROM user WHERE email = '" . $email ."'";
         $query = $this->db->query($sql);
+        $result = $query->num_rows();
         
-        if(!$query){
-            return false;
-        } else {
+        if($result == 1){
             return $query->result_array();
+        } else {
+            return false;
         }
     }
     

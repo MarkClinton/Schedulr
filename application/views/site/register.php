@@ -1,26 +1,26 @@
-<div class="contain">
+<div class="contain" ng-app="user">
     
-    <form class="form-horizontal" name="register" action="Users/register" method="post">
+    <form class="form-horizontal" ng-controller="registerCtrl" ng-submit="register()">
   <fieldset>
     <legend>Sign Up</legend>
-    <div class="form-group">
+    <div class="form-group" ng-class="{ 'has-error': userForm.$invalid }">
       <div class="col-lg-12">
-        <input class="form-control" id="inputFname" name="inputFname" placeholder="First Name" type="text">
+        <input class="form-control" ng-model="user.firstName" placeholder="First Name" type="text" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-lg-12">
-        <input class="form-control" id="inputLname" name="inputLname" placeholder="Last Name" type="text">
+        <input class="form-control" ng-model="user.lastName" placeholder="Last Name" type="text" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-lg-12">
-        <input class="form-control" id="inputEmail" name="inputEmail" placeholder="Email" type="text">
+        <input class="form-control" ng-model="user.email" placeholder="Email" type="email" required>
       </div>
     </div>
     <div class="form-group">
       <div class="col-lg-12">
-        <input class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" type="password">
+        <input class="form-control" ng-model="user.password" placeholder="Password" type="password" required>
       </div>
       
     </div>
