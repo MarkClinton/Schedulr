@@ -16,52 +16,60 @@ class User_model extends CI_Model{
             'password'   => $data['password']
         );
         
-        $query = $this->db->insert('user', $input);
-        if(!$query){
-            return 401;
-        } else {
+        try{
+            $query = $this->db->insert('user', $input);
             return 200;
-        }  
+        }catch (Exception $e){
+            return 400;
+        } 
     }
     
-    public function login($data){
-        
-        $email =  $data['email'];
+    public function login($data) {
+
+        $email = $data['email'];
         $password = $data['password'];
+        $code = 0;
+        try {
+            $user = $this->getUser($email);
 
-        $user = $this->getUser($email);
-        
-        if(!$user){
-            return 401;
-        } else {
-            
-            $usrPword = $user[0]['PASSWORD'];
+            if (!$user) {
+                $code = 400;
+            } else {
 
-            //md5 for emails
+                $usrPword = $user[0]['PASSWORD'];
 
-            if($password == $usrPword){
-                $this->setSession($email);
-                return 200;  
-            }   
-            else {
-                return 401;
+                if ($password == $usrPword) {
+                    $this->setSession($email);
+                    $code = 200;
+                } else {
+                    $code = 401;
+                }
             }
+        } catch (Exception $e) {
+            $code = 400;
         }
+        return $code;
     }
-    
-    public function getUser($email){
-        
-        $sql = "SELECT * FROM user WHERE email = '" . $email ."'";
-        $query = $this->db->query($sql);
-        $result = $query->num_rows();
-        
-        if($result == 1){
-            return $query->result_array();
-        } else {
+
+    public function getUser($email) {
+
+        $sql = "SELECT * FROM user WHERE email = '" . $email . "'";
+        try {
+            $query = $this->db->query($sql);
+            $result = $query->num_rows();
+            
+            if ($result === 1) {
+                return $query->result_array();
+            } else {
+                print($email);
+                return false;
+            }
+        } catch (Exception $e) {
+            print("Exception");
             return false;
         }
     }
-    
+
     public function setSession($email){
         
         $sql = "SELECT * FROM user WHERE email = '" . $email . "' LIMIT 1";

@@ -1,6 +1,18 @@
 
 var fetch = angular.module('fetch', ['cgNotify']);
 
+fetch.controller('profileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+        $scope.hello = "hello";
+        var users = $http.get('getProfile');
+        
+        users.then(function (response) {
+            var request = response.data; 
+            //window.alert(request);
+            $scope.profile = request;
+        });
+        
+        
+}]);
 
 fetch.controller('displayUserCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
         var userTasks = $http.get('displayTasks');
@@ -19,7 +31,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', 'notify', function ($sco
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
-                var status = JSON.stringify(response.data.status);
+                var status = response.data;
                 if(status == 200){
                     $scope.userTasks.splice(index, 1);
                     notify({ message:'Task Deleted successfully'} );
@@ -51,7 +63,7 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', function ($sc
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
-                var status = JSON.stringify(response.data.status);
+                var status = response.data;
                 if(status == 200){
                     $scope.groupTasks.splice(index, 1);
                     notify({ message:'Task Deleted successfully'} );

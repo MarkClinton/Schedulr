@@ -5,6 +5,7 @@ class Users extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('User_model');
+        
     }
     
     public function view($page = 'index'){ 
@@ -16,6 +17,12 @@ class Users extends CI_Controller {
         $this->load->view('users/'.$page);
         $this->load->view('templates/footer');
      
+    }
+    
+    public function getProfile(){
+        $email = $this->session->userdata('email');
+        $response = $this->User_model->getUser($email);
+        print json_encode($response);
     }
     
     public function register() {

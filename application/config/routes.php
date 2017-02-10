@@ -6,6 +6,7 @@ $route['users/displayUpcomingTasks'] = 'users/displayUpcomingTasks';
 $route['users/displayGroupTasks'] = 'users/displayGroupTasks';
 $route['users/login'] = 'users/login';
 $route['users/register'] = 'users/register';
+$route['users/getProfile'] = 'users/getProfile';
 
 $route['users/tasks/task?(:any)'] = 'tasks/task';
 $route['users/tasks/delete?(:any)'] = 'tasks/deleteTask';

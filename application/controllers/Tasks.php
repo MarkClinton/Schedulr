@@ -48,43 +48,43 @@ class Tasks extends CI_Controller {
     }
 
     public function updateTask() {
-        $_POST = json_decode(file_get_contents('php://input'), true);
+        $update = json_decode(file_get_contents('php://input'), true);
  
         $task = array(
-            'TASK_NAME' => $_POST['inputTaskName'],
-            'START_TIME' => $_POST['inputTaskStart'],
-            'END_TIME' => $_POST['inputTaskEnd'],
-            'TASK_DATE' => $_POST['inputTaskDate'],
-            'TASK_INFO' => $_POST['inputTaskInfo'],
+            'TASK_NAME' => $update['inputTaskName'],
+            'START_TIME' => $update['inputTaskStart'],
+            'END_TIME' => $update['inputTaskEnd'],
+            'TASK_DATE' => $update['inputTaskDate'],
+            'TASK_INFO' => $update['inputTaskInfo'],
             'ADMIN' => $this->session->userdata('email')
         );
-        $task_id = $_POST['id'];
+        $task_id = $update['id'];
 
-        $response['status'] = $this->Task_model->updateTask($task, $task_id);
+        $response = $this->Task_model->updateTask($task, $task_id);
         print json_encode($response);
     }
 
     public function deleteTask() {
         $task_id = filter_input(INPUT_GET, 'id');
 
-        $response['status'] = $this->Task_model->deleteTask($task_id);
+        $response = $this->Task_model->deleteTask($task_id);
         print json_encode($response);
     }
 
     public function createTask() {
-        $_POST = json_decode(file_get_contents('php://input'), true);
+        $new = json_decode(file_get_contents('php://input'), true);
         
         $task = array(
-            'TASK_NAME' => $_POST['inputTaskName'],
-            'START_TIME' => $_POST['inputTaskStart'],
-            'END_TIME' => $_POST['inputTaskEnd'],
-            'TASK_DATE' => $_POST['inputTaskDate'],
-            'TASK_INFO' => $_POST['inputTaskInfo'],
+            'TASK_NAME' => $new['inputTaskName'],
+            'START_TIME' => $new['inputTaskStart'],
+            'END_TIME' => $new['inputTaskEnd'],
+            'TASK_DATE' => $new['inputTaskDate'],
+            'TASK_INFO' => $new['inputTaskInfo'],
             'ADMIN' => $this->session->userdata('email')
         );
 
 
-        $response['status'] = $this->Task_model->createNewTask($task);
+        $response = $this->Task_model->createNewTask($task);
         print json_encode($response);
     }
 

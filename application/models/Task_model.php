@@ -16,39 +16,32 @@ class Task_model extends CI_Model {
     
     public function deletetask($task_id) {
         
-        //$sql = "DELETE FROM tasks WHERE task_id = " + $task_id;
-        
-        $this->db->where('TASK_ID', $task_id);
-        $query = $this->db->delete('tasks'); 
-        
-        if(!$query){
-            return 400;
-        } else {
+        try{
+            $this->db->where('TASK_ID', $task_id);
+            $query = $this->db->delete('tasks');
             return 200;
-        }  
+        } catch(Exception $e) {
+            return 400;
+        }
     }
     
     public function createNewTask($task){
         
-        $query = $this->db->insert('tasks', $task); 
-        
-        if(!$query){
-            return 400;
-        } else {
+        try{
+            $this->db->insert('tasks', $task); 
             return 200;
+        } catch(Exception $e){
+            return 400;
         }  
-        
     }
     
     public function updateTask($task, $task_id){
-        
-        $this->db->where('TASK_ID', $task_id);
-        $query = $this->db->update('TASKS', $task);
-        
-        if(!$query){
-            return 400;
-        } else {
+        try{
+            $this->db->where('TASK_ID', $task_id);
+            $this->db->update('TASKS', $task);
             return 200;
-        }  
+        }catch (Exception $e) {
+            return 400;
+        }
     }
 }

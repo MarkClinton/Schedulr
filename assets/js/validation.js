@@ -16,7 +16,7 @@ user.controller('loginCtrl', ['$scope', '$http', 'notify', function ($scope, $ht
                 if(status == 200){
                     window.location.href = "users/index"; 
                 } else {
-                    notify({ message:'Wrong Username / Password'} );
+                    notify({ message:'Wrong Username / Password', classes: 'alert-danger'} );
                 } 
             });
     }

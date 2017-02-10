@@ -1,33 +1,36 @@
 
-<div class="contain">
-    <img src="<?php echo base_url()?>/assets/images/profiledefault.png" alt="profile"/>
-    <h2>Hello <?php echo ucfirst($this->session->userdata('first_name')); ?></h2> 
+<div id="profile_background" ng-app="fetch">
+    <div id="profile_contain">
+        <div>
+            <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
+        </div>
 
-  <table class="table table-striped table-hover ">
-  <thead>
-    <tr>
-      <th>My Details</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>First Name</th>
-      <th><?php echo $this->session->userdata('first_name') ?></th>
-    </tr>
-    <tr>
-      <td>Last Name</td>
-      <td><?php echo $this->session->userdata('last_name') ?></td>
-    </tr>
-    <tr>
-      <td>Email</td>
-      <td><?php echo $this->session->userdata('email') ?></td>
-    </tr>
-    <tr>
-      <td>Password</td>
-      <td>*********</td>
-    </tr>
-  </tbody>
-</table>   
+        <div ng-controller="profileCtrl">
+        <br>
+        <table class="table table-striped table-hover ">
+            <tbody ng-repeat="user in profile">
+                <tr>
+                    <td>Name:</td>
+                    <td>{{user.FIRST_NAME}} {{user.LAST_NAME}}</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>{{user.EMAIL}}</td>
+                </tr>
+            </tbody>
+        </table> 
+        </div>
+
+    </div>
+
+    <div id="profile_dash">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#profile" data-toggle="tab" aria-expanded="false">Tasks</a></li>
+            <li class=""><a href="#home" data-toggle="tab" aria-expanded="true">Edit Profile</a></li>
+            <li class=""><a href="#profile" data-toggle="tab" aria-expanded="false">Friends</a></li>
+
+        </ul>
+    </div>
+
 </div>
 

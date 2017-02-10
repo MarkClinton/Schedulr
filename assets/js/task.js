@@ -62,7 +62,7 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })).then(function (response) {
                 
-                var status = JSON.stringify(response.data.status);
+                var status = response.data;
                 if(status == 200){
                     notify({ message:'Task Updated successfully'} );
                     window.setTimeout(function(){window.location.href = "../index"},1000); 
@@ -112,7 +112,7 @@ task.controller('createCtrl', ['$scope', '$http', 'notify', function ($scope, $h
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })).then(function (response) {
                     
-                var status = JSON.stringify(response.data.status);
+                var status = response.data;
                 if(status == 200){
                     notify({ message:'Task Created successfully'} );
                     window.setTimeout(function(){window.location.href = "../index"},1000); 
