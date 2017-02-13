@@ -1,8 +1,8 @@
 
 var fetch = angular.module('fetch', ['cgNotify']);
 
-fetch.controller('profileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
-        $scope.hello = "hello";
+fetch.controller('getProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+
         var users = $http.get('getProfile');
         
         users.then(function (response) {
@@ -10,6 +10,40 @@ fetch.controller('profileCtrl', ['$scope', '$http', 'notify', function ($scope, 
             //window.alert(request);
             $scope.profile = request;
         });
+        
+        
+}]);
+
+fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+        
+        $scope.data = {};
+        var users = $http.get('getProfile');
+        
+        users.then(function (response) {
+            var request = response.data; 
+            $scope.data.first_name = request[0].FIRST_NAME;
+            $scope.data.last_name = request[0].LAST_NAME;
+            $scope.data.email = request[0].EMAIL;
+            $scope.data.password = request[0].PASSWORD;
+        });
+        
+        $scope.save = function () {
+            $http(({
+                method: 'POST',
+                url: 'updateProfile',
+                data: $scope.data, //forms user object
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })).then(function (response) {
+                
+                var status = response.data;
+                if(status == 200){
+                    notify({ message:'Details Updated successfully'} );
+                    window.setTimeout(function(){window.location.href = "profile"},1000); 
+                } else {
+                    notify({ message:'Details Could Not Be Created. Please Try Again.'} );
+                } 
+            });
+        }
         
         
 }]);

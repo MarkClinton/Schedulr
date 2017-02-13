@@ -25,6 +25,7 @@
         <script src="<?php echo base_url()?>/assets/js/display.js"></script>
         <script src="<?php echo base_url()?>/assets/js/main.js"></script>
         <script src="<?php echo base_url()?>/assets/js/task.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/profile.js"></script>
         <script src="<?php echo base_url()?>/assets/js/angular-datepicker.js"></script>
         
     </head>

@@ -6,6 +6,18 @@ $(document).ready(function () {
         } else if ($("#grouptasks").hasClass("active")) {
             $("#mytasks").hide();
             $("#grouptasks").show();
+        }else if ($("#tasks").hasClass("active")) {
+            $("#editProfile").hide();
+            $("#friends").hide();
+            $("#tasks").show();
+        } else if ($("#friends").hasClass("active")) {
+            $("#editProfile").hide();
+            $("#tasks").hide();
+            $("#friends").show();
+        } else if ($("#editProfile").hasClass("active")) {
+            $("#friends").hide();
+            $("#tasks").hide();
+            $("#editProfile").show();
         }
         
     $("#nav").find("a").click(function () {
@@ -21,8 +33,27 @@ $(document).ready(function () {
         } else if($active === "#grouptasks") {
             
             $('#mytasks').hide();
-            $('#mytasks').removeClass("active")
+            $('#mytasks').removeClass("active");
             $("#grouptasks").show();
+        } 
+        else if($active === "#tasks") {
+            $('#editProfile').hide();
+            $('#friends').hide();
+            //$('#editProfile').removeClass("active");
+            //$('#friends').removeClass("active");
+            $("#tasks").show();
+        } else if($active === "#editProfile") {
+            $('#tasks').hide();
+            $('#friends').hide();
+            //$('#tasks').removeClass("active");
+            //$('#friends').removeClass("active");
+            $("#editProfile").show();
+        } else if($active === "#friends") {
+            $('#tasks').hide();
+            $('#editProfile').hide();
+            //$('#tasks').removeClass("active");
+            //$('#editProfile').removeClass("active");
+            $("#friends").show();
         }
     });
     

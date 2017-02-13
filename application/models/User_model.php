@@ -17,11 +17,22 @@ class User_model extends CI_Model{
         );
         
         try{
-            $query = $this->db->insert('user', $input);
+            $this->db->insert('user', $input);
             return 200;
         }catch (Exception $e){
             return 400;
         } 
+    }
+    
+    public function update_user($data){
+        try{
+            //$sql = 'UPDATE user SET FIRST_NAME = ' + $user['FIRST_NAME'] + ' WHERE EMAIL = ' + $email;
+            $this->db->where('EMAIL', 'mark@gmail.com');
+            $this->db->update('USER', $data);
+            return 200;
+        } catch (Exception $ex) {
+            return 400;
+        }
     }
     
     public function login($data) {

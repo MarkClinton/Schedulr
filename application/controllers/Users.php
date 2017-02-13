@@ -25,6 +25,19 @@ class Users extends CI_Controller {
         print json_encode($response);
     }
     
+    public function updateProfile(){
+        $profile = json_decode(file_get_contents('php://input'), true);
+        //print_r($profile);
+        $user = array(
+            'FIRST_NAME' => $profile['first_name'],
+            'LAST_NAME'  => $profile['last_name'],
+            'EMAIL' => $profile['email'],
+            'PASSWORD'   => $profile['password']
+        );
+        $response = $this->User_model->update_user($user);
+        print json_encode($response);
+    }
+    
     public function register() {
         $data = json_decode(file_get_contents('php://input'), true);
         
