@@ -1,79 +1,80 @@
+<div class="container">
+    <div id="profile_background" ng-app="fetch">
+        <div id="profile_contain">
+            <div>
+                <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
+            </div>
 
-<div id="profile_background" ng-app="fetch">
-    <div id="profile_contain">
-        <div>
-            <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
+            <div ng-controller="getProfileCtrl">
+                <br>
+                <table class="table table-striped table-hover ">
+                    <tbody ng-repeat="user in profile">
+                        <tr>
+                            <td>user.FIRST_NAME}} {{user.LAST_NAME}}</td>
+                        </tr>
+                        <tr>
+                            <td>{{user.EMAIL}}</td>
+                        </tr>
+                    </tbody>
+                </table> 
+            </div>
+
         </div>
 
-        <div ng-controller="getProfileCtrl">
-            <br>
-            <table class="table table-striped table-hover ">
-                <tbody ng-repeat="user in profile">
-                    <tr>
-                        <td>{{user.FIRST_NAME}} {{user.LAST_NAME}}</td>
-                    </tr>
-                    <tr>
-                        <td>{{user.EMAIL}}</td>
-                    </tr>
-                </tbody>
-            </table> 
+        <div id="profile_dash">
+            <ul class="nav nav-tabs" id="nav">
+                <li class="active"><a href="#tasks" data-toggle="tab" aria-expanded="false">Tasks</a></li>
+                <li class=""><a href="#editProfile" data-toggle="tab" aria-expanded="true">Edit Profile</a></li>
+                <li class=""><a href="#friends" data-toggle="tab" aria-expanded="false">Friends</a></li>
+
+            </ul>
+
+            <div id="tasks" class="active">
+                tasks
+            </div>
+            <div id="editProfile">
+
+                <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input class="form-control" ng-model="data.last_name" placeholder="last Name" type="text" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input class="form-control" ng-model="data.email" placeholder="Email" type="text" required readonly="true">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                <input class="form-control" ng-model="data.password" placeholder="Password" type="password" required>
+                            </div>
+                        </div>
+                        <div id="right">
+                            <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div id="friends">
+                <div class="friend_search">
+                    <input class="input" type="text" name="search" placeholder="Search People">
+                    <ul class="nav navbar-right">
+                        <a href=""><img class="add_person" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
+                    </ul>
+                </div>
+                <div class="friends">
+
+                </div>
+            </div>
         </div>
 
     </div>
-
-    <div id="profile_dash">
-        <ul class="nav nav-tabs" id="nav">
-            <li class="active"><a href="#tasks" data-toggle="tab" aria-expanded="false">Tasks</a></li>
-            <li class=""><a href="#editProfile" data-toggle="tab" aria-expanded="true">Edit Profile</a></li>
-            <li class=""><a href="#friends" data-toggle="tab" aria-expanded="false">Friends</a></li>
-
-        </ul>
-
-        <div id="tasks" class="active">
-            tasks
-        </div>
-        <div id="editProfile">
-            
-            <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input class="form-control" ng-model="data.last_name" placeholder="last Name" type="text" required>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input class="form-control" ng-model="data.email" placeholder="Email" type="text" required readonly="true">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input class="form-control" ng-model="data.password" placeholder="Password" type="password" required>
-                        </div>
-                    </div>
-                    <div id="right">
-                        <button type="submit" class="btn btn-warning btn-sm">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="friends">
-            <div class="friend_search">
-                <input class="input" type="text" name="search" placeholder="Search People">
-                <ul class="nav navbar-right">
-                    <a href=""><img class="add_person" src="<?php echo base_url()?>/assets/images/person_add.png" alt="add"/></a>
-                </ul>
-            </div>
-            <div class="friends">
-                
-            </div>
-        </div>
-    </div>
-
 </div>
 
