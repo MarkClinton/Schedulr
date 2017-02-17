@@ -38,6 +38,12 @@ class Users extends CI_Controller {
         print json_encode($response);
     }
     
+    public function searchPeople(){
+        $input = json_decode(file_get_contents('php://input'), true);
+        $response = $this->User_model->search_people($input);
+        print json_encode($response);
+    }
+    
     public function register() {
         $data = json_decode(file_get_contents('php://input'), true);
         

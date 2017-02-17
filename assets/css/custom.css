@@ -114,10 +114,24 @@ img.add{
     margin-right: auto;
 }
 
+.inner_center{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .input{
     width: 50%;
     border-radius: 100px;
     border-style:solid;
+    padding-left: 10px;
+    color: #2C3E50;
+}
+
+.input2{
+    width: 100%;
+    border-radius: 100px;
+    border:none;
     padding-left: 10px;
     color: #2C3E50;
 }
@@ -157,3 +171,40 @@ img.add{
 [x-ng-click] {
     cursor: pointer;
 }
+
+.sidenav {
+    height: 80%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 10%;
+    right: 0;
+    color: white;
+    background: #2C3E50;
+    //background: #18BC9C;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav a:hover, .offcanvas a:focus{
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+

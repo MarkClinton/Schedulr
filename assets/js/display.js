@@ -48,6 +48,23 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
         
 }]);
 
+fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+        
+        $scope.searchText = null;
+        $scope.change = function (text) {
+            valtosend = $scope.searchText;
+            $http(({
+                method: 'POST',
+                url: 'searchPeople',
+                data: $scope.searchText, //forms user object
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })).then(function (result) {
+                $scope.entries = null;
+                $scope.entries = result.data;
+            });
+        };
+    }]);
+
 fetch.controller('displayUserCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
         var userTasks = $http.get('displayTasks');
         

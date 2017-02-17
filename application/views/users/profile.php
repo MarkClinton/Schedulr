@@ -33,7 +33,7 @@
             tasks
         </div>
         <div id="editProfile">
-            
+
             <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
                 <form class="form-horizontal">
                     <div class="form-group">
@@ -64,13 +64,24 @@
         </div>
         <div id="friends">
             <div class="friend_search">
-                <input class="input" type="text" name="search" placeholder="Search People">
+                <input class="input" type="text" name="search" placeholder="Search Friends...">
                 <ul class="nav navbar-right">
-                    <a href=""><img class="add_person" src="<?php echo base_url()?>/assets/images/person_add.png" alt="add"/></a>
+                    <a href=""><img class="add_person" onclick="openNav()" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
                 </ul>
             </div>
-            <div class="friends">
-                
+            <div class="friends" ng-controller="srchPeopleCtrl">
+                <div id="addSidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <div class="inner_center">
+                        <center><h2>Add Friends</h2></center>
+                        <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
+                        <input class="input2" type="text" ng-model="searchText" ng-change="change(text)" placeholder="Search People..." />
+                        <li ng-repeat="entry in entries">
+                            {{entry.FIRST_NAME}}
+                        </li>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
