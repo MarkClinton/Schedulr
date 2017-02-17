@@ -36,7 +36,6 @@ class User_model extends CI_Model{
     }
     
     public function search_people($search) {
-
         $this->db->select('FIRST_NAME, LAST_NAME')->where("FIRST_NAME LIKE '%$search%'")->from('USER');
         return $this->db->get()->result_array();
         

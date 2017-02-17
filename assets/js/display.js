@@ -49,10 +49,9 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
 }]);
 
 fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
-        
-        $scope.searchText = null;
-        $scope.change = function (text) {
-            valtosend = $scope.searchText;
+       
+       // $scope.searchText = null;
+        $scope.change = function () {
             $http(({
                 method: 'POST',
                 url: 'searchPeople',

@@ -10,7 +10,7 @@
                 <table class="table table-striped table-hover ">
                     <tbody ng-repeat="user in profile">
                         <tr>
-                            <td>user.FIRST_NAME}} {{user.LAST_NAME}}</td>
+                            <td>{{user.FIRST_NAME}} {{user.LAST_NAME}}</td>
                         </tr>
                         <tr>
                             <td>{{user.EMAIL}}</td>
@@ -32,27 +32,15 @@
             <div id="tasks" class="active">
                 tasks
             </div>
+
             <div id="editProfile">
 
-<<<<<<< HEAD
-        <div id="tasks" class="active">
-            tasks
-        </div>
-        <div id="editProfile">
-
-            <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <div class="col-lg-12">
-                            <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
-=======
                 <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
                     <form class="form-horizontal">
                         <div class="form-group">
                             <div class="col-lg-12">
                                 <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
                             </div>
->>>>>>> a6e1b666fb8d980ae26802e581d58d0647d75487
                         </div>
                         <div class="form-group">
                             <div class="col-lg-12">
@@ -69,55 +57,37 @@
                                 <input class="form-control" ng-model="data.password" placeholder="Password" type="password" required>
                             </div>
                         </div>
-<<<<<<< HEAD
-                    </div>
-                    <div id="right">
-                        <button type="submit" class="btn btn-warning btn-sm">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div id="friends">
-            <div class="friend_search">
-                <input class="input" type="text" name="search" placeholder="Search Friends...">
-                <ul class="nav navbar-right">
-                    <a href=""><img class="add_person" onclick="openNav()" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
-                </ul>
-            </div>
-            <div class="friends" ng-controller="srchPeopleCtrl">
-                <div id="addSidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <div class="inner_center">
-                        <center><h2>Add Friends</h2></center>
-                        <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
-                        <input class="input2" type="text" ng-model="searchText" ng-change="change(text)" placeholder="Search People..." />
-                        <li ng-repeat="entry in entries">
-                            {{entry.FIRST_NAME}}
-                        </li>
-                    </div>
-                </div>
 
-=======
                         <div id="right">
                             <button type="submit" class="btn btn-warning btn-sm">Save</button>
                         </div>
-                    </form>
                 </div>
+                </form>
             </div>
+
             <div id="friends">
                 <div class="friend_search">
-                    <input class="input" type="text" name="search" placeholder="Search People">
+                    <input class="input" type="text" name="search" placeholder="Search Friends...">
                     <ul class="nav navbar-right">
-                        <a href=""><img class="add_person" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
+                        <a href=""><img class="add_person" onclick="openNav()" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
                     </ul>
                 </div>
-                <div class="friends">
-
+                <div class="friends" ng-controller="srchPeopleCtrl">
+                    <div id="addSidenav" class="sidenav">
+                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                        <div class="inner_center">
+                            <center><h2>Add Friends</h2></center>
+                            <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
+                            <input class="input2" type="text" ng-model="searchText" ng-change="change(text)" placeholder="Search People..." />
+                            <li ng-repeat="entry in entries">
+                                {{entry.FIRST_NAME}}
+                            </li>
+                        </div>
+                    </div>
                 </div>
->>>>>>> a6e1b666fb8d980ae26802e581d58d0647d75487
             </div>
         </div>
-
     </div>
 </div>
+
 
