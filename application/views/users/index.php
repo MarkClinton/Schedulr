@@ -1,10 +1,9 @@
 
 <div class="container" ng-app="fetch">
 
-
     <div id="dashboard">
         <ul class="nav nav-tabs" id="nav">
-            <li class="active"><a href="#mytasks" data-toggle="tab" aria-expanded="true">My Tasks</a></li>
+            <li class="active"><a href="#mytasks" data-toggle="tab" aria-expanded="true">Tasks</a></li>
             <li class=""><a href="#grouptasks" data-toggle="tab" aria-expanded="true">Group Tasks</a></li>
 
 
@@ -13,8 +12,8 @@
             </ul>
         </ul>
 
-        <div id="mytasks" class="active">
-            <div ng-controller="displayUserCtrl">
+        <div id="mytasks" class="active" >
+            <div ng-controller="displayUserCtrl" ng-cloak>
                 <table class="table table-striped table-hover ">
                     <tbody>   
                         <tr ng-repeat="tasks in userTasks">
@@ -30,7 +29,7 @@
         </div>
 
         <div id="grouptasks" >
-            <div ng-controller="displayGroupCtrl">
+            <div ng-controller="displayGroupCtrl" ng-cloak>
                 <table class="table table-striped table-hover ">
                     <tbody>   
                         <tr ng-repeat="tasks in groupTasks">
@@ -46,10 +45,13 @@
         </div>
     </div>
 
-    <div id="recents">
+
+    <!--<div id="recents">
         <div>
-            <i class="fa fa-calendar" aria-hidden="true"><div id="date"> </div></i>
-            <i class="fa fa-clock-o" aria-hidden="true"><div id="time">  </div></i>
+            
+                <i class="fa fa-calendar" aria-hidden="true"><div id="date"></div></i>
+                <i class="fa fa-clock-o" aria-hidden="true"><div id="time"></div></i>
+            
         </div>
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -72,7 +74,7 @@
                 </div> 
             </div>
         </div>
-    </div>
+    </div>-->
     
     
 </div>

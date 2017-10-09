@@ -40,8 +40,10 @@ class Users extends CI_Controller {
     
     public function searchPeople(){
         $input = json_decode(file_get_contents('php://input'), true);
-        $response = $this->User_model->search_people($input);
+        $search = $input['searchText'];
+        $response = $this->User_model->search_people($search);
         print json_encode($response);
+        
     }
     
     public function register() {

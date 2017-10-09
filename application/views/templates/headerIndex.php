@@ -22,7 +22,7 @@
                 <div id="navbar">
                     <ul class="nav navbar-nav navbar-right">
                         
-                        <li><a href="<?php echo base_url(); ?>login">Sign In</a></li>
+                        <li><a href="<?php echo base_url(); ?>login">Log In</a></li>
                         <li><a href="<?php echo base_url(); ?>register">Sign Up</a></li>
                         
                     </ul>

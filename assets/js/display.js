@@ -50,12 +50,13 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
 
 fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
        
-       // $scope.searchText = null;
+        
         $scope.change = function () {
+            $scope.entries = null;
             $http(({
                 method: 'POST',
                 url: 'searchPeople',
-                data: $scope.searchText, //forms user object
+                data: $scope.src, //forms user object
                 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
             })).then(function (result) {
                 $scope.entries = null;
@@ -64,7 +65,7 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
         };
     }]);
 
-fetch.controller('displayUserCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', function ($scope, $http, notify) {
         var userTasks = $http.get('displayTasks');
         
         userTasks.then(function (response) {
@@ -126,7 +127,7 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', function ($sc
         };
 }]);
 
-fetch.controller('displayUpcomingCtrl', ['$scope', '$http', function ($scope, $http){
+fetch.controller('displayUpcomingCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http){
         var upcomingTasks = $http.get('displayUpcomingTasks');
         
         upcomingTasks.then(function (response) {

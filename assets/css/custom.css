@@ -17,6 +17,11 @@ body{
     padding: 50px;
 }
 
+.srcResults{
+    width: 100%;
+    height:auto;
+}
+
 .contain{
     //text-align: center;
     width: 400px;
@@ -26,6 +31,12 @@ body{
     margin-top: 50px;
     padding: 50px;
     border-radius: 5px;
+}
+
+.bg_index {
+    height: 100%;
+    width: 100%;
+    background: #18BC9C;
 }
 
 textarea{
@@ -49,6 +60,7 @@ img.profile{
     margin-left: 50px;
     border: 3px solid #18BC9C;
 }
+
 
 img.logo{
     
@@ -137,9 +149,9 @@ img.add{
 }
 
 #dashboard{
-    width: 60%;
+    width: 40%;
     height: 500px;
-    //background: #ECF0F1;
+    background: white;
     display: inline-block;
 }
 

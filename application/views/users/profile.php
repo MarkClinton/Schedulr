@@ -3,6 +3,7 @@
         <div id="profile_contain">
             <div>
                 <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
+                <center><h6>Upload Picture</h6></center>
             </div>
 
             <div ng-controller="getProfileCtrl">
@@ -78,10 +79,12 @@
                         <div class="inner_center">
                             <center><h2>Add Friends</h2></center>
                             <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
-                            <input class="input2" type="text" ng-model="searchText" ng-change="change(text)" placeholder="Search People..." />
-                            <li ng-repeat="entry in entries">
-                                {{entry.FIRST_NAME}}
-                            </li>
+                            <input class="input2" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search People..." />
+                            
+                            <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
+                                <h4>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h4>
+                                <h5>{{entry.EMAIL}}</h5>
+                            </div>
                         </div>
                     </div>
                 </div>
