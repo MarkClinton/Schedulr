@@ -9,9 +9,11 @@ body{
 
 .contain_index{
     //text-align: center;
-    width: 600px;
+    display: inline-block;
+    float: left;
+    width: 40%;
     height: auto;
-    margin-left: auto;
+    margin-left: 15%;
     margin-right: auto;
     margin-top: 50px;
     padding: 50px;
@@ -20,6 +22,21 @@ body{
 .srcResults{
     width: 100%;
     height:auto;
+}
+
+.contain_reg{
+    //text-align: center;
+    display: inline-block;
+    float: left;
+    width: 30%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    padding: 50px;
+    border-radius: 5px;
+    background: white;
+    border: 1px solid #808080;
 }
 
 .contain{
@@ -31,6 +48,8 @@ body{
     margin-top: 50px;
     padding: 50px;
     border-radius: 5px;
+    background: white;
+    border: 1px solid #808080;
 }
 
 .bg_index {
@@ -63,9 +82,8 @@ img.profile{
 
 
 img.logo{
-    
-    width: 300px;
-    height: 165px;
+    width: 100px;
+    height: 55px;
     margin-right: auto;
     margin-left: auto;
 }
@@ -218,5 +236,9 @@ img.add{
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
+}
+
+.links{
+    font-weight: bold;
 }
 

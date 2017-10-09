@@ -2,7 +2,6 @@
     
     <form class="form-horizontal" ng-controller="registerCtrl" ng-submit="register()">
   <fieldset>
-    <legend>Sign Up</legend>
     <div class="form-group" ng-class="{ 'has-error': userForm.$invalid }">
       <div class="col-lg-12">
         <input class="form-control" ng-model="user.firstName" placeholder="First Name" type="text" required>
@@ -24,7 +23,7 @@
       </div>
       
     </div>
-    <div id="right"><button type="submit" class="btn btn-primary">Sign Up</button></div>
+    <div id="right"><button type="submit" class="btn btn-primary">Sign Me Up</button></div>
   </fieldset>
     </form>
     

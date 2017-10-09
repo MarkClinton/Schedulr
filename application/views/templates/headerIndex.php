@@ -17,13 +17,17 @@
     <nav class="navbar navbar-inverse">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
+                    <a class="navbar-brand" href="<?php echo base_url(); ?>index">
+                        <img class="logo" src="<?php echo base_url()?>/assets/images/Schedulr_Logo.png" />
+                    </a>
+
                 </div>
                 <div id="navbar">
                     <ul class="nav navbar-nav navbar-right">
                         
-                        <li><a href="<?php echo base_url(); ?>login">Log In</a></li>
-                        <li><a href="<?php echo base_url(); ?>register">Sign Up</a></li>
+                        <li><a style= "color: #2c3e50;" class="links" href="<?php echo base_url(); ?>login">Sign In</a></li>
+                        
+                        <li><a style= "color: #2c3e50;" class="links" href="<?php echo base_url(); ?>register">Sign Up</a></li>
                         
                     </ul>
                 </div>

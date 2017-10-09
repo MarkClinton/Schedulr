@@ -4,7 +4,6 @@
     
   <form class="form-horizontal" ng-controller="loginCtrl" ng-submit="login()">
   <fieldset>
-    <legend>Sign In</legend>
     <div class="form-group" ng-class="{ 'has-error': userForm.$invalid }" >
       <div class="col-lg-12">
           <input class="form-control" ng-model="user.email" placeholder="Email" type="email" required>
