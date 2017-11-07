@@ -1,7 +1,6 @@
 
+
 <div class="contain" ng-app="user">
-    
-    
   <form class="form-horizontal" ng-controller="loginCtrl" ng-submit="login()">
   <fieldset>
     <div class="form-group" ng-class="{ 'has-error': userForm.$invalid }" >
@@ -17,9 +16,6 @@
     </div>
     <div id="right"><button type="submit" class="btn btn-primary">Sign In</button></div>
   </fieldset>
-    </form>
-    
-    
-    
+  </form> 
 </div>
 

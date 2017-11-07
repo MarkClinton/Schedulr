@@ -71,6 +71,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
         userTasks.then(function (response) {
             var request = response.data; 
             $scope.userTasks = request;
+            $scope.date = new Date();
         });
         
         $scope.showTask = function(data){
