@@ -8,7 +8,7 @@
 
 
             <ul class="nav navbar-right">
-                <li><a href="tasks/create"><img class="add" src="<?php echo base_url()?>/assets/images/add.png" alt="add"/></a></li>
+                <li><a href="tasks/create"><img class="add" src="<?php echo base_url()?>/assets/images/add.png" alt="add"></img></a></li>
             </ul>
         </ul>
         <div id="mytasks" class="active" >
@@ -46,8 +46,8 @@
     </div>
 
 
-    <div>
-        <!-- CALENDAR GOES HERE -->
+    <div id="calendar">
+        
     </div>
     
     

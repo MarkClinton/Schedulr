@@ -57,7 +57,7 @@ $(document).ready(function () {
         }
     });
 
-    document.getElementById("date").innerHTML = date();
+    //document.getElementById("date").innerHTML = date();
 
     function time() {
         var d = new Date(),

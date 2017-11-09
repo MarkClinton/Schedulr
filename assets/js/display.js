@@ -79,17 +79,17 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
         };
         
         $scope.delete = function(data, index) {
-            
+            //$scope.userTasks.splice(index, 1);
+            var indexOf = $scope.userTasks.indexOf(data.TASK_ID);
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
                 var status = response.data;
                 if(status == 200){
-                    $scope.userTasks.splice(index, 1);
-                    notify({ message:'Task Deleted successfully'} );
-                    //window.setTimeout(function(){window.location.href = ""},1000); 
+                    $scope.userTasks.splice(indexOf, 1);
+                    //notify({ message:'Task Deleted successfully'} );
                 } else {
-                    notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );
+                    //notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );
                 } 
             });
             

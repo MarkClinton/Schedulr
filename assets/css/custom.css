@@ -97,9 +97,7 @@ img.add_person{
 }
 
 img.add{
-    height: 25px;
-    width: auto;
-    margin-right: 10px;
+    margin-right: 15px;
 }
 
 #profile_background{
@@ -175,13 +173,18 @@ img.add{
     display: inline-block;
     border-radius: 5px;
     border: 1px solid #808080;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
-#recents{
-    width: 35%;
-    height: 500px;
+#calendar{
+    width: 55%;
+    height: 550px;
     display: inline-block;
     float: right;
+    border-radius: 5px;
+    border: 1px solid #808080;
+    background: white;
 }
 
 #date{

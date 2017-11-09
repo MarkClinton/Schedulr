@@ -15,6 +15,7 @@
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.min.css">
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.theme.css">
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.structure.css">
+        <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/fullcalendar.css' />
         
         <script src="<?php echo base_url()?>/assets/js/jquery-ui.min.js"></script>
         <script src="<?php echo base_url()?>/assets/js/timepickerdirective.js"></script>
@@ -23,10 +24,13 @@
         <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
         <script src="<?php echo base_url()?>/assets/js/validation.js"></script>
         <script src="<?php echo base_url()?>/assets/js/display.js"></script>
-        <script src="<?php echo base_url()?>/assets/js/main.js"></script>
         <script src="<?php echo base_url()?>/assets/js/task.js"></script>
         <script src="<?php echo base_url()?>/assets/js/profile.js"></script>
         <script src="<?php echo base_url()?>/assets/js/angular-datepicker.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/moment.min.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/fullcalendar.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/main.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/calendar.js"></script>
         
     </head>
     
