@@ -249,14 +249,14 @@ img.add{
 
 .upcomingTasks{
     width: 90%;
-    margin: 5px 0 5px 5%;
+    margin: 3px 0 3px 5%;
     height: auto;
     border-bottom: 1px solid #DCDCDC;
 }
 
 .upcomingHead{
     width: 100%;
-    height: 35px;
+    height: 32px;
 }
 
 .upcomingDetails{

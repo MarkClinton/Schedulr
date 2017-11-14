@@ -1,27 +1,4 @@
 $(document).ready(function() {
-	var tooltip = $('<div/>').qtip({
-		id: 'fullcalendar',
-		prerender: true,
-		content: {
-			text: ' ',
-			title: {
-				button: true
-			}
-		},
-		position: {
-			my: 'bottom center',
-			at: 'top center',
-			target: 'mouse',
-			viewport: $('#fullcalendar'),
-			adjust: {
-				mouse: false,
-				scroll: false
-			}
-		},
-		show: false,
-		hide: false,
-		style: 'qtip-light'
-	}).qtip('api');
 
     $('#calendar').fullCalendar({
             header: { 
@@ -29,21 +6,6 @@ $(document).ready(function() {
             	center: 'title',
     			left: 'prev,next'
             }, 
-
-    eventClick: function(data, event, view) {
-			var content = '<h3>'+data.title+'</h3>' + 
-				'<p><b>Start:</b> '+data.start+'<br />' + 
-				data.description + '</p>';
-
-			tooltip.set({
-				'content.text': content
-			})
-			.reposition(event).show(event);
-		},
-        dayClick: function() { tooltip.hide() },
-		eventResizeStart: function() { tooltip.hide() },
-		eventDragStart: function() { tooltip.hide() },
-		viewDisplay: function() { tooltip.hide() },
 
 	eventSources: [{
 		events: function(start, end, timezone, callback) {
@@ -59,11 +21,13 @@ $(document).ready(function() {
             success: function(response) {
                 var events = [];
                 for (var i in response){
-                	var dateTime = response[i].TASK_DATE + " " + response[i].START_TIME;
+                	var dateTimeStart = response[i].TASK_DATE + " " + response[i].START_TIME;
+                	var dateTimeEnd = response[i].TASK_DATE + " " + response[i].END_TIME;
                 	events.push({
                 		id:    response[i].TASK_ID,
   						title: response[i].TASK_NAME,
-                        start: dateTime,
+                        start: dateTimeStart,
+                        end:   dateTimeEnd,
                         description: response[i].TASK_INFO
   					});
                 }
@@ -73,11 +37,26 @@ $(document).ready(function() {
     }
 	}],
     eventRender: function(event, element) {
-        var contentInfo = '<h3>'+event.title+'</h3>' + 
-				'<p><b>Start:</b> '+event.start+'<br />' + 
+    	var start = convertTimestamp(event.start);
+    	var end   = convertTimestamp(event.end);
+
+        var contentInfo = '<h3>'+ event.title +'</h3>' + 
+				'<p><b>Start: </b> '+ start +'<br />' + 
+				'<b>End: </b> ' + end + '<br />' +
 				event.description + '</p>';
         element.qtip({
-
+        	position: {
+				my: 'bottom center',
+				at: 'top center'
+			},
+			show: {
+            	solo: true
+            },
+			hide: {
+                fixed: true,
+                delay: 500
+            },
+        	style: 'qtip-blue',
             content: contentInfo
         });
     }
@@ -85,3 +64,30 @@ $(document).ready(function() {
     })
 
 });
+
+    function convertTimestamp(timestamp) {
+	  	var d = new Date(timestamp),	// Convert the passed timestamp to milliseconds
+			yyyy = d.getFullYear(),
+			mm = ('0' + (d.getMonth() + 1)).slice(-2),	// Months are zero based. Add leading 0.
+			dd = ('0' + d.getDate()).slice(-2),			// Add leading 0.
+			hh = d.getHours(),
+			h = hh,
+			min = ('0' + d.getMinutes()).slice(-2),		// Add leading 0.
+			ampm = 'AM',
+			time;
+				
+		if (hh > 12) {
+			h = hh - 12;
+			ampm = 'PM';
+		} else if (hh === 12) {
+			h = 12;
+			ampm = 'PM';
+		} else if (hh == 0) {
+			h = 12;
+		}
+		
+		// ie: 2013-02-18, 8:35 AM	
+		time = yyyy + '-' + mm + '-' + dd + ', ' + h + ':' + min + ' ' + ampm;
+			
+		return time;
+	}
