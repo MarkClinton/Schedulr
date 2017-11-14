@@ -129,7 +129,7 @@ class User_model extends CI_Model{
         /*$sql = "SELECT tasks.* FROM tasks LEFT JOIN share "
                 . "ON tasks.task_id = share.task_id WHERE "
                 . "share.task_id IS NULL AND tasks.admin = '" . $email ."'";*/
-        $sql = "SELECT * FROM tasks where admin = '" . $email . "' ORDER BY TASK_DATE DESC limit 5";
+        $sql = "SELECT * FROM tasks where admin = '" . $email . "'";
 
         $query = $this->db->query($sql);
         return $query->result_array();

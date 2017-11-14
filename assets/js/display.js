@@ -66,7 +66,7 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
     }]);
 
 fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', function ($scope, $http, notify) {
-        var userTasks = $http.get('displayTasks');
+        var userTasks = $http.get('displayUpcomingTasks');
         
         userTasks.then(function (response) {
             var request = response.data; 
@@ -81,12 +81,13 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
         $scope.delete = function(data, index) {
             //$scope.userTasks.splice(index, 1);
             var indexOf = $scope.userTasks.indexOf(data.TASK_ID);
+            $scope.userTasks.splice(index, 1);
             var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
             
             deleteTask.then(function (response){
                 var status = response.data;
                 if(status == 200){
-                    $scope.userTasks.splice(indexOf, 1);
+                    $('#calendar').fullCalendar( 'refetchEvents' )
                     //notify({ message:'Task Deleted successfully'} );
                 } else {
                     //notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );

@@ -13,7 +13,7 @@
         </ul>
         <div id="mytasks" class="active" >
             <div ng-controller="displayUserCtrl" ng-cloak>
-                <div ng-repeat="tasks in userTasks | orderBy: 'TASK_DATE'" >
+                <div ng-repeat="tasks in userTasks" >
                     <div class= "upcomingTasks">
                         <div class="upcomingHead">
                             <h4 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h4>

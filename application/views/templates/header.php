@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.theme.css">
         <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.structure.css">
         <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/fullcalendar.css' />
+        <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/qtip.css' />
         
         <script src="<?php echo base_url()?>/assets/js/jquery-ui.min.js"></script>
         <script src="<?php echo base_url()?>/assets/js/timepickerdirective.js"></script>
@@ -30,7 +31,9 @@
         <script src="<?php echo base_url()?>/assets/js/moment.min.js"></script>
         <script src="<?php echo base_url()?>/assets/js/fullcalendar.js"></script>
         <script src="<?php echo base_url()?>/assets/js/main.js"></script>
+        <script src="<?php echo base_url()?>/assets/js/qtip.js"></script>
         <script src="<?php echo base_url()?>/assets/js/calendar.js"></script>
+
         
     </head>
     
