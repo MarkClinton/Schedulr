@@ -115,12 +115,12 @@ class User_model extends CI_Model{
     public function getUpcomingTasks($email) {
         
         $sql = " tasks WHERE admin = '" . $email . "'";
-        //$limit=5;
+        $limit=5;
         $start_row=0;
 
         $this->db->order_by("task_date", "ASC");
         $this->db->order_by("start_time", "ASC");
-        $query = $this->db->get($sql, $start_row);
+        $query = $this->db->get($sql, $start_row, $limit);
         return $query->result_array();  
     } 
     

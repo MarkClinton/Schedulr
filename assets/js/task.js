@@ -65,7 +65,7 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
                 var status = response.data;
                 if(status == 200){
                     notify({ message:'Task Updated successfully'} );
-                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                    window.setTimeout(function(){window.location.href = "../users/index"},1000); 
                 } else {
                     notify({ message:'Task Could Not Be Created. Please Try Again.'} );
                 } 
@@ -115,7 +115,7 @@ task.controller('createCtrl', ['$scope', '$http', 'notify', function ($scope, $h
                 var status = response.data;
                 if(status == 200){
                     notify({ message:'Task Created successfully'} );
-                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                    window.setTimeout(function(){window.location.href = "../users/index"},1000); 
                 } else {
                     notify({ message:'Task Could Not Be Created. Please Try Again.'} );
                 }   

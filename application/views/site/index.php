@@ -1,16 +1,15 @@
 
 <div class="contain_main">
   <div class="contain_index">
-    <!--<img src="<?php echo base_url()?>/assets/images/Schedulr_Logo.png"-->
-    <!--<img class="logo" src="<?php echo base_url()?>/assets/images/Schedulr_Logo.png" />-->
-    <h1 class="links" >Get Organized</h1>
+    <h2 style="color:white;">Get Organized</h2>
     <br>
     <p style="color:whitesmoke;">Schedulr helps you keep track of your daily tasks, personal or shared.</p>
     <p style="color:whitesmoke;">Sign up now to enjoy.</p>
   </div>
 
   <div class="contain_reg" ng-app="user">
-    
+    <h3 style="color:white;">Welcome</h3>
+    <br />
     <form class="form-horizontal" ng-controller="registerCtrl" ng-submit="register()">
       <fieldset>
         <div class="form-group" ng-class="{ 'has-error': userForm.$invalid }">
@@ -34,11 +33,9 @@
           </div>
           
         </div>
-        <div id="right"><button type="submit" class="btn btn-primary">Sign up for Schedulr</button></div>
+        <div><button type="submit" class="btn btn-info btn-round">Register</button></div>
       </fieldset>
     </form>
-    
-    
     
   </div>
 </div>

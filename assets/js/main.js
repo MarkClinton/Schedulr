@@ -2,10 +2,16 @@ $(document).ready(function () {
 
     if ($("#mytasks").hasClass("active")) {
         $("#grouptasks").hide();
+        $("#alltasks").hide();
         $("#mytasks").show();
     } else if ($("#grouptasks").hasClass("active")) {
         $("#mytasks").hide();
+        $("#alltasks").hide();
         $("#grouptasks").show();
+    } else if ($("#alltasks").hasClass("active")) {
+        $("#mytasks").hide();
+        $("#grouptasks").hide();
+        $("#alltasks").show();
     } else if ($("#tasks").hasClass("active")) {
         $("#editProfile").hide();
         $("#friends").hide();
@@ -28,13 +34,21 @@ $(document).ready(function () {
 
         if ($active === "#mytasks") {
             $('#grouptasks').hide();
-            $('#grouptasks').removeClass("active");
+            $('#alltasks').hide();
+            //$('#grouptasks').removeClass("active");
             $("#mytasks").show();
-        } else if ($active === "#grouptasks") {
-
+        } 
+        else if ($active === "#grouptasks") {
             $('#mytasks').hide();
-            $('#mytasks').removeClass("active");
+            $('#alltasks').hide();
+            //$('#mytasks').removeClass("active");
             $("#grouptasks").show();
+        } 
+        else if ($active === "#alltasks") {
+            $('#mytasks').hide();
+            //$('#mytasks').removeClass("active");
+            $("#grouptasks").hide();
+            $("#alltasks").show();
         }
         else if ($active === "#tasks") {
             $('#editProfile').hide();
@@ -42,13 +56,15 @@ $(document).ready(function () {
             //$('#editProfile').removeClass("active");
             //$('#friends').removeClass("active");
             $("#tasks").show();
-        } else if ($active === "#editProfile") {
+        } 
+        else if ($active === "#editProfile") {
             $('#tasks').hide();
             $('#friends').hide();
             //$('#tasks').removeClass("active");
             //$('#friends').removeClass("active");
             $("#editProfile").show();
-        } else if ($active === "#friends") {
+        } 
+        else if ($active === "#friends") {
             $('#tasks').hide();
             $('#editProfile').hide();
             //$('#tasks').removeClass("active");

@@ -1,10 +1,18 @@
 body{
-    background: #18BC9C;
+    background: #42708A;
+    /*background: whitesmoke;*/
 }
 
 .home{
     height: 100%;
+    background-image: url('../images/mountains.png');
+    background-repeat:no-repeat;
+    background-size:cover;
     
+}
+
+.margined-top{
+    margin-top: 15px;
 }
 
 .contain_index{
@@ -24,20 +32,21 @@ body{
 .contain_reg{
     display: inline-block;
     float: left;
-    width: 35%;
+    width: 30%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 40px;
-    padding: 50px 20px 20px 20px;
+    margin-top: 30px;
+    padding: 10px 20px 20px 20px;
     border-radius: 5px;
-    background: white;
-    border: 1px solid #808080;
+    /*background: #86D9AB;*/
+    background: #7093A0;
     min-width: 200px;
+    text-align: center;
 }
 
 .contain_main{
-    width: 80%;
+    width: 85%;
     height: auto;
     margin-left: auto;
     margin-right: auto;
@@ -45,15 +54,15 @@ body{
 }
 
 .contain{
-    width: 400px;
+    width: 350px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
-    padding: 50px;
+    margin-top: 30px;
+    padding: 10px;
     border-radius: 5px;
     background: white;
-    border: 1px solid #808080;
+    text-align: center;
 }
 
 .bg_index {
@@ -69,11 +78,15 @@ textarea{
     text-align: right;
 }
 .containTask{
-    width: 600px;
+    width: 500px;
     height: auto;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
+    background: white;
+    border-radius: 5px;
+    padding:20px;
+    text-align: center;
 }
 
 img.profile{
@@ -168,11 +181,11 @@ img.add{
 
 #dashboard{
     width: 40%;
+    min-width: 375px;
     height: 550px;
     background: white;
     display: inline-block;
     border-radius: 5px;
-    border: 1px solid #808080;
     overflow-y: auto;
     overflow-x: hidden;
 }
@@ -183,7 +196,6 @@ img.add{
     display: inline-block;
     float: right;
     border-radius: 5px;
-    border: 1px solid #808080;
     background: white;
 }
 
@@ -247,55 +259,34 @@ img.add{
     font-weight: bold;
 }
 
-.upcomingTasks{
+.taskContain {
+    height: 100%;
+    overflow-y: scroll;
+
+}
+
+.tasks{
     width: 90%;
     margin: 3px 0 3px 5%;
     height: auto;
     border-bottom: 1px solid #DCDCDC;
+    
 }
 
-.upcomingHead{
+.taskHead{
     width: 100%;
     height: 32px;
 }
 
-.upcomingDetails{
-    width: 100%
+.taskDetails{
+    width: 100%;
+    height: auto;
+    text-align:left;
 }
 
-@media only screen and (max-width: 400px) {
-  .header {
-    .menu {
-      max-height: 0;
-      overflow: hidden;
-      float: none;
-      text-align: center;
-      width: 100%;
-      @include transition(max-height 0.5s);
-      &.menuOpen {
-        max-height: 1000px;
-        @include transition(max-height 0.5s);
-      }
-    ul {
-      li {
-        display: block;
-        width: 100%;
-        background: #000;
-        border-top:1px solid #4d4d4d;
-        &:hover {
-          background: #999;
-        }
-        a {
-          color: #fff;
-          text-shadow: #848484 0px 1px 2px;
-          padding: 10px 0;
-          width: 100%;
-          }
-        }
-      }
-    }
-    .menuIcon {
-      display: inline-block;
-    }
-  }
+.pull-right {
+  float: right !important;
+}
+.pull-left {
+  float: left !important;
 }

@@ -66,12 +66,26 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
     }]);
 
 fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', function ($scope, $http, $rootScope, notify) {
+        $scope.userTasks = null;
         var userTasks = $http.get('displayUpcomingTasks');
-        
+        $scope.limit = 5;
         userTasks.then(function (response) {
             var request = response.data; 
             $scope.userTasks = request;
             $scope.date = new Date();
+        });
+
+        var allTasks = $http.get('displayTasks');   
+        userTasks.then(function (response) {
+            var request = response.data; 
+            $scope.allTasks = request;
+            $scope.date = new Date();
+        }); 
+
+        var groupTasks = $http.get('displayGroupTasks');
+        groupTasks.then(function (response) {
+            var request = response.data; 
+            $scope.groupTasks = request;
         });
         
         $scope.showTask = function(data){
@@ -100,6 +114,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
 }]);
 
 fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify){
+        $scope.groupTasks = null;
         var groupTasks = $http.get('displayGroupTasks');
         
         groupTasks.then(function (response) {
@@ -129,21 +144,38 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', function ($sc
         };
 }]);
 
-fetch.controller('displayUpcomingCtrl', ['$scope', '$http', '$rootScope', function ($scope, $http){
-        var upcomingTasks = $http.get('displayUpcomingTasks');
+fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', function ($scope, $http, $rootScope, notify) {
+        $scope.allTasks = null;
+        var allTasks = $http.get('displayTasks');
         
-        upcomingTasks.then(function (response) {
+        userTasks.then(function (response) {
             var request = response.data; 
-            $scope.upcomingTasks = request;
-        });
+            $scope.allTasks = request;
+            $scope.date = new Date();
+        }); 
         
-        $scope.showModal = false;
-        $scope.buttonClicked = "";
-        $scope.showUpcomingTask = function(data){
-            $scope.task = data;
-            $scope.showModal = !$scope.showModal;
-   
+        $scope.showTask = function(data){
+            window.location.href = "tasks/task?id=" + data.TASK_ID;
         };
+        
+        $scope.delete = function(data, index) {
+            //$scope.userTasks.splice(index, 1);
+            var indexOf = $scope.allTasks.indexOf(data.TASK_ID);
+            $scope.userTasks.splice(index, 1);
+            var deleteTask = $http.get('tasks/delete?id=' + data.TASK_ID);
+            
+            deleteTask.then(function (response){
+                var status = response.data;
+                if(status == 200){
+                    $('#calendar').fullCalendar( 'refetchEvents' );
+                    //notify({ message:'Task Deleted successfully'} );
+                } else {
+                    //notify({ message:'Task Could Not Be Deleted. Please Try Again.'} );
+                } 
+            });
+            
+        };
+        
         
 }]);
 

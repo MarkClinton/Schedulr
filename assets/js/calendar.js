@@ -43,7 +43,7 @@ $(document).ready(function() {
         var contentInfo = '<h3>'+ event.title +'</h3>' + 
 				'<p><b>Start: </b> '+ start +'<br />' + 
 				'<b>End: </b> ' + end + '<br />' +
-				event.description + '</p>';
+				event.description + '</p><br />';
         element.qtip({
         	position: {
 				my: 'bottom center',
