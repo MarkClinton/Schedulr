@@ -126,13 +126,13 @@ class User_model extends CI_Model{
     
     public function getUsersTasks($email) { 
         
-        /*$sql = "SELECT tasks.* FROM tasks LEFT JOIN share "
-                . "ON tasks.task_id = share.task_id WHERE "
-                . "share.task_id IS NULL AND tasks.admin = '" . $email ."'";*/
-        $sql = "SELECT * FROM tasks where admin = '" . $email . "'";
+        $sql = " tasks WHERE admin = '" . $email . "'";
+        $start_row=0;
 
-        $query = $this->db->query($sql);
-        return $query->result_array();
+        $this->db->order_by("task_date", "ASC");
+        $this->db->order_by("start_time", "ASC");
+        $query = $this->db->get($sql, $start_row);
+        return $query->result_array(); 
     }
     
     public function getUsersGroupTasks($email){

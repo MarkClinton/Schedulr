@@ -25,7 +25,7 @@
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks, $index)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>
@@ -37,12 +37,12 @@
                 </div>
             </div>
             <div class="tab-pane" id="all" role="tabpanel">
-                <div ng-controller="displayUserCtrl" ng-cloak>
+                <div ng-controller="displayAllCtrl" ng-cloak>
                     <div ng-repeat="tasks in allTasks" >
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks, $index)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>
@@ -54,12 +54,12 @@
                 </div>
             </div>
             <div class="tab-pane" id="group" role="tabpanel">
-                <div ng-controller="displayUserCtrl" ng-cloak>  
+                <div ng-controller="displayGroupCtrl" ng-cloak>  
                     <div ng-repeat="tasks in groupTasks">
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks, $index)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>
