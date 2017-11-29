@@ -23,67 +23,81 @@
         </div>
 
         <div id="profile_dash">
-            <ul class="nav nav-tabs" id="nav">
-                <li class="active"><a href="#tasks" data-toggle="tab" aria-expanded="false">Tasks</a></li>
-                <li class=""><a href="#editProfile" data-toggle="tab" aria-expanded="true">Edit Profile</a></li>
-                <li class=""><a href="#friends" data-toggle="tab" aria-expanded="false">Friends</a></li>
-
-            </ul>
-
-            <div id="tasks" class="active">
-                tasks
-            </div>
-
-            <div id="editProfile">
-
-                <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
-                    <form class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.last_name" placeholder="last Name" type="text" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.email" placeholder="Email" type="text" required readonly="true">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-lg-12">
-                                <input class="form-control" ng-model="data.password" placeholder="Password" type="password" required>
-                            </div>
-                        </div>
-
-                        <div id="right">
-                            <button type="submit" class="btn btn-warning btn-sm">Save</button>
-                        </div>
-                </div>
-                </form>
-            </div>
-
-            <div id="friends">
-                <div class="friend_search">
-                    <input class="input" type="text" name="search" placeholder="Search Friends...">
-                    <ul class="nav navbar-right">
-                        <a href=""><img class="add_person" onclick="openNav()" src="<?php echo base_url() ?>/assets/images/person_add.png" alt="add"/></a>
+            <div class="nav-tabs-navigation">
+                <div class="nav-tabs-wrapper">
+                    <ul id="tabs" class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#editProfile" role="tab">Edit Profile</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
+                        </li>
                     </ul>
                 </div>
-                <div class="friends" ng-controller="srchPeopleCtrl">
-                    <div id="addSidenav" class="sidenav">
-                        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                        <div class="inner_center">
-                            <center><h2>Add Friends</h2></center>
-                            <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
-                            <input class="input2" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search People..." />
-                            
-                            <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
-                                <h4>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h4>
-                                <h5>{{entry.EMAIL}}</h5>
+            </div>
+
+
+            <div class="tab-content">
+
+                <div class="tab-pane active" id="tasks" role="tabpanel">
+                    tasks
+                </div>
+
+                <div class="tab-pane" id="editProfile" role="tabpanel">
+                    <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input class="form-control" ng-model="data.first_name" placeholder="First Name" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input class="form-control" ng-model="data.last_name" placeholder="last Name" type="text" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input class="form-control" ng-model="data.email" placeholder="Email" type="text" required readonly="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-12">
+                                    <input class="form-control" ng-model="data.password" placeholder="Password" type="password" required>
+                                </div>
+                            </div>
+
+                            <div id="right">
+                                <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="tab-pane" id="friends" role="tabpanel">
+                    <div class="friend_search">
+                        <input class="input" type="text" name="search" placeholder="Search Friends...">
+                        <button type="button" onclick="openNav()" class="btn btn-outline-success btn-just-icon add_person">
+                            <i class="fa fa-user-plus fa-2x"></i>
+                        </button>
+                        
+                    </div>
+
+                    <div class="friends" ng-controller="srchPeopleCtrl">
+                        <div id="addSidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <div class="inner_center">
+                                <center><h3>Add Friends</h3></center>
+                                <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
+                                <input class="input2" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search People..." />
+                                
+                                <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
+                                    <h4>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h4>
+                                    <h5>{{entry.EMAIL}}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>

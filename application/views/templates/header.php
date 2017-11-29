@@ -43,29 +43,6 @@
 </head>
 
 <body>
-<!--<nav class="navbar navbar-expand-lg navbar-dark bg-success">
-  <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation" style="">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarColor02">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url(); ?>users/index">Home<span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url(); ?>users/profile">Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<?php echo base_url(); ?>Users/logout">Sign Out</a>
-      </li>
-      <li class="nav-item">
-        <button type="button" class="btn btn-primary" onclick="window.location='<?php echo base_url(); ?>tasks/create'">New Task</button>
-      </li>
-    </ul>
-  </div>
-</nav>-->
 
 <nav class="navbar navbar-expand-md bg-transparent">
   <div class="container">

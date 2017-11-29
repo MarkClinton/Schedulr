@@ -1,76 +1,10 @@
 $(document).ready(function () {
 
-    if ($("#mytasks").hasClass("active")) {
-        $("#grouptasks").hide();
-        $("#alltasks").hide();
-        $("#mytasks").show();
-    } else if ($("#grouptasks").hasClass("active")) {
-        $("#mytasks").hide();
-        $("#alltasks").hide();
-        $("#grouptasks").show();
-    } else if ($("#alltasks").hasClass("active")) {
-        $("#mytasks").hide();
-        $("#grouptasks").hide();
-        $("#alltasks").show();
-    } else if ($("#tasks").hasClass("active")) {
-        $("#editProfile").hide();
-        $("#friends").hide();
-        $("#tasks").show();
-    } else if ($("#friends").hasClass("active")) {
-        $("#editProfile").hide();
-        $("#tasks").hide();
-        $("#friends").show();
-    } else if ($("#editProfile").hasClass("active")) {
-        $("#friends").hide();
-        $("#tasks").hide();
-        $("#editProfile").show();
-    }
-
     $("#nav").find("a").click(function () {
         $("#nav").find("a").removeClass("active");
         $(this).addClass("active");
 
         $active = $(this).attr("href");
-
-        if ($active === "#mytasks") {
-            $('#grouptasks').hide();
-            $('#alltasks').hide();
-            //$('#grouptasks').removeClass("active");
-            $("#mytasks").show();
-        } 
-        else if ($active === "#grouptasks") {
-            $('#mytasks').hide();
-            $('#alltasks').hide();
-            //$('#mytasks').removeClass("active");
-            $("#grouptasks").show();
-        } 
-        else if ($active === "#alltasks") {
-            $('#mytasks').hide();
-            //$('#mytasks').removeClass("active");
-            $("#grouptasks").hide();
-            $("#alltasks").show();
-        }
-        else if ($active === "#tasks") {
-            $('#editProfile').hide();
-            $('#friends').hide();
-            //$('#editProfile').removeClass("active");
-            //$('#friends').removeClass("active");
-            $("#tasks").show();
-        } 
-        else if ($active === "#editProfile") {
-            $('#tasks').hide();
-            $('#friends').hide();
-            //$('#tasks').removeClass("active");
-            //$('#friends').removeClass("active");
-            $("#editProfile").show();
-        } 
-        else if ($active === "#friends") {
-            $('#tasks').hide();
-            $('#editProfile').hide();
-            //$('#tasks').removeClass("active");
-            //$('#editProfile').removeClass("active");
-            $("#friends").show();
-        }
     });
 
     //document.getElementById("date").innerHTML = date();
