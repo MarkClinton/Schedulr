@@ -30,10 +30,10 @@
                             <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#editProfile" role="tab">Edit Profile</a>
+                            <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
+                            <a class="nav-link" data-toggle="tab" href="#editProfile" role="tab">Edit Profile</a>
                         </li>
                     </ul>
                 </div>
@@ -42,9 +42,36 @@
 
             <div class="tab-content">
 
-                <div class="tab-pane active" id="tasks" role="tabpanel">
-                    tasks
-                </div>
+                <div class="tab-pane active" id="tasks" role="tabpanel" ng-controller="displayAllCtrl">
+                    <md-content class="md-padding" layout-xs="column" layout="row">
+    <div flex-xs="" flex-gt-xs="50" layout="column">
+      <md-card>
+        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Action buttons</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Action 1</md-button>
+          <md-button>Action 2</md-button>
+        </md-card-actions>
+      </md-card>
+             </div>
 
                 <div class="tab-pane" id="editProfile" role="tabpanel">
                     <div id="edit_contain" ng-controller="updateProfileCtrl" ng-submit="save()">
@@ -80,18 +107,21 @@
                 <div class="tab-pane" id="friends" role="tabpanel">
                     <div class="friend_search">
                         <input class="input" type="text" name="search" placeholder="Search Friends...">
-                        <button type="button" onclick="openNav()" class="btn btn-outline-success btn-just-icon add_person">
-                            <i class="fa fa-user-plus fa-2x"></i>
+                        <button type="button" onclick="openNav()" class="btn btn-outline-info btn-just-icon add_person">
+                            <i class="fa fa-user-plus fa-lg"></i>
                         </button>
                         
                     </div>
 
                     <div class="friends" ng-controller="srchPeopleCtrl">
                         <div id="addSidenav" class="sidenav">
-                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                            <button type="button" onclick="closeNav()" class="btn btn-outline-danger btn-just-icon btn-sm top-margin pull-right">
+                                <i class="fa fa-times fa-2x"></i>
+                            </button>
+                            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
                             <div class="inner_center">
-                                <center><h3>Add Friends</h3></center>
-                                <!--<input class="input2" type="text" name="search" placeholder="Search People...">-->
+                                <h4>Add Friends</h4>
+                                </br>
                                 <input class="input2" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search People..." />
                                 
                                 <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">

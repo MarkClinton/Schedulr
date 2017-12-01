@@ -2,7 +2,9 @@
 <head>
   <title>Schedulr</title>
   <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
-  <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+  
+    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
 
 
   
@@ -38,6 +40,8 @@
   <script src="<?php echo base_url()?>/assets/js/qtip.js"></script>
   <script src="<?php echo base_url()?>/assets/js/calendar.js"></script>
   <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
+
+
 
 
 </head>

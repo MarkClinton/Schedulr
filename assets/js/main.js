@@ -30,10 +30,10 @@ $(document).ready(function () {
 });
 
 function openNav() {
-        document.getElementById("addSidenav").style.width = "350px";
+        document.getElementById("addSidenav").style.height = "409px";
     }
 
     function closeNav() {
-        document.getElementById("addSidenav").style.width = "0";
+        document.getElementById("addSidenav").style.height = "0px";
     }
 

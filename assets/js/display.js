@@ -1,5 +1,4 @@
-
-var fetch = angular.module('fetch', ['cgNotify']);
+var fetch = angular.module('fetch', ['cgNotify', 'ngMaterial']);
 
 fetch.controller('getProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
 
@@ -240,12 +239,3 @@ fetch.directive('modal', function () {
         }
     };   
 });
-
-
-
-
-
-
-
-
-
