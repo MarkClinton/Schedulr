@@ -43,15 +43,15 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="tasks" role="tabpanel" ng-controller="displayAllCtrl">
-                    <md-content class="md-padding" layout-xs="column" layout="row">
-                        <div flex-xs="" flex-gt-xs="50" layout="column">
-                            
+                    
+
+
                             <div ng-controller="displayAllCtrl" ng-cloak>
                                 <div ng-repeat="tasks in allTasks" >
-                                    <div class= "tasks">
+                                    
+                                    <div class= "card">
                                         <div class="taskHead">
                                             <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                            <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                                         </div>
                                         <div class="taskDetails">
                                             <p> </p>
@@ -59,11 +59,11 @@
                                             <p> {{tasks.TASK_INFO}} </p>
                                         </div>
                                     </div>
+                                
                                 </div>
                             </div>
-                            
-                        </div>
-                    </md-content>
+
+                        
                 </div>
 
                 <div class="tab-pane" id="editProfile" role="tabpanel">
