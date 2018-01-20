@@ -8,7 +8,7 @@ class Task_model extends CI_Model {
     
     public function getTask($task_id, $user) {
         
-        $sql = "tasks WHERE task_id = '" . $task_id . "' AND admin = '" . $user . "'";
+        $sql = "TASKS WHERE task_id = '" . $task_id . "' AND admin = '" . $user . "'";
         
         $query = $this->db->get($sql);
         return $query->result_array();   
@@ -18,7 +18,7 @@ class Task_model extends CI_Model {
         
         try{
             $this->db->where('TASK_ID', $task_id);
-            $query = $this->db->delete('tasks');
+            $query = $this->db->delete('TASKS');
             return 200;
         } catch(Exception $e) {
             return 400;
@@ -28,7 +28,7 @@ class Task_model extends CI_Model {
     public function createNewTask($task){
         
         try{
-            $this->db->insert('tasks', $task); 
+            $this->db->insert('TASKS', $task); 
             return 200;
         } catch(Exception $e){
             return 400;

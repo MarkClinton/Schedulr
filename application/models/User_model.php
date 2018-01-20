@@ -17,7 +17,7 @@ class User_model extends CI_Model{
         );
         
         try{
-            $this->db->insert('user', $input);
+            $this->db->insert('USER', $input);
             return 200;
         }catch (Exception $e){
             return 400;
@@ -74,7 +74,7 @@ class User_model extends CI_Model{
 
     public function getUser($email) {
 
-        $sql = "SELECT * FROM user WHERE email = '" . $email . "'";
+        $sql = "SELECT * FROM USER WHERE email = '" . $email . "'";
         try {
             $query = $this->db->query($sql);
             $result = $query->num_rows();
@@ -93,7 +93,7 @@ class User_model extends CI_Model{
 
     public function setSession($email){
         
-        $sql = "SELECT * FROM user WHERE email = '" . $email . "' LIMIT 1";
+        $sql = "SELECT * FROM USER WHERE email = '" . $email . "' LIMIT 1";
         $result = $this->db->query($sql);
         $row = $result->row();
         
@@ -114,7 +114,7 @@ class User_model extends CI_Model{
     
     public function getUpcomingTasks($email) {
         
-        $sql = " tasks WHERE admin = '" . $email . "'";
+        $sql = " TASKS WHERE admin = '" . $email . "'";
         $limit=5;
         $start_row=0;
 
@@ -126,7 +126,7 @@ class User_model extends CI_Model{
     
     public function getUsersTasks($email) { 
         
-        $sql = " tasks WHERE admin = '" . $email . "'";
+        $sql = " TASKS WHERE admin = '" . $email . "'";
         $start_row=0;
 
         $this->db->order_by("task_date", "ASC");
@@ -136,7 +136,7 @@ class User_model extends CI_Model{
     }
     
     public function getUsersGroupTasks($email){
-        $sql = "SELECT task_id FROM share WHERE email = '" . $email . "'";
+        $sql = "SELECT task_id FROM SHARE WHERE email = '" . $email . "'";
         
         $queryShare = $this->db->query($sql);
         $temp = array();
@@ -146,7 +146,7 @@ class User_model extends CI_Model{
         }
         
         $ids = join("','",$temp);
-        $sql2 = "tasks WHERE task_id IN ('$ids')";
+        $sql2 = "TASKS WHERE task_id IN ('$ids')";
         $query = $this->db->get($sql2);
         
         return $query->result_array();

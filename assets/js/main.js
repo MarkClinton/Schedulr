@@ -15,7 +15,7 @@ $(document).ready(function () {
                 hours = d.getHours().toString().length == 1 ? '0' + d.getHours() : d.getHours(),
                 ampm = d.getHours() >= 12 ? 'pm' : 'am';
         var time = hours + ':' + minutes + ampm;
-        document.getElementById("time").innerHTML = time;
+        //document.getElementById("time").innerHTML = time;
     }
     setInterval(time, 1000);
 

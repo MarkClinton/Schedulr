@@ -1,4 +1,4 @@
-var fetch = angular.module('fetch', ['cgNotify', 'ngMaterial']);
+var fetch = angular.module('fetch', ['cgNotify']);
 
 fetch.controller('getProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
 
@@ -84,7 +84,6 @@ fetch.factory('remove', function($http) {
         },
 
         removeFromList: function(list){
-
             for(var i = 0; i < list.length; i++) {
                 var obj = list[i];
 
