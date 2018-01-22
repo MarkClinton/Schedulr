@@ -50,13 +50,14 @@
                                 <div ng-repeat="tasks in allTasks" >
                                     
                                     <div class= "card">
-                                        <div class="taskHead">
-                                            <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
+                                        <div class="taskHead card_task">
+                                            <h5 ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
                                         </div>
                                         <div class="taskDetails">
                                             <p> </p>
-                                            <p>{{tasks.TASK_DATE | date}} @ {{tasks.START_TIME}}</p>
-                                            <p> {{tasks.TASK_INFO}} </p>
+                                            <p>{{tasks.TASK_DATE | date}} </p>
+                                            <p>{{tasks.START_TIME}}</p>
+                                            <p>{{tasks.TASK_INFO}} </p>
                                         </div>
                                     </div>
                                 
