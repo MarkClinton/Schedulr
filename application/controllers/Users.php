@@ -72,20 +72,20 @@ class Users extends CI_Controller {
     }
     
     public function displayUpcomingTasks(){
-        $email = $this->session->userdata('email');
+        $email = $this->session->userdata('id');
         $data = $this->User_model->getUpcomingTasks($email);
         print json_encode($data);
     }
     
     public function displayGroupTasks() {
-        $email = $this->session->userdata('email');
+        $email = $this->session->userdata('id');
         $data = $this->User_model->getUsersGroupTasks($email);
         print json_encode($data);
         
     }
     
     public function displayTasks() {
-        $email = $this->session->userdata('email');
+        $email = $this->session->userdata('id');
         $tasks = $this->User_model->getUsersTasks($email);
         print json_encode($tasks);
     }

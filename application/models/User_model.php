@@ -98,6 +98,7 @@ class User_model extends CI_Model{
         $row = $result->row();
         
         $sess_data = array(
+            'id' => $row->ID,
             'first_name' => $row->FIRST_NAME,
             'last_name' => $row->LAST_NAME,
             'email' => $email,
@@ -112,9 +113,9 @@ class User_model extends CI_Model{
         $this->session->sess_destroy();
     }
     
-    public function getUpcomingTasks($email) {
+    public function getUpcomingTasks($user_id) {
         
-        $sql = " TASKS WHERE admin = '" . $email . "'";
+        $sql = " TASKS WHERE user_id = '" . $user_id . "'";
         $limit=5;
         $start_row=0;
 
@@ -124,9 +125,9 @@ class User_model extends CI_Model{
         return $query->result_array();  
     } 
     
-    public function getUsersTasks($email) { 
+    public function getUsersTasks($user_id) { 
         
-        $sql = " TASKS WHERE admin = '" . $email . "'";
+        $sql = " TASKS WHERE user_id = '" . $user_id . "'";
         $start_row=0;
 
         $this->db->order_by("task_date", "ASC");
@@ -135,8 +136,8 @@ class User_model extends CI_Model{
         return $query->result_array(); 
     }
     
-    public function getUsersGroupTasks($email){
-        $sql = "SELECT task_id FROM SHARE WHERE email = '" . $email . "'";
+    public function getUsersGroupTasks($user_id){
+        $sql = "SELECT task_id FROM SHARE WHERE user_id = '" . $user_id . "'";
         
         $queryShare = $this->db->query($sql);
         $temp = array();
