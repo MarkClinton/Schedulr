@@ -1,0 +1,13 @@
+Database Design:
+
+Notes: 
+
+Should there be types of tasks? e.g. event, appointment, etc.. color coded task each one has different characteristics.
+
+
+List of tables:
+ - Users
+ - Tasks
+ - Shared_Tasks
+ - Friends
+ - Profile_Img

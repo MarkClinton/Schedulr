@@ -3,21 +3,15 @@
         <div id="profile_contain">
             <div>
                 <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
-                <center><h6>Upload Picture</h6></center>
+                
             </div>
 
             <div ng-controller="getProfileCtrl">
                 <br>
-                <table class="table table-striped table-hover ">
-                    <tbody ng-repeat="user in profile">
-                        <tr>
-                            <td>{{user.FIRST_NAME}} {{user.LAST_NAME}}</td>
-                        </tr>
-                        <tr>
-                            <td>{{user.EMAIL}}</td>
-                        </tr>
-                    </tbody>
-                </table> 
+                    <div ng-repeat="user in profile">
+                        <center><h5>{{user.FIRST_NAME}} {{user.LAST_NAME}}</h5></center>
+                        <center><p>{{user.EMAIL}}</p></center>
+                   </div>
             </div>
 
         </div>
