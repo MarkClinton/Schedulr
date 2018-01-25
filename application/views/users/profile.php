@@ -1,5 +1,7 @@
 <div class="container">
+
     <div id="profile_background" ng-app="fetch">
+        
         <div id="profile_contain">
             <div>
                 <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
@@ -99,6 +101,13 @@
                             <i class="fa fa-user-plus fa-lg"></i>
                         </button>
 
+                    </div>
+
+                    <div class="user_friends" ng-controller="showFriendsCtrl">
+                        <div ng-repeat="friend in friends">
+                                <h4>{{friend.first_name}} {{friend.last_name}}</h4>
+                                <h5>{{friend.email}}</h5>
+                            </div>
                     </div>
 
                     <div class="friends" ng-controller="srchPeopleCtrl">

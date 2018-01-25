@@ -65,6 +65,18 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
     }]);
 
 
+fetch.controller('showFriendsCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+
+    $scope.friends = {};
+    var friends = $http.get('getFriends');
+
+    friends.then(function (response) {
+        $scope.friends = response.data;
+    });
+ 
+}]);
+
+
 fetch.factory('remove', function($http) {
 
     var deleteData = {};

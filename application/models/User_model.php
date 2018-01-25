@@ -152,4 +152,40 @@ class User_model extends CI_Model{
         
         return $query->result_array();
     }
+
+    public function getUsersById($ids){
+
+        $sql = "SELECT first_name, last_name, email FROM USER WHERE id IN ('$ids')";
+
+        $users = $this->db->query($sql);
+        return $users->result_array();
+    }
+
+
+    public function getFriends($user_id){
+
+        $sql = "SELECT friend_id FROM FRIENDS WHERE user_id = '" . $user_id . "'";
+
+        $query = $this->db->query($sql);
+        $friend_ids = array();
+
+        foreach ($query->result() as $row) {
+            $friend_ids[] =  $row->friend_id;
+        }
+
+        $ids = join("','", $friend_ids);
+        return $ids;
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+

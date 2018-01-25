@@ -7,6 +7,7 @@ $route['users/displayGroupTasks'] = 'users/displayGroupTasks';
 $route['users/login'] = 'users/login';
 $route['users/register'] = 'users/register';
 $route['users/getProfile'] = 'users/getProfile';
+$route['users/getFriends'] = 'users/getFriends';
 $route['users/updateProfile'] = 'users/updateProfile';
 $route['users/searchPeople'] = 'users/searchPeople';
 

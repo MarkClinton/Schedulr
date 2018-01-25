@@ -24,6 +24,14 @@ class Users extends CI_Controller {
         $response = $this->User_model->getUser($email);
         print json_encode($response);
     }
+
+    public function getFriends(){
+        $user_id = $this->session->userdata('id');
+        $response = $this->User_model->getFriends($user_id);
+
+        $users_friends = $this->User_model->getUsersById($response);
+        print json_encode($users_friends);
+    }
     
     public function updateProfile(){
         $profile = json_decode(file_get_contents('php://input'), true);

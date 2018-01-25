@@ -126,7 +126,7 @@ img.add{
 }
 
 #profile_dash{
-    width: 70%;
+    width: 76%;
     height: 500px;
     display: inline-block;
     
@@ -228,10 +228,11 @@ img.add{
 .sidenav {
     height: 0;
     width: 350px;
-    position: fixed;
-    z-index: 1;
+    position: relative;
+    z-index: 10;
+    float: right;
     /*top: 15px;*/
-    right: 135px;
+    right: -42px;
     color: white;
     background: #2C3E50;
     overflow-x: hidden;
@@ -340,6 +341,12 @@ img.add{
     float: left;
     background-color: white !important;
     text-align: center;
+}
+
+.user_friends{
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
 }
 
 
