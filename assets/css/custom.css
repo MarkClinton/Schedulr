@@ -95,7 +95,13 @@ img.profile{
     border-radius: 50%; 
     margin-top: 15px;
     margin-left: 50px;
-    border: 3px solid #18BC9C;
+    /*border: 3px solid #18BC9C;*/
+}
+
+img.user{
+    width: 65px;
+    height: 65px;
+    margin: 0;
 }
 
 
@@ -343,10 +349,24 @@ img.add{
     text-align: center;
 }
 
+.friend_layout{
+    position: relative;
+    display: inline-block;
+    width: 160px;
+    height: 150px;
+    background-color: black;
+    margin: 10px;
+    overflow: hidden;
+    float: left;
+    background-color: white !important;
+    text-align: center;
+}
+
 .user_friends{
     display: inline-block;
     position: absolute;
     z-index: 1;
+    width: 100%;
 }
 
 

@@ -105,9 +105,12 @@
 
                     <div class="user_friends" ng-controller="showFriendsCtrl">
                         <div ng-repeat="friend in friends">
-                                <h4>{{friend.first_name}} {{friend.last_name}}</h4>
-                                <h5>{{friend.email}}</h5>
+                            <div class="friend_layout">
+                                <img class="profile user" src="<?php echo base_url() ?>/assets/images/user.png" alt="profile" />
+                                <p>{{friend.first_name}} {{friend.last_name}}</p>
+                                <p>{{friend.email}}</p>
                             </div>
+                        </div>
                     </div>
 
                     <div class="friends" ng-controller="srchPeopleCtrl">
