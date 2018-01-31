@@ -56,7 +56,7 @@ class Tasks extends CI_Controller {
             'END_TIME' => $update['inputTaskEnd'],
             'TASK_DATE' => $update['inputTaskDate'],
             'TASK_INFO' => $update['inputTaskInfo'],
-            'ADMIN' => $this->session->userdata('email')
+            'USER_ID' => $this->session->userdata('id')
         );
         $task_id = $update['id'];
 
@@ -80,7 +80,7 @@ class Tasks extends CI_Controller {
             'END_TIME' => $new['inputTaskEnd'],
             'TASK_DATE' => $new['inputTaskDate'],
             'TASK_INFO' => $new['inputTaskInfo'],
-            'ADMIN' => $this->session->userdata('email')
+            'USER_ID' => $this->session->userdata('id')
         );
 
 

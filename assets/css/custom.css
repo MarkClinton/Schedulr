@@ -93,8 +93,10 @@ img.profile{
     width: 100px;
     height: 100px;
     border-radius: 50%; 
+    margin-right: auto;
+    margin-left: auto;
     margin-top: 15px;
-    margin-left: 50px;
+    display: block;
     /*border: 3px solid #18BC9C;*/
 }
 
@@ -123,6 +125,7 @@ img.add{
 
 #profile_background{
     width: 100%;
+    min-width: 500px;
     height: 520px;
     margin-top: 15px;
     margin-right: auto;
@@ -138,7 +141,7 @@ img.add{
     
 }
 #profile_contain{
-    width: 200px;
+    width: 20%;
     height: 500px;
     margin-right: 1%;
     float: left;
@@ -176,15 +179,12 @@ img.add{
 
 .input{
     width: 50%;
-    border-radius: 100px;
-    border-style:solid;
     padding-left: 10px;
     color: #2C3E50;
 }
 
 .input2{
     width: 100%;
-    border-radius: 100px;
     border:none;
     padding-left: 10px;
     color: #2C3E50;
@@ -231,14 +231,29 @@ img.add{
     cursor: pointer;
 }
 
+#overlay-back { 
+    position   : absolute; 
+    top        : 0; 
+    left       : 0; 
+    width      : 100%; 
+    height     : 100%; 
+    background : #000; 
+    opacity    : 0.6; 
+    filter     : alpha(opacity=60); 
+    z-index    : 5;
+    display    : none;
+} 
+
 .sidenav {
     height: 0;
-    width: 350px;
+    width: 400px;
     position: relative;
     z-index: 10;
-    float: right;
+    /*float: right;
     /*top: 15px;*/
-    right: -42px;
+    margin-right: auto;
+    margin-left: auto;
+    top: -50px;
     color: white;
     background: #2C3E50;
     overflow-x: hidden;
@@ -335,13 +350,19 @@ img.add{
 
 }
 
+#center_div{
+    width: 90%;
+    margin-left: 5%;
+}
+
 .card{
     position: relative;
     display: inline-block;
-    width: 200px;
+    width: 22.5%;
+    min-width: 120px;
     height: 160px;
     background-color: black;
-    margin: 10px;
+    margin-left: 2.5%;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     float: left;
@@ -369,6 +390,37 @@ img.add{
     width: 100%;
 }
 
+@media only screen and (max-width: 768px) {
+    #profile_contain{
+        width:100%;
+        height:120px;
+    }
 
+    #profile_dash{
+        width: 100%;
+        height: auto;
+    }
+
+    #profile_info{
+        display: inline-block;
+        width: 50%;
+        top: 40px;
+    }
+
+    #profile_image{
+        display: inline-block;
+        width:100px;
+
+    }
+
+    img.profile{
+        height: 70px;
+        width: 70px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        display: block;
+    }
+}
 
 

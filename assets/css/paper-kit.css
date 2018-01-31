@@ -4770,7 +4770,7 @@ textarea.form-control {
     margin-bottom: 2em;
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 768px) {
   .navbar-collapse {
     position: fixed;
     display: block;

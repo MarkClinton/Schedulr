@@ -3,12 +3,12 @@
     <div id="profile_background" ng-app="fetch">
         
         <div id="profile_contain">
-            <div>
+            <div id = "profile_image">
                 <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
                 
             </div>
 
-            <div ng-controller="getProfileCtrl">
+            <div id = "profile_info" ng-controller="getProfileCtrl">
                 <br>
                     <div ng-repeat="user in profile">
                         <center><h5>{{user.FIRST_NAME}} {{user.LAST_NAME}}</h5></center>
@@ -42,7 +42,7 @@
                     
 
 
-                            <div ng-controller="displayAllCtrl" ng-cloak>
+                            <div id="center_div" ng-controller="displayAllCtrl" ng-cloak>
                                 <div ng-repeat="tasks in allTasks" >
                                     
                                     <div class= "card">
@@ -95,8 +95,9 @@
                 </div>
 
                 <div class="tab-pane" id="friends" role="tabpanel">
-                    <div class="friend_search">
+                     <div class="friend_search">
                         <input class="input" type="text" name="search" placeholder="Search Friends...">
+                        <div id="overlay-back"></div> 
                         <button type="button" onclick="openNav()" class="btn btn-outline-info btn-just-icon add_person">
                             <i class="fa fa-user-plus fa-lg"></i>
                         </button>

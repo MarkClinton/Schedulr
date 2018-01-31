@@ -31,9 +31,11 @@ $(document).ready(function () {
 
 function openNav() {
         document.getElementById("addSidenav").style.height = "409px";
+        $('#overlay-back').fadeIn(500); 
     }
 
     function closeNav() {
         document.getElementById("addSidenav").style.height = "0px";
+        $('#overlay-back').fadeOut(500); 
     }
 
