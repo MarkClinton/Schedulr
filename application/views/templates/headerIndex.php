@@ -1,6 +1,7 @@
   <html>
   <head>
     <title>Schedulr</title>
+    <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/paper-kit.css">

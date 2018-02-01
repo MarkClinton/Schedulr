@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Schedulr</title>
+  <meta name="viewport" content="width=device-width">
   <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>

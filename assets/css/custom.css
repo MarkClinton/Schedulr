@@ -124,7 +124,7 @@ img.add{
 
 #profile_background{
     width: 100%;
-    min-width: 500px;
+    /*min-width: 500px;*/
     height: 520px;
     margin-top: 15px;
     margin-right: auto;
@@ -192,7 +192,7 @@ img.add{
 
 #dashboard{
     width: 40%;
-    min-width: 375px;
+    min-width: 320px;
     height: 550px;
     background: white;
     display: inline-block;
@@ -388,7 +388,17 @@ img.add{
     width: 100%;
 }
 
-@media only screen and (max-width: 768px) {
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .container{
+        padding: 0 !important;
+    }
+
+    #profile_background{
+        margin-top: 0;
+        border-radius: 0;
+    }
+
     #profile_contain{
         width:100%;
         height:120px;
@@ -421,9 +431,8 @@ img.add{
     }
 
     .card{
-        width: 22.5%;
-        height: 100px;
-
+        width: 30%;
+        height: 110px;
     }
 
     p{
@@ -434,6 +443,27 @@ img.add{
         width: 50px;
         height: 50px;
     }
+
+    .contain_reg{
+        display: none;
+    }
+
+    .contain{
+        width: 80%;
+    }
+
+    #dashboard{
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+    }
+
+    #calendar{
+        width: 100%;
+        height: auto;
+        background: white;
+    }
+
 }
 
 

@@ -8,7 +8,7 @@ class Task_model extends CI_Model {
     
     public function getTask($task_id, $user) {
         
-        $sql = "TASKS WHERE task_id = '" . $task_id . "' AND admin = '" . $user . "'";
+        $sql = "TASKS WHERE task_id = '" . $task_id . "' AND user_id = '" . $user . "'";
         
         $query = $this->db->get($sql);
         return $query->result_array();   

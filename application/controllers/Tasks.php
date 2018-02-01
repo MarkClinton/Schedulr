@@ -40,9 +40,9 @@ class Tasks extends CI_Controller {
     public function viewTask() {
         
         $task_id = filter_input(INPUT_GET, 'id');
-        $email = $this->session->userdata('email');
+        $id = $this->session->userdata('id');
 
-        $tasks = $this->Task_model->getTask($task_id, $email);
+        $tasks = $this->Task_model->getTask($task_id, $id);
        
         print json_encode($tasks);
     }
