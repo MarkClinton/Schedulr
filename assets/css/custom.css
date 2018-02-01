@@ -103,7 +103,6 @@ img.profile{
 img.user{
     width: 65px;
     height: 65px;
-    margin: 0;
 }
 
 
@@ -181,6 +180,7 @@ img.add{
     width: 50%;
     padding-left: 10px;
     color: #2C3E50;
+    margin-left: 5px;
 }
 
 .input2{
@@ -359,7 +359,6 @@ img.add{
     position: relative;
     display: inline-block;
     width: 22.5%;
-    min-width: 120px;
     height: 160px;
     background-color: black;
     margin-left: 2.5%;
@@ -373,10 +372,9 @@ img.add{
 .friend_layout{
     position: relative;
     display: inline-block;
-    width: 160px;
+    width: 150px;
     height: 150px;
     background-color: black;
-    margin: 10px;
     overflow: hidden;
     float: left;
     background-color: white !important;
@@ -420,6 +418,21 @@ img.add{
         margin-left: auto;
         margin-top: 15px;
         display: block;
+    }
+
+    .card{
+        width: 22.5%;
+        height: 100px;
+
+    }
+
+    p{
+        font-size: 10px !important;
+    }
+
+    img.user{
+        width: 50px;
+        height: 50px;
     }
 }
 
