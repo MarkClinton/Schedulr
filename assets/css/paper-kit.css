@@ -342,7 +342,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   border-width: 2px;
   font-size: 12px;
   font-weight: 600;
-  padding: 0.5rem 18px;
+  /*padding: 0.5rem 18px;*/
   line-height: 1.75;
   cursor: pointer;
   text-transform: uppercase;
@@ -4783,10 +4783,10 @@ textarea.form-control {
     background-color: #999;
     overflow-y: visible;
     border-top: none;
-    text-align: left;
+    text-align: center;
     border-left: 1px solid #CCC5B9;
     padding-right: 0px;
-    padding-left: 40px;
+    padding-left: 0px;
     padding-top: 15px;
     -webkit-transform: translate3d(230px, 0, 0);
     -moz-transform: translate3d(230px, 0, 0);

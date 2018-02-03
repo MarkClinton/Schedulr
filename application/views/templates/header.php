@@ -2,13 +2,20 @@
 <head>
   <title>Schedulr</title>
   <meta name="viewport" content="width=device-width">
-  <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>
+
+    <!--
+      Loading JQuery twice is NOT the way to do it. This needs to be reviewed. 
+      Conflicting JS Files.
+    -->
+    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
-    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    
 
-
-  
+    
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/angular-datepicker.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/wickedpicker.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/angular-notify.css">
@@ -59,12 +66,15 @@
     <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr</a>
 
     <div class="collapse navbar-collapse" id="navbar-success">
-      <ul class="nav navbar-nav navbar-left">
+      <!--<ul class="nav navbar-nav navbar-left">
         <li>
           <a class="btn btn-success btn-round" href="<?php echo base_url(); ?>tasks/create">New Task</a>
         </li>
-      </ul>
+      </ul>-->
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="btn btn-success btn-round" href="<?php echo base_url(); ?>tasks/create">New Task</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="<?php echo base_url(); ?>users/index">Home</a>
         </li>
@@ -72,7 +82,7 @@
           <a class="nav-link" href="<?php echo base_url(); ?>users/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="btn btn-outline-info btn-round" href="<?php echo base_url(); ?>Users/logout">Sign Out</a>
+          <a class="btn btn-info btn-round" href="<?php echo base_url(); ?>Users/logout">Sign Out</a>
         </li>
       </ul>
     </div>
