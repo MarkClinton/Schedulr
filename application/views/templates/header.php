@@ -28,6 +28,7 @@
 
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/mobile.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/paper-kit.css">
   
 

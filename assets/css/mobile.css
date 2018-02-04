@@ -1,0 +1,169 @@
+@media (min-width: 320px) and (max-width: 480px) {
+
+    .container{
+        padding: 0 !important;
+    }
+
+    #profile_background{
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    #profile_contain{
+        width:100%;
+        height:120px;
+    }
+
+    #profile_dash{
+        width: 100%;
+        height: auto;
+    }
+
+    #profile_info{
+        display: inline-block;
+        width: 50%;
+        top: 40px;
+    }
+
+    #profile_image{
+        display: inline-block;
+        width:100px;
+
+    }
+
+    img.profile{
+        height: 70px;
+        width: 70px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        display: block;
+    }
+
+    .card{
+        width: 30%;
+        height: 110px;
+    }
+
+    p{
+        font-size: 10px !important;
+    }
+
+    img.user{
+        width: 50px;
+        height: 50px;
+    }
+
+    .contain_reg{
+        display: none;
+    }
+
+    .contain{
+        width: 80%;
+    }
+
+    #dashboard{
+        width: 100%;
+        height: auto;
+        border-radius: 0;
+        display: block;
+    }
+
+    #calendar{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+}
+
+
+@media (min-width: 481px) and (max-width: 767px) {
+
+    .container{
+        padding: 0 !important;
+    }
+
+    #profile_background{
+        margin-top: 0;
+        border-radius: 0;
+    }
+
+    #profile_contain{
+        width:100%;
+        height:120px;
+    }
+
+    #profile_dash{
+        width: 100%;
+        height: auto;
+    }
+
+    #profile_info{
+        display: inline-block;
+        width: 50%;
+        top: 40px;
+    }
+
+    #profile_image{
+        display: inline-block;
+        width:100px;
+
+    }
+
+    img.profile{
+        height: 70px;
+        width: 70px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        display: block;
+    }
+
+    .card{
+        width: 30%;
+        height: 110px;
+    }
+
+    p{
+        font-size: 10px !important;
+    }
+
+    img.user{
+        width: 50px;
+        height: 50px;
+    }
+
+    .contain_reg{
+        display: none;
+    }
+
+    .contain{
+        width: 80%;
+    }
+
+    #dashboard{
+        width: 100%;
+        border-radius: 0;
+        display: block;
+    }
+
+    #calendar{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+    #dashboard{
+        width: 30%;
+    }
+
+    #calendar{
+        width: 50%;
+    }
+  
+}
