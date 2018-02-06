@@ -1,4 +1,38 @@
-<div class="containTask" ng-app="task">
+<div class="container" ng-app="task">
+
+    <div class='viewTask' ng-controller="taskCtrl">
+        <div class="taskSideContain">
+            <div class="taskHeader">
+                </br>
+                <center><h5>{{data.inputTaskName}}</h5></center>
+                <center><p>{{data.inputTaskDate}}</p></center>
+                <center><p>*Participants*</p></center>
+
+            </div>
+
+            <div class='taskSideBar'>
+                </br>
+                <center><h5>Message Board</h5></center>
+
+
+            </div>
+        </div>
+    </div> 
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="containTask" ng-app="task">
     <form name="saveTaskData" ng-controller="taskCtrl" ng-submit="update()">
 
         <div class="panel panel-primary">
