@@ -74,7 +74,10 @@ class User_model extends CI_Model{
 
     public function getUser($email) {
 
-        $sql = "SELECT * FROM USER WHERE email = '" . $email . "'";
+        //$sql = "SELECT * FROM USER WHERE email = '" . $email . "'";
+        $sql = "SELECT * FROM USER u 
+                INNER JOIN USER_IMAGE ui ON ui.USER_ID = u.ID
+                WHERE EMAIL = '" . $email . "'";
         try {
             $query = $this->db->query($sql);
             $result = $query->num_rows();

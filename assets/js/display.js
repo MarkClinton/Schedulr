@@ -6,7 +6,8 @@ fetch.controller('getProfileCtrl', ['$scope', '$http', 'notify', function ($scop
         
         users.then(function (response) {
             var request = response.data; 
-            //window.alert(request);
+            //window.alert(JSON.stringify(request));
+            $scope.img = request[0].URL;
             $scope.profile = request;
         });
         

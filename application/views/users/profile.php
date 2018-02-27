@@ -2,13 +2,13 @@
 
     <div id="profile_background" ng-app="fetch">
         
-        <div id="profile_contain">
+        <div id="profile_contain" ng-controller="getProfileCtrl">
             <div id = "profile_image">
-                <img class="profile" src="<?php echo base_url() ?>/assets/images/1HFMKW4.jpg" alt="profile" />
+                <img class="profile" src="<?php echo base_url() ?>{{img}}" alt="profile" />
                 
             </div>
 
-            <div id = "profile_info" ng-controller="getProfileCtrl">
+            <div id = "profile_info">
                 <br>
                     <div ng-repeat="user in profile">
                         <center><h5>{{user.FIRST_NAME}} {{user.LAST_NAME}}</h5></center>
@@ -107,7 +107,7 @@
                     <div class="user_friends" ng-controller="showFriendsCtrl">
                         <div ng-repeat="friend in friends">
                             <div class="friend_layout">
-                                <img class="user profile " src="<?php echo base_url() ?>/assets/images/user.png" alt="profile" />
+                                <img class="user profile " src="<?php echo base_url() ?>/assets/images/profile/user.png" alt="profile" />
                                 <h5>{{friend.first_name}} {{friend.last_name}}</h5>
                                 <p>{{friend.email}}</p>
                             </div>
