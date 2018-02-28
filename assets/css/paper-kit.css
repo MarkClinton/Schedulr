@@ -57,8 +57,8 @@ h6, .h6 {
 }
 
 p {
-  font-size: 15px;
-  line-height: 1.5em;
+  font-size: 12px;
+  /*line-height: 1.5em;*/
   margin-bottom: 5px;
 }
 
@@ -1942,7 +1942,7 @@ textarea.form-control {
   padding: 20px 15px;
   font-size: 14px;
   color: #FFFFFF;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
 }
 .navbar .nav-link i {
   font-size: 16px;
