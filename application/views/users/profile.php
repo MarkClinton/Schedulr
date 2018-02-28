@@ -1,24 +1,38 @@
 <div class="container">
 
     <div id="profile_background" ng-app="fetch">
-        
+
         <div id="profile_contain" ng-controller="getProfileCtrl">
             <div id = "profile_image">
                 <img class="profile" src="<?php echo base_url() ?>{{img}}" alt="profile" />
-                
+            </div>
+
+            <div class="profile_actions">
+                <center><a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="pictureUpload()">
+                    <i class="fa fa-plus"></i>
+                </a></center>
+                <div class="sideNav pictureUpload" id="pictureUpload">
+                    <div class="pictureUploadHeader">
+                        <center><p>Upload Profile Picture</p></center>
+                        
+                    </div>
+                    <!-- form for picture upload -->
+
+
+                </div>
             </div>
 
             <div id = "profile_info">
-                <br>
-                    <div ng-repeat="user in profile">
-                        <center><h5>{{user.FIRST_NAME}} {{user.LAST_NAME}}</h5></center>
-                        <center><p>{{user.EMAIL}}</p></center>
-                   </div>
+                <div ng-repeat="user in profile">
+                    <center><h5>{{user.FIRST_NAME}} {{user.LAST_NAME}}</h5></center>
+                    <center><p>{{user.EMAIL}}</p></center>
+                </div>
             </div>
 
         </div>
 
         <div id="profile_dash">
+
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ul id="tabs" class="nav nav-tabs" role="tablist">
@@ -39,28 +53,26 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="tasks" role="tabpanel" ng-controller="displayAllCtrl">
-                    
 
+                    <div id="center_div" ng-controller="displayAllCtrl" ng-cloak>
+                        <div ng-repeat="tasks in allTasks" >
 
-                            <div id="center_div" ng-controller="displayAllCtrl" ng-cloak>
-                                <div ng-repeat="tasks in allTasks" >
-                                    
-                                    <div class= "card">
-                                        <div class="taskHead card_task">
-                                            <h5 ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                        </div>
-                                        <div class="taskDetails">
-                                            <p> </p>
-                                            <p>{{tasks.TASK_DATE | date}} </p>
-                                            <p>{{tasks.START_TIME}}</p>
-                                            <p>{{tasks.TASK_INFO}} </p>
-                                        </div>
-                                    </div>
-                                
+                            <div class= "card">
+                                <div class="taskHead card_task">
+                                    <h5 ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
+                                </div>
+                                <div class="taskDetails">
+                                    <p> </p>
+                                    <p>{{tasks.TASK_DATE | date}} </p>
+                                    <p>{{tasks.START_TIME}}</p>
+                                    <p>{{tasks.TASK_INFO}} </p>
                                 </div>
                             </div>
 
-                        
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <div class="tab-pane" id="editProfile" role="tabpanel">
@@ -116,8 +128,8 @@
 
                     <div class="friends" ng-controller="srchPeopleCtrl">
                         <div id="addSidenav" class="sidenav">
-                            <button type="button" onclick="closeNav()" class="btn btn-outline-danger btn-just-icon btn-sm top-margin pull-right">
-                                <i class="fa fa-times fa-2x"></i>
+                            <button type="button" onclick="closeNav()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
+                                <i class="fa fa-times"></i>
                             </button>
                             <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
                             <div class="inner_center">

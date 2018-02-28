@@ -13,7 +13,7 @@
  <!-- 
   Login popup container
  -->
-  <div id = "login" class="login">
+  <div id = "login" class="login sideNav">
     <div class="contain" ng-app="user">
 
       <h3>Sign In</h3>
@@ -41,7 +41,7 @@
     <!-- 
     Register popup container
     -->
-    <div id= "reg" class="reg">
+    <div id= "reg" class="sideNav reg">
       <div class="contain" ng-app="user">
         <h3>Sign Up</h3>
         <br />

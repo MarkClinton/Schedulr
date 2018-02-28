@@ -73,7 +73,7 @@ body{
     height: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 5px;
     background: white;
@@ -197,12 +197,18 @@ img.add{
     display: inline-block;
     
 }
+
 #profile_contain{
     width: 20%;
     height: 500px;
     margin-right: 1%;
     float: left;
 }
+
+.profile_actions{
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
 
 .mainContain{
     width: 100%;
@@ -303,37 +309,25 @@ img.add{
 } 
 
 .login{
-    height: 0;
-    width: 400px;
-    position: relative;
-    top: -300px;
-    z-index: 10;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transition-timing-function: ease;
-    transition: 0.5s;
-    margin-top: 10px;
-    border-radius: 5px;
+    top: -300px !important;
+    margin-top: none !important;
 }
 
 .reg{
-    height: 0;
-    width: 400px;
-    position: relative;
-    top: -350px;
-    z-index: 10;
-    margin-right: auto;
-    margin-left: auto;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    transition-timing-function: ease;
-    transition: 0.5s;
-    margin-top: 10px;
-    border-radius: 5px;
+    top: -350px !important;
+    margin-top: none !important;
 }
 
+.pictureUpload{
+    top: 10px !important;
+    width: 100% !important;
+}
+
+.pictureUploadHeader{
+    display: block;
+    width: 100%;
+    height: 20px;
+}
 
 .sidenav {
     height: 0;
@@ -397,12 +391,11 @@ img.add{
 .taskHead{
     width: 100%;
     height: 32px;
-    padding-left: 4px;
     /*border-bottom: 1px solid #42708A;*/
 }
 
 .card_task{
-    background-color: #6bd098;
+    background-color: #ecf0f1;
 }
 
 .taskDetails{

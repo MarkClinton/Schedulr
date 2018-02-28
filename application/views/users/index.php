@@ -25,7 +25,7 @@
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-link btn-sm" ng-click="delete(tasks)"><i class="fa fa-times"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>
@@ -42,7 +42,7 @@
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-link btn-sm" ng-click="delete(tasks)"><i class="fa fa-times"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>
@@ -59,7 +59,7 @@
                         <div class= "tasks">
                             <div class="taskHead">
                                 <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
-                                <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
+                                <button style="float: right" class="btn btn-danger btn-link btn-sm" ng-click="delete(tasks)"><i class="fa fa-times"></i></button>
                             </div>
                             <div class="taskDetails">
                                 <p> </p>

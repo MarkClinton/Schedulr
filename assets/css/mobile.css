@@ -75,6 +75,10 @@
         display: block;
     }
 
+    .profile_actions{
+        display:none;
+    }
+
 }
 
 
@@ -152,6 +156,10 @@
         width: 100%;
         height: auto;
         display: block;
+    }
+
+    .profile_actions{
+        display:none;
     }
 
 }

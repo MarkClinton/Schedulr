@@ -40,7 +40,7 @@ function closeNav() {
 }
 
 function openLogin() {
-    document.getElementById("login").style.height = "409px";
+    document.getElementById("login").style.height = "300px";
     $('#overlay-back').fadeIn(700); 
 }
 
@@ -57,6 +57,27 @@ function openReg() {
 function closeReg() {
     document.getElementById("reg").style.height = "0px";
     $('#overlay-back').fadeOut(500); 
+}
+
+function pictureUpload() {
+    var isShow = $("#pictureUpload").height();
+    var button = $("#ppButton");
+
+    if (isShow == 0){
+        document.getElementById("pictureUpload").style.height = "200px";
+        $('#ppButton').removeClass('btn-success');
+        $('#ppButton').addClass('btn-danger');
+        /*button.html("x");*/
+        button.html("<i class='fa fa-times'>");
+
+    } else {
+        document.getElementById("pictureUpload").style.height = "0px";
+        $('#ppButton').removeClass('btn-danger');
+        $('#ppButton').addClass('btn-success');
+        button.html("<i class='fa fa-plus'></i>");
+    }
+    
+
 }
 
 
