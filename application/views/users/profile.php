@@ -110,8 +110,8 @@
                      <div class="friend_search">
                         <input class="input" type="text" name="search" placeholder="Search Friends...">
                         <div id="overlay-back"></div> 
-                        <button type="button" onclick="openNav()" class="btn btn-outline-info btn-just-icon add_person">
-                            <i class="fa fa-user-plus fa-lg"></i>
+                        <button type="button" onclick="openNav()" class="btn btn-info btn-link add_person">
+                            <i class="fa fa-user-plus fa-2x"></i>
                         </button>
 
                     </div>
