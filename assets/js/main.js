@@ -30,12 +30,34 @@ $(document).ready(function () {
 });
 
 function openNav() {
-        document.getElementById("addSidenav").style.height = "409px";
-        $('#overlay-back').fadeIn(500); 
-    }
+    document.getElementById("addSidenav").style.height = "409px";
+    $('#overlay-back').fadeIn(500); 
+}
 
-    function closeNav() {
-        document.getElementById("addSidenav").style.height = "0px";
-        $('#overlay-back').fadeOut(500); 
-    }
+function closeNav() {
+    document.getElementById("addSidenav").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+
+function openLogin() {
+    document.getElementById("login").style.height = "409px";
+    $('#overlay-back').fadeIn(700); 
+}
+
+function closeLogin() {
+    document.getElementById("login").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+
+function openReg() {
+    document.getElementById("reg").style.height = "409px";
+    $('#overlay-back').fadeIn(700); 
+}
+
+function closeReg() {
+    document.getElementById("reg").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+
+
 

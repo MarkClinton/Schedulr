@@ -22,15 +22,15 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, p, .navbar, .brand, a, .td
 }
 
 h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
-  margin: 10px 0 0;
+  margin: 0px 0 0;
 }
 
 h1, .h1 {
-  font-size: 3.6em;
+  font-size: 5em;
 }
 
 h2, .h2 {
-  font-size: 2.8em;
+  font-size: 3em;
 }
 
 h3, .h3 {
@@ -341,7 +341,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   box-sizing: border-box;
   border-width: 2px;
   font-size: 12px;
-  font-weight: 600;
+  /*font-weight: 600;*/
   /*padding: 0.5rem 18px;*/
   line-height: 1.75;
   cursor: pointer;
@@ -1931,18 +1931,17 @@ textarea.form-control {
   transition: all 0.4s;
   -webkit-transition: all 0.4s;
   padding: 0;
-  background: #FFFFFF;
-  box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);
+  background: #3A99D9;
+  /*box-shadow: 0 6px 10px -4px rgba(0, 0, 0, 0.15);*/
 }
 .navbar .navbar-toggler-right {
   float: right;
 }
 .navbar .navbar-brand {
-  font-weight: 600;
   margin: 5px 0px;
   padding: 20px 15px;
   font-size: 14px;
-  color: #66615B;
+  color: #FFFFFF;
   text-transform: uppercase;
 }
 .navbar .nav-link i {
@@ -2275,7 +2274,7 @@ textarea.form-control {
   cursor: pointer;
 }
 .navbar .navbar-toggler .navbar-toggler-bar {
-  background: #66615b;
+  background: #FFFFFF;
 }
 .navbar[class*="bg-"] .navbar-toggler .navbar-toggler-bar, .navbar.navbar-transparent .navbar-toggler .navbar-toggler-bar {
   background: #fff;
@@ -4783,7 +4782,6 @@ textarea.form-control {
     overflow-y: visible;
     border-top: none;
     text-align: center;
-    border-left: 1px solid #CCC5B9;
     padding-right: 0px;
     padding-left: 0px;
     padding-top: 15px;
@@ -4824,7 +4822,7 @@ textarea.form-control {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #FFFCF5;
+    background-color: #3498db;
     background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
     display: block;
     content: "";

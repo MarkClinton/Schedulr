@@ -23,26 +23,27 @@
 
   <body>
     <div class="home">
-      <nav class="navbar navbar-expand-md bg-transparent">
+      <!--<nav class="navbar navbar-expand-md bg-transparent">-->
+      <nav class="navbar navbar-expand-md">
         <div class="container">
           <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar"></span>
             <span class="navbar-toggler-bar"></span>
             <span class="navbar-toggler-bar"></span>
           </button>
-          <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr</a>
+          <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
           <div class="collapse navbar-collapse" id="navbar-success">
             <ul class="nav navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="about">About</a>
+                <!--<a class="btn btn-outline-info btn-round" href="<?php echo base_url(); ?>login">Sign In</a>-->
+
+                <a class="btn btn-outline-info btn-round" onclick="openLogin()">Sign In</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url(); ?>login">Sign In</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-round btn-info" href="<?php echo base_url(); ?>register">Sign Up</a>
+                <a class="btn btn-round btn-info" onclick="openReg()">Sign Up</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+

@@ -57,14 +57,14 @@
 
 <body>
 
-<nav class="navbar navbar-expand-md bg-transparent">
+<nav class="navbar navbar-expand-md">
   <div class="container">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-bar"></span>
       <span class="navbar-toggler-bar"></span>
       <span class="navbar-toggler-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr</a>
+    <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr.</a>
 
     <div class="collapse navbar-collapse" id="navbar-success">
       <!--<ul class="nav navbar-nav navbar-left">
@@ -74,16 +74,16 @@
       </ul>-->
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="btn btn-success btn-round" href="<?php echo base_url(); ?>tasks/create">New Task</a>
+          <a class="btn btn-success btn-round btn-sm" href="<?php echo base_url(); ?>tasks/create">New Task</a>
+        </li>
+        <!--<li class="nav-item">
+          <a class="btn btn-outline-info btn-round btn-sm" href="<?php echo base_url(); ?>users/index">Home</a>
+        </li>-->
+        <li class="nav-item">
+          <a class="btn btn-outline-info btn-round btn-sm" href="<?php echo base_url(); ?>users/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url(); ?>users/index">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<?php echo base_url(); ?>users/profile">Profile</a>
-        </li>
-        <li class="nav-item">
-          <a class="btn btn-info btn-round" href="<?php echo base_url(); ?>Users/logout">Sign Out</a>
+          <a class="btn btn-outline-info btn-round btn-sm" href="<?php echo base_url(); ?>Users/logout">Sign Out</a>
         </li>
       </ul>
     </div>

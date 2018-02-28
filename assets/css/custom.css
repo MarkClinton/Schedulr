@@ -1,27 +1,37 @@
 body{
-    background: #42708A;
     /*background: whitesmoke;*/
 }
 
 .home{
     height: 100%;
-    background-image: url('../images/mountains.png');
+    /*background-image: url('../images/mountains.png');*/
+    /*background-color: #3498db;*/
     background-repeat:no-repeat;
     background-size:cover;
     
 }
 
 .margined-top{
-    margin-top: 15px;
+    margin-top: 40px;
 }
 
 .contain_index{
-    display: inline-block;
-    float: left;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
     width: 55%;
     padding: 30px;
     height: auto;
+    text-align: center;
+}
+
+.about{
     margin-right: auto;
+    margin-left: auto;
+    width: 55%;
+    height: 70%;
+    margin-top: 10%;
+    text-align: center;
 }
 
 .srcResults{
@@ -46,11 +56,12 @@ body{
 }
 
 .contain_main{
-    width: 85%;
-    height: auto;
+    width: 100%;
+    background-color: #3498db;
+    height: 75%;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 50px;
+    padding-top: 50px;
 }
 
 .contain{
@@ -74,9 +85,15 @@ body{
 textarea{
     resize: none;
 }
+
 #right{
     text-align: right;
 }
+
+#center{
+    text-align: center;
+}
+
 .containTask{
     width: 500px;
     height: auto;
@@ -189,7 +206,7 @@ img.add{
 }
 
 #edit_contain{
-    width: 60%;
+    width: 40%;
     padding-top: 40px;
     margin-left: auto;
     margin-right: auto;
@@ -269,6 +286,39 @@ img.add{
     display    : none;
 } 
 
+.login{
+    height: 0;
+    width: 400px;
+    position: relative;
+    top: -300px;
+    z-index: 10;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition-timing-function: ease;
+    transition: 0.5s;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+.reg{
+    height: 0;
+    width: 400px;
+    position: relative;
+    top: -350px;
+    z-index: 10;
+    margin-right: auto;
+    margin-left: auto;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    transition-timing-function: ease;
+    transition: 0.5s;
+    margin-top: 10px;
+    border-radius: 5px;
+}
+
+
 .sidenav {
     height: 0;
     width: 400px;
@@ -279,8 +329,8 @@ img.add{
     margin-right: auto;
     margin-left: auto;
     top: -50px;
-    color: white;
-    background: #2C3E50;
+    color: grey;
+    background: #FFFFFF;
     overflow-x: hidden;
     overflow-y: hidden;
     transition-timing-function: ease;
@@ -412,5 +462,7 @@ img.add{
     z-index: 1;
     width: 100%;
 }
+
+
 
 

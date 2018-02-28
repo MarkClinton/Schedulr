@@ -87,8 +87,8 @@
                                 </div>
                             </div>
 
-                            <div id="right">
-                                <button type="submit" class="btn btn-warning btn-sm">Save</button>
+                            <div id="center">
+                                <button type="submit" class="btn btn-success btn-round">Save</button>
                             </div>
                         </form>
                     </div>
