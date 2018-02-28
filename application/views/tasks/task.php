@@ -1,18 +1,22 @@
 <div class="container" ng-app="task">
 
     <div class='viewTask' ng-controller="taskCtrl">
+
+        <div class="taskBoard">
+
+        </div>
+
+
         <div class="taskSideContain">
             <div class="taskHeader">
-                </br>
-                <center><h5>{{data.inputTaskName}}</h5></center>
-                <center><p>{{data.inputTaskDate}}</p></center>
-                <center><p>*Participants*</p></center>
+                <h5>{{data.inputTaskName}}</h5>
+                <p>{{data.inputTaskDate}}</p>
+                <p>*Participants*</p>
 
             </div>
 
             <div class='taskSideBar'>
-                </br>
-                <center><h5>Message Board</h5></center>
+                <h5>Message Board</h5>
 
 
             </div>

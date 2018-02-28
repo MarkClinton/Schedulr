@@ -24,7 +24,7 @@
                     <div ng-repeat="tasks in userTasks | limitTo : 5" >
                         <div class= "tasks">
                             <div class="taskHead">
-                                <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
+                                <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
                                 <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">
@@ -41,7 +41,7 @@
                     <div ng-repeat="tasks in allTasks" >
                         <div class= "tasks">
                             <div class="taskHead">
-                                <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
+                                <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
                                 <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">
@@ -58,7 +58,7 @@
                     <div ng-repeat="tasks in groupTasks">
                         <div class= "tasks">
                             <div class="taskHead">
-                                <h5 style="float: left" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
+                                <h5 style="float: left; font-weight: 500;" ng-click="showTask(tasks)">{{tasks.TASK_NAME}} </h5>
                                 <button style="float: right" class="btn btn-danger btn-just-icon btn-sm" ng-click="delete(tasks)"><i class="fa fa-times fa-2x"></i></button>
                             </div>
                             <div class="taskDetails">

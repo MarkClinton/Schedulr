@@ -11,6 +11,10 @@ body{
     
 }
 
+.font_header{
+    font-weight: 500 !important;
+}
+
 .margined-top{
     margin-top: 40px;
 }
@@ -106,29 +110,41 @@ textarea{
     text-align: center;
 }
 
+.taskBoard{
+    width: 75%;
+    display: inline-block;;
+    height: 520px;
+    border: 1px solid black;
+}
+
 .viewTask{
     width: 100%;
     height: 520px;
     background-color: white;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 
+
 .taskSideContain{
-    width: 30%;
+    width: 25%;
+    border: 1px solid black;
+    display: inline-block;
     float: right;
 }
 
 .taskHeader{
     width: 100%;
     height: 100px;
+    padding: 20px 0 0 20px;
 
 }
 
 .taskSideBar{
     width: 100%;
     height: 450px;
+    padding: 20px 0 0 20px;
 
 }
 

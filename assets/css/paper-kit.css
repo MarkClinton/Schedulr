@@ -341,11 +341,11 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   box-sizing: border-box;
   border-width: 2px;
   font-size: 12px;
-  /*font-weight: 600;*/
+  font-weight: 400;
   /*padding: 0.5rem 18px;*/
   line-height: 1.75;
   cursor: pointer;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   background-color: #66615B;
   border-color: #66615B;
   color: #FFFFFF;
@@ -369,11 +369,11 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   border-top-color: #FFFFFF;
 }
 .btn.btn-link {
-  color: #66615B;
+  color: #FFFFFF;
 }
 .btn.btn-link:hover, .btn.btn-link:focus, .btn.btn-link:active, .btn.btn-link.active, .open > .btn.btn-link.dropdown-toggle {
   background-color: transparent;
-  color: #403D39;
+  color: #e6e6e6;
 }
 .btn.btn-link .caret {
   border-top-color: #66615B;
@@ -2257,7 +2257,7 @@ textarea.form-control {
 .nav-tabs-navigation:last-child .nav-stacked {
   border-right: 1px solid #F1EAE0;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 400;
   padding: 20px 0;
 }
 .nav-tabs-navigation:last-child .nav-stacked .nav-item .nav-link {
