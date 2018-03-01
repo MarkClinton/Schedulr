@@ -41,6 +41,7 @@ body{
 .srcResults{
     width: 100%;
     height:auto;
+    margin-top: 15px;
 }
 
 .contain_reg{
@@ -172,9 +173,16 @@ img.logo{
     margin-left: auto;
 }
 
+img.search{
+    width: 45px;
+    height: 45px;
+    float: left;
+    margin-top: 2px !important;
+    margin-right: 20px;
+}
+
 .add_person{
     margin-right: 20px;
-    float: right;
 }
 
 img.add{
@@ -242,16 +250,25 @@ img.add{
 
 .input{
     width: 50%;
-    padding-left: 10px;
     color: #2C3E50;
     margin-left: 5px;
+    border:  1px solid #ecf0f1;
+    border-radius: 30px;
+    outline: none;
+    font-size: 13px;
+    padding-left: 5px;
 }
 
 .input2{
-    width: 100%;
-    border:none;
-    padding-left: 10px;
+    width: 350px;
+    padding-left: 5px;
     color: #2C3E50;
+    outline: none;
+    font-size: 13px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid #ecf0f1;
+    border-radius: 30px;
 }
 
 #dashboard{
@@ -338,7 +355,7 @@ img.add{
     /*top: 15px;*/
     margin-right: auto;
     margin-left: auto;
-    top: -50px;
+    top: -80px;
     color: grey;
     background: #FFFFFF;
     overflow-x: hidden;

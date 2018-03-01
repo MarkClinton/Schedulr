@@ -111,7 +111,7 @@
                         <input class="input" type="text" name="search" placeholder="Search Friends...">
                         <div id="overlay-back"></div> 
                         <button type="button" onclick="openNav()" class="btn btn-info btn-link add_person">
-                            <i class="fa fa-user-plus fa-2x"></i>
+                            <i class="fa fa-user-plus"></i>
                         </button>
 
                     </div>
@@ -119,9 +119,9 @@
                     <div class="user_friends" ng-controller="showFriendsCtrl">
                         <div ng-repeat="friend in friends">
                             <div class="friend_layout">
-                                <img class="user profile " src="<?php echo base_url() ?>/assets/images/profile/user.png" alt="profile" />
-                                <h5>{{friend.first_name}} {{friend.last_name}}</h5>
-                                <p>{{friend.email}}</p>
+                                <img class="user profile " src="<?php echo base_url() ?>{{friend.URL}}" alt="profile" />
+                                <p>{{friend.FIRST_NAME}} {{friend.LAST_NAME}}</p>
+                                <p>{{friend.EMAIL}}</p>
                             </div>
                         </div>
                     </div>
@@ -138,8 +138,9 @@
                             <input class="input2" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search People..." />
 
                             <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
-                                <h4>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h4>
-                                <h5>{{entry.EMAIL}}</h5>
+                                <img class="user search profile" src="<?php echo base_url() ?>{{entry.URL}}" alt="profile" />
+                                <h5>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h5>
+                                <p>{{entry.EMAIL}}</p>
                             </div>
                         </div>
                     </div>

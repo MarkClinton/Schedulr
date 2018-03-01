@@ -37,7 +37,9 @@ class User_model extends CI_Model{
     
     public function search_people($search) {
         $name = "%$search%";
-        $query = $this->db->query("SELECT FIRST_NAME, LAST_NAME, EMAIL FROM USER WHERE FIRST_NAME LIKE '$name'");
+        $query = $this->db->query("SELECT * FROM USER u
+                                   INNER JOIN USER_IMAGE ui on u.id = ui.user_id
+                                   WHERE u.FIRST_NAME LIKE '$name'");
         return $query->result_array();
         
         //$response = $this->db->select('*')->from('USER')->where("FIRST_NAME LIKE '%$search'")->get();
@@ -158,7 +160,9 @@ class User_model extends CI_Model{
 
     public function getUsersById($ids){
 
-        $sql = "SELECT first_name, last_name, email FROM USER WHERE id IN ('$ids')";
+        $sql = "SELECT * FROM USER u
+                INNER JOIN USER_IMAGE ui on u.id = ui.user_id
+                WHERE u.id IN ('$ids')";
 
         $users = $this->db->query($sql);
         return $users->result_array();
