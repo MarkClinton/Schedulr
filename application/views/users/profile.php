@@ -14,10 +14,12 @@
                 <div class="sideNav pictureUpload" id="pictureUpload">
                     <div class="pictureUploadHeader">
                         <center><p>Upload Profile Picture</p></center>
-                        
                     </div>
-                    <!-- form for picture upload -->
-
+                    <form method="POST" action="upload.php" enctype="multipart/form-data">
+                        <br>
+                        <input type="file" name ="file">
+                        <input type="submit" value = "Upload">
+                    </form>
 
                 </div>
             </div>

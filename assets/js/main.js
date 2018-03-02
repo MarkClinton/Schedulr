@@ -64,7 +64,7 @@ function pictureUpload() {
     var button = $("#ppButton");
 
     if (isShow == 0){
-        document.getElementById("pictureUpload").style.height = "200px";
+        document.getElementById("pictureUpload").style.height = "120px";
         $('#ppButton').removeClass('btn-success');
         $('#ppButton').addClass('btn-danger');
         /*button.html("x");*/
