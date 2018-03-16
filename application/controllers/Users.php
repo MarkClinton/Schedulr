@@ -97,5 +97,23 @@ class Users extends CI_Controller {
         $tasks = $this->User_model->getUsersTasks($email);
         print json_encode($tasks);
     }
+
+    public function imageUpload(){
+
+        // UPLOADS TO FOLDER NOW UPLOAD TO DB
+        $target_dir = "/opt/lampp/htdocs/Schedulr/assets/images/profile/";
+        $name = $_POST['name'];
+        print_r($_FILES);
+        $target_file = $target_dir . basename($_FILES["file"]["name"]);
+        move_uploaded_file($_FILES["file"]["tmp_name"], $target_file);
+
+        $image_path = '/assets/images/profile/' . $name;
+        $user_id = $this->session->userdata('id');
+        $data = $this->User_model->imageUploadPath($user_id, $image_path);
+        print json_encode($data);
+
+
+        
+    }
 }
 

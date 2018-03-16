@@ -48,6 +48,71 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
         
 }]);
 
+//ng-model does not provide 2 way binding for file fields. This directive provides the missing binding 
+//needed to access file contents.
+fetch.directive('fileModel', function ($parse) {
+        return {
+            restrict: 'A', //the directive can be used as an attribute only
+ 
+            /*
+             link is a function that defines functionality of directive
+             scope: scope associated with the element
+             element: element on which this directive used
+             attrs: key value pair of element attributes
+             */
+            link: function (scope, element, attrs) {
+                var model = $parse(attrs.fileModel),
+                    modelSetter = model.assign; //define a setter for demoFileModel
+ 
+                //Bind change event on the element
+                element.bind('change', function () {
+                    //Call apply on scope, it checks for value changes and reflect them on UI
+                    scope.$apply(function () {
+                        //set the model value
+                        modelSetter(scope, element[0].files[0]);
+                    });
+                });
+            }
+        };
+    });
+
+// Reusable file upload service
+fetch.service('uploadFileData', ['$http', function($http) {
+
+    this.fileToUrl = function(file, url, fileName){
+
+        var fd = new FormData();
+        fd.append('file', file);
+        fd.append('name', fileName);
+
+        $http(({
+            method: 'POST',
+            url: url,
+                data: fd, //forms user object
+                headers: {'Content-Type': undefined,'Process-Data': false}
+            })).then(function (result) {
+            location.reload();
+            console.dir(result);
+            console.log('Image upload');
+        });
+        }
+}]);
+
+
+fetch.controller('uploadImageCtrl', ['$scope', '$http', 'notify', 'uploadFileData',  function ($scope, $http, notify, uploadFileData) {
+        
+        $scope.uploadImage = function () {
+            var file = $scope.imageFile;
+            console.dir(file);
+            var uploadUrl = 'imageUpload';
+            var name = $scope.imageFile.name;
+
+            uploadFileData.fileToUrl(file, uploadUrl, name);
+
+        }    
+}]);
+
+
 fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
        
         

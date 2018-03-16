@@ -403,6 +403,7 @@ img.add{
     margin: 3px 0 3px 5%;
     height: auto;
     border-bottom: 1px solid #DCDCDC;
+    padding-bottom: 5px;
 }
 
 .taskHead{

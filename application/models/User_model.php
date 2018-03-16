@@ -184,6 +184,35 @@ class User_model extends CI_Model{
         return $ids;
 
     }
+
+    public function imageUploadPath($user_id, $image){
+
+        $check = "SELECT * FROM USER_IMAGE WHERE user_id = '" . $user_id ."'";
+        
+        if($check->num_rows === 0){
+            $input = array(
+                'USER_ID' => $user_id,
+                'URL' => $image,
+                'UPLOADED_AT' => 'NOW();'
+            );
+            try{
+                $this->db->insert('USER_IMAGE', $input);
+                return 200;
+            }catch (Exception $e){
+                return 400;
+            } 
+
+        } else {
+            try{
+                $this->db->set('URL', $image);  
+                $this->db->where('USER_ID', $user_id); 
+                $this->db->update('USER_IMAGE');
+                return 200;
+            }catch (Exception $e){
+                return 400;
+            }   
+        }
+    }
 }
 
 

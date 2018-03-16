@@ -11,13 +11,13 @@
                 <center><a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="pictureUpload()">
                     <i class="fa fa-plus"></i>
                 </a></center>
-                <div class="sideNav pictureUpload" id="pictureUpload">
+                <div class="sideNav pictureUpload" id="pictureUpload" ng-controller="uploadImageCtrl" ng-submit="uploadImage()">
                     <div class="pictureUploadHeader">
                         <center><p>Upload Profile Picture</p></center>
                     </div>
-                    <form method="POST" action="upload.php" enctype="multipart/form-data">
+                    <form method="POST" enctype="multipart/form-data">
                         <br>
-                        <input type="file" name ="file">
+                        <input type="file" file-model="imageFile" name ="file">
                         <input type="submit" value = "Upload">
                     </form>
 

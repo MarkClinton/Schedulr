@@ -10,7 +10,7 @@ $route['users/getProfile'] = 'users/getProfile';
 $route['users/getFriends'] = 'users/getFriends';
 $route['users/updateProfile'] = 'users/updateProfile';
 $route['users/searchPeople'] = 'users/searchPeople';
-
+$route['users/imageUpload'] = 'users/imageUpload';
 $route['users/tasks/task?(:any)'] = 'tasks/task';
 $route['users/tasks/delete?(:any)'] = 'tasks/deleteTask';
 $route['users/tasks/viewTask'] = 'tasks/viewTask';
