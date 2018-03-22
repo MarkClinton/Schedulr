@@ -1,23 +1,36 @@
 var fetch = angular.module('fetch', ['cgNotify']);
 
-fetch.controller('getProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+fetch.controller('profileCtrl', ['$scope', '$http', 'notify', 'getProfileImagePath', 'uploadFileData', function ($scope, $http, notify, getProfileImagePath, uploadFileData) {
 
         var users = $http.get('getProfile');
-        
         users.then(function (response) {
             var request = response.data; 
-            //window.alert(JSON.stringify(request));
+            
+
             $scope.img = request[0].URL;
             $scope.profile = request;
         });
-        
-        
+
+        $scope.uploadImage = function () {
+            var file = $scope.imageFile;
+            console.dir(file);
+            var uploadUrl = 'imageUpload';
+            var name = $scope.imageFile.name;
+
+            uploadFileData.fileToUrl(file, uploadUrl, name);
+            var pp = getProfileImagePath.imageUrl();
+            
+            getProfileImagePath.imageUrl().then(function(data){
+                $scope.img = data;
+            });
+        }    
 }]);
 
 fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
         
         $scope.data = {};
         var users = $http.get('getProfile');
+
         
         users.then(function (response) {
             var request = response.data; 
@@ -46,6 +59,19 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
         }
         
         
+}]);
+
+fetch.factory('getProfileImagePath', ['$http', function($http) {
+    return{
+    imageUrl: function(){
+        //profileImage
+        return $http.get('getProfile').then(function(response) {
+                var result = response.data;
+                var img_pth = result[0].URL;
+                return img_pth;
+        }); 
+    }
+};
 }]);
 
 //ng-model does not provide 2 way binding for file fields. This directive provides the missing binding 
@@ -91,25 +117,11 @@ fetch.service('uploadFileData', ['$http', function($http) {
                 data: fd, //forms user object
                 headers: {'Content-Type': undefined,'Process-Data': false}
             })).then(function (result) {
-            location.reload();
+            //location.reload();
             console.dir(result);
             console.log('Image upload');
         });
         }
-}]);
-
-
-fetch.controller('uploadImageCtrl', ['$scope', '$http', 'notify', 'uploadFileData',  function ($scope, $http, notify, uploadFileData) {
-        
-        $scope.uploadImage = function () {
-            var file = $scope.imageFile;
-            console.dir(file);
-            var uploadUrl = 'imageUpload';
-            var name = $scope.imageFile.name;
-
-            uploadFileData.fileToUrl(file, uploadUrl, name);
-
-        }    
 }]);
 
 

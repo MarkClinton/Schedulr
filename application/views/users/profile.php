@@ -2,7 +2,7 @@
 
     <div id="profile_background" ng-app="fetch">
 
-        <div id="profile_contain" ng-controller="getProfileCtrl">
+        <div id="profile_contain" ng-controller="profileCtrl">
             <div id = "profile_image">
                 <img class="profile" src="<?php echo base_url() ?>{{img}}" alt="profile" />
             </div>
@@ -11,7 +11,7 @@
                 <center><a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="pictureUpload()">
                     <i class="fa fa-plus"></i>
                 </a></center>
-                <div class="sideNav pictureUpload" id="pictureUpload" ng-controller="uploadImageCtrl" ng-submit="uploadImage()">
+                <div class="sideNav pictureUpload" id="pictureUpload" ng-submit="uploadImage()">
                     <div class="pictureUploadHeader">
                         <center><p>Upload Profile Picture</p></center>
                     </div>

@@ -213,6 +213,14 @@ class User_model extends CI_Model{
             }   
         }
     }
+
+    public function getImagePath($user){
+
+         $sql = "SELECT * FROM user_image WHERE id = '" . $user . "'";
+
+         $query_res = $this->db->query($sql);
+         return $query_res->result_array();
+    }
 }
 
 

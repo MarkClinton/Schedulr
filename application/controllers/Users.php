@@ -110,10 +110,13 @@ class Users extends CI_Controller {
         $image_path = '/assets/images/profile/' . $name;
         $user_id = $this->session->userdata('id');
         $data = $this->User_model->imageUploadPath($user_id, $image_path);
-        print json_encode($data);
+        print json_encode($data); 
+    }
 
-
-        
+    public function profileImage(){
+        $user_id = $this->session->userdata('id');
+        $file_path = $this->User_model->getImagePath($user_id);
+        print json_encode($file_path);
     }
 }
 
