@@ -2,7 +2,7 @@
 ## Schedulr
 
 
-Organisational application for personal use.
+Organizational application for personal use.
 
 <img width="1280" alt="landing_page" src="https://user-images.githubusercontent.com/6231909/36816851-266c7f30-1cad-11e8-85ce-f5f5df2c2afd.png">
 
