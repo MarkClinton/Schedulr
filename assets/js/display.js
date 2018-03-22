@@ -22,7 +22,10 @@ fetch.controller('profileCtrl', ['$scope', '$http', 'notify', 'getProfileImagePa
             
             getProfileImagePath.imageUrl().then(function(data){
                 $scope.img = data;
+                pictureUpload();
             });
+
+
         }    
 }]);
 

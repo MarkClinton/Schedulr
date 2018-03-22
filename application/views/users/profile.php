@@ -17,7 +17,7 @@
                     </div>
                     <form method="POST" enctype="multipart/form-data">
                         <br>
-                        <input type="file" file-model="imageFile" name ="file">
+                        <input type="file" id="imageField" file-model="imageFile" name ="file">
                         <input type="submit" value = "Upload">
                     </form>
 

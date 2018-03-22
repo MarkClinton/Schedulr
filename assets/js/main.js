@@ -75,6 +75,7 @@ function pictureUpload() {
         $('#ppButton').removeClass('btn-danger');
         $('#ppButton').addClass('btn-success');
         button.html("<i class='fa fa-plus'></i>");
+        document.getElementById('imageField').value = "";
     }
     
 
