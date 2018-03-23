@@ -3,20 +3,36 @@
     <div class='viewTask' ng-controller="taskCtrl">
 
         <div class="taskBoard">
+            <div class="taskViewHead">
+
+            </div>
 
         </div>
 
 
         <div class="taskSideContain">
             <div class="taskHeader">
-                <h5>{{data.inputTaskName}}</h5>
-                <p>{{data.inputTaskDate}}</p>
-                <p>*Participants*</p>
+                <h5>{{data.admin.TASK_NAME}}</h5>
+                <p>{{data.admin.TASK_DATE}}</p>
+                <p>{{data.admin.TASK_INFO}}</p>
 
             </div>
 
             <div class='taskSideBar'>
-                <h5>Message Board</h5>
+                <br>
+                <h5>Admin</h5>
+                <img class="sml profile " src="<?php echo base_url() ?>{{data.admin.url}}" alt="profile" />
+                <p ng-if="data.admin.ADMIN == data.admin.USER_ID">You</p>
+                <p ng-if="data.admin.ADMIN != data.admin.USER_ID">{{data.admin.first_name}}}</p>
+                <br>
+                <p>Participants</p>
+                <div ng-repeat="data in data.share | filter: isAdmin">
+                        <img class="sml profile " src="<?php echo base_url() ?>{{data.url}}" alt="profile" />
+                        <p>{{data.FIRST_NAME}}</p>
+                </div>
+                <a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="" alt="Add New User">
+                    <i class="fa fa-plus"></i>
+                </a>
 
 
             </div>

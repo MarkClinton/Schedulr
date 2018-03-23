@@ -24,8 +24,6 @@ fetch.controller('profileCtrl', ['$scope', '$http', 'notify', 'getProfileImagePa
                 $scope.img = data;
                 pictureUpload();
             });
-
-
         }    
 }]);
 

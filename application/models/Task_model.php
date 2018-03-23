@@ -8,10 +8,39 @@ class Task_model extends CI_Model {
     
     public function getTask($task_id, $user) {
         
-        $sql = "TASKS WHERE task_id = '" . $task_id . "' AND user_id = '" . $user . "'";
-        
-        $query = $this->db->get($sql);
-        return $query->result_array();   
+        $task_details = $this->get_task_details($task_id);
+        $shared_users = $this->get_shared_users($task_id);
+
+        $result = array();
+        $result[] = $task_details;
+        $result[] = $shared_users;
+
+        //return $query->result_array();   
+        return $result;
+    }
+
+    public function get_task_details($task_id){
+
+        $sql = "SELECT t.*, u.id as ADMIN, u.first_name, ui.url
+                FROM TASKS t
+                INNER JOIN USER u on u.id = t.user_id
+                INNER JOIN USER_IMAGE ui on ui.user_id = u.id
+                WHERE t.task_id = '" . $task_id . "'";
+
+        $query = $this->db->query($sql);
+        return $query->result_array();
+    }
+
+    public function get_shared_users($task_id){
+
+        $sql = "SELECT u.*, ui.url  
+                FROM USER u 
+                INNER JOIN SHARE s on s.user_id = u.id
+                INNER JOIN USER_IMAGE ui on ui.user_id = u.id
+                WHERE s.task_id = '" . $task_id . "'";
+
+        $query = $this->db->query($sql);
+        return $query->result_array();
     }
     
     public function deletetask($task_id) {

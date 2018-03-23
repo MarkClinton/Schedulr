@@ -99,6 +99,15 @@ textarea{
     text-align: center;
 }
 
+.taskViewHead{
+    height: 40px;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+
 .containTask{
     width: 500px;
     height: auto;
@@ -113,9 +122,9 @@ textarea{
 
 .taskBoard{
     width: 75%;
-    display: inline-block;;
+    display: inline-block;
     height: 520px;
-    border: 1px solid black;
+    border-right: 1px solid #ecf0f1;
 }
 
 .viewTask{
@@ -130,7 +139,6 @@ textarea{
 
 .taskSideContain{
     width: 25%;
-    border: 1px solid black;
     display: inline-block;
     float: right;
 }
@@ -138,7 +146,7 @@ textarea{
 .taskHeader{
     width: 100%;
     height: 100px;
-    padding: 20px 0 0 20px;
+    padding: 40px 0 0 20px;
 
 }
 
@@ -163,6 +171,15 @@ img.profile{
 img.user{
     width: 65px;
     height: 65px;
+}
+
+img.sml{
+    width: 30px;
+    height: 30px;
+    margin-right: 0;
+    margin-left: -3px;
+    margin-top: 5px;
+    border: 1px solid #6bd098;
 }
 
 

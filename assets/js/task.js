@@ -21,35 +21,14 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
             
         tasks.then(function (response) {
             var task = response.data;
-            $scope.data.inputTaskName = task[0].TASK_NAME;
-            $scope.data.inputTaskStart = task[0].START_TIME;
-            $scope.data.inputTaskEnd = task[0].END_TIME;
-            $scope.data.inputTaskDate = task[0].TASK_DATE;
-            $scope.data.inputTaskInfo = task[0].TASK_INFO; 
-            $scope.data.id = task[0].TASK_ID;
-        });
-        
-        //var update = $http.get('updateTask');
-        
-        $('#selector').wickedpicker({
-            twentyFour: true,
-            now: "12:00",
-            upArrow: 'wickedpicker__controls__control-up',
-            downArrow: 'wickedpicker__controls__control-down',
-            close: 'wickedpicker__close',
-            hoverState: 'hover-state',
-            title: 'Start Time'
+
+            $scope.data.admin = task[0][0];
+            $scope.data.share = task[1];
         });
 
-        $('#selector2').wickedpicker({
-            twentyFour: true,
-            now: "12:00",
-            upArrow: 'wickedpicker__controls__control-up',
-            downArrow: 'wickedpicker__controls__control-down',
-            close: 'wickedpicker__close',
-            hoverState: 'hover-state',
-            title: 'End Time'
-        });
+        $scope.isAdmin = function(data){
+            return (data.ID != $scope.data.admin.ADMIN);
+        };
         
         $scope.update = function () {
 
