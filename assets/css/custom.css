@@ -121,7 +121,7 @@ textarea{
 }
 
 .taskBoard{
-    width: 75%;
+    width: 78%;
     display: inline-block;
     height: 520px;
     border-right: 1px solid #ecf0f1;
@@ -138,7 +138,7 @@ textarea{
 
 
 .taskSideContain{
-    width: 25%;
+    width: 22%;
     display: inline-block;
     float: right;
 }
@@ -177,9 +177,17 @@ img.sml{
     width: 30px;
     height: 30px;
     margin-right: 0;
-    margin-left: -3px;
+    margin-left: 0;
     margin-top: 5px;
     border: 1px solid #6bd098;
+}
+
+.add{
+    border: none;
+    width: 12px;
+    height: 12px;
+    margin-top: 12.5px;
+    margin-left: -7px;
 }
 
 
@@ -498,6 +506,15 @@ img.add{
     float: left;
     background-color: white !important;
     text-align: center;
+}
+
+.par_layout{
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 35px;
+    float: left;
+    margin-left: 2px;
 }
 
 .user_friends{

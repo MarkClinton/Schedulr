@@ -43,7 +43,7 @@ class Tasks extends CI_Controller {
         $id = $this->session->userdata('id');
 
         $tasks = $this->Task_model->getTask($task_id, $id);
-        print json_encode($tasks);
+        echo json_encode($tasks);
     }
 
     public function updateTask() {

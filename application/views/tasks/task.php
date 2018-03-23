@@ -20,17 +20,19 @@
 
             <div class='taskSideBar'>
                 <br>
-                <h5>Admin</h5>
-                <img class="sml profile " src="<?php echo base_url() ?>{{data.admin.url}}" alt="profile" />
-                <p ng-if="data.admin.ADMIN == data.admin.USER_ID">You</p>
-                <p ng-if="data.admin.ADMIN != data.admin.USER_ID">{{data.admin.first_name}}}</p>
+                <p>Admin</p>
+                <img class="sml profile " src="<?php echo base_url() ?>{{data.admin.url}}" alt="profile" title="{{data.admin.first_name}}"/>
+                <!--<p ng-if="data.admin.ADMIN == data.admin.USER_ID">You</p>
+                <p ng-if="data.admin.ADMIN != data.admin.USER_ID">{{data.admin.first_name}}}</p>-->
                 <br>
                 <p>Participants</p>
                 <div ng-repeat="data in data.share | filter: isAdmin">
-                        <img class="sml profile " src="<?php echo base_url() ?>{{data.url}}" alt="profile" />
-                        <p>{{data.FIRST_NAME}}</p>
+                    <div class="par_layout">
+                        <img class="sml profile " src="<?php echo base_url() ?>{{data.url}}" title="{{data.FIRST_NAME}}" alt="profile" />
+                    </div>
                 </div>
-                <a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="" alt="Add New User">
+                <!--<img class="sml add profile " src="<?php echo base_url() ?>/assets/images/add.png" title="Add New User"/>-->
+                <a class="btn btn-success btn-link btn-sm add" id="ppButton" onClick="" title="Add New User">
                     <i class="fa fa-plus"></i>
                 </a>
 
