@@ -39,7 +39,7 @@ class User_model extends CI_Model{
         $name = "%$search%";
         $query = $this->db->query("SELECT * FROM USER u
                                    INNER JOIN USER_IMAGE ui on u.id = ui.user_id
-                                   WHERE u.FIRST_NAME LIKE '$name'");
+                                   WHERE u.EMAIL LIKE '$name'");
         return $query->result_array();
         
         //$response = $this->db->select('*')->from('USER')->where("FIRST_NAME LIKE '%$search'")->get();
@@ -183,6 +183,24 @@ class User_model extends CI_Model{
         $ids = join("','", $friend_ids);
         return $ids;
 
+    }
+
+    public function removeFriend($friend_id, $user_id) {
+
+        try{
+            $cond  = ['user_id' => $user_id, 'friend_id' => $friend_id];
+            $this->db->where($cond);
+            $this->db->delete('FRIENDS');
+
+            $cond2  = ['user_id' => $friend_id, 'friend_id' => $user_id];
+            $this->db->where($cond2);
+            $this->db->delete('FRIENDS');
+
+            return 200;
+
+        }catch (Exception $e) {
+            return 400;
+        }
     }
 
     public function imageUploadPath($user_id, $image){

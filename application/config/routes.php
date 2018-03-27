@@ -8,15 +8,18 @@ $route['users/login'] = 'users/login';
 $route['users/register'] = 'users/register';
 $route['users/getProfile'] = 'users/getProfile';
 $route['users/getFriends'] = 'users/getFriends';
+$route['users/deleteFriend'] = 'users/deleteFriend';
 $route['users/updateProfile'] = 'users/updateProfile';
 $route['users/searchPeople'] = 'users/searchPeople';
 $route['users/imageUpload'] = 'users/imageUpload';
+$route['users/tasks/showFriends'] = 'users/getFriends';
 $route['users/tasks/task?(:any)'] = 'tasks/task';
 $route['users/tasks/delete?(:any)'] = 'tasks/deleteTask';
 $route['users/tasks/viewTask'] = 'tasks/viewTask';
 $route['users/tasks/updateTask'] = 'tasks/updateTask';
 $route['users/tasks/createTask'] = 'tasks/createTask';
 $route['users/tasks/create'] = 'tasks/create';
+$route['users/tasks/addUser'] = 'tasks/addUserToProject';
 
 
 $route['users/(:any)'] = 'users/view/$1';

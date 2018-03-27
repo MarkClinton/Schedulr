@@ -110,7 +110,7 @@
 
                 <div class="tab-pane" id="friends" role="tabpanel">
                      <div class="friend_search">
-                        <input class="input" type="text" name="search" placeholder="Search Friends...">
+                        <!--<input class="input" type="text" name="search" placeholder="Search Friends...">-->
                         <div id="overlay-back"></div> 
                         <button type="button" onclick="openNav()" class="btn btn-info btn-link add_person">
                             <i class="fa fa-user-plus"></i>
@@ -124,6 +124,10 @@
                                 <img class="user profile " src="<?php echo base_url() ?>{{friend.URL}}" alt="profile" />
                                 <p>{{friend.FIRST_NAME}} {{friend.LAST_NAME}}</p>
                                 <p>{{friend.EMAIL}}</p>
+                                <button type="button" ng-click="removeFriend(friend.ID)" class="btn btn-danger btn-link btn-sm">
+                                <i class="fa fa-times"></i>
+                            </button>
+
                             </div>
                         </div>
                     </div>

@@ -73,4 +73,13 @@ class Task_model extends CI_Model {
             return 400;
         }
     }
+
+    public function updateTaskShare($data_one) {
+        try{
+            $this->db->insert('SHARE', $data_one);
+            return 200;
+        } catch(Exception $e){
+            return 400;
+        } 
+    }
 }

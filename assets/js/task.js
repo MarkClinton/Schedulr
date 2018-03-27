@@ -1,6 +1,6 @@
 var task = angular.module('task', ['720kb.datepicker', 'cgNotify']);
 
-task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', function ($scope, $http, getTaskShareData, notify) {
         $scope.data = {};
         
         function getQueryVariable(variable)
@@ -17,6 +17,7 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
         }
 
         var id = getQueryVariable("id");
+        $scope.task_id = id;
         var tasks = $http.get("viewTask?id=" + id);
             
         tasks.then(function (response) {
@@ -30,6 +31,19 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
             return (data.ID != $scope.data.admin.ADMIN);
         };
         
+        $scope.addUsers = function(data){
+            console.log(data + $scope.task_id);
+            var addU = $http.get('addUser?taskId=' + $scope.task_id + '&userId=' + data);
+
+            addU.then(function (response) {
+                getTaskShareData.getParticipants($scope.task_id).then(function(data){
+                    $scope.data.share = data;
+                    console.dir($scope.data.share);
+                });
+            })
+
+        }
+
         $scope.update = function () {
 
             $scope.data.inputTaskStart = $('#selector').val().replace(/\s/g, '');
@@ -54,6 +68,31 @@ task.controller('taskCtrl', ['$scope', '$http', 'notify', function ($scope, $htt
 
 
     }]);
+
+task.factory('getTaskShareData', ['$http', function($http) {
+    return{
+    getParticipants: function(id){
+        return $http.get('viewTask?id=' + id).then(function(response) {
+                var result = response.data;
+                var share = result[1];
+                console.dir(result);
+                return share;
+        }); 
+    }
+};
+}]);
+
+task.controller('getFriendsCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+
+    $scope.friend = {};
+    var friends = $http.get('showFriends');
+
+    friends.then(function (response) {
+        $scope.friend = response.data;
+        console.dir($scope.friend);
+    });
+ 
+}]);
 
 task.controller('createCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
 

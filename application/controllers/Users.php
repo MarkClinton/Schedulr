@@ -53,6 +53,14 @@ class Users extends CI_Controller {
         print json_encode($response);
         
     }
+
+    public function deleteFriend(){
+        $friend_id = filter_input(INPUT_GET, 'userId');
+        $user_id = $this->session->userdata('id');
+
+        $response = $this->User_model->removeFriend($friend_id, $user_id);
+        return json_encode($response);
+    }
     
     public function register() {
         $data = json_decode(file_get_contents('php://input'), true);

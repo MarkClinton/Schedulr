@@ -12,9 +12,9 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#all" role="tab">All</a>
                     </li>
-                    <li class="nav-item">
+                    <!--<li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#group" role="tab">Shared</a>
-                    </li>
+                    </li>-->
                 </ul>
             </div>
         </div>
@@ -53,7 +53,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tab-pane" id="group" role="tabpanel">
+            <!--<div class="tab-pane" id="group" role="tabpanel">
                 <div ng-controller="displayGroupCtrl" ng-cloak>  
                     <div ng-repeat="tasks in groupTasks">
                         <div class= "tasks">
@@ -69,9 +69,10 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
+
 
 
     <div id="calendar" class="margined-top">

@@ -40,7 +40,7 @@ body{
 
 .srcResults{
     width: 100%;
-    height:auto;
+    height: auto;
     margin-top: 15px;
 }
 
@@ -199,8 +199,8 @@ img.logo{
 }
 
 img.search{
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     float: left;
     margin-top: 2px !important;
     margin-right: 20px;

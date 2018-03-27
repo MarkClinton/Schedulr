@@ -77,8 +77,16 @@ function pictureUpload() {
         button.html("<i class='fa fa-plus'></i>");
         document.getElementById('imageField').value = "";
     }
-    
+}
+ 
+function showAddUser() {
+    document.getElementById("addSidenav").style.height = "309px";
+    $('#overlay-back').fadeIn(500); 
+}
 
+function closeAddUser() {
+    document.getElementById("addSidenav").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
 }
 
 

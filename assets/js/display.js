@@ -144,7 +144,7 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
     }]);
 
 
-fetch.controller('showFriendsCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+fetch.controller('showFriendsCtrl', ['$scope', '$http', 'getUsersFriends', 'notify', function ($scope, $http, getUsersFriends, notify) {
 
     $scope.friends = {};
     var friends = $http.get('getFriends');
@@ -152,7 +152,29 @@ fetch.controller('showFriendsCtrl', ['$scope', '$http', 'notify', function ($sco
     friends.then(function (response) {
         $scope.friends = response.data;
     });
+
+    $scope.removeFriend = function(data) {
+        if (confirm("Are you sure?")) {
+            var deleteFriend = $http.get('deleteFriend?userId=' + data);
+            deleteFriend.then(function (response) {
+                getUsersFriends.getFriends().then(function(data){
+                    $scope.friends = data;
+                });       
+            })
+        } 
+    }
  
+}]);
+
+fetch.factory('getUsersFriends', ['$http', function($http) {
+    return{
+    getFriends: function(){
+        return $http.get('getFriends').then(function(response) {
+                var result = response.data;
+                return result;
+        }); 
+    }
+};
 }]);
 
 

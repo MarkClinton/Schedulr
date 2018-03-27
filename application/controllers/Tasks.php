@@ -17,8 +17,8 @@ class Tasks extends CI_Controller {
     }
 
     public function task() {
-        $task_id = filter_input(INPUT_GET, 'id');
-        $data = $this->viewTask($task_id);
+        //$task_id = filter_input(INPUT_GET, 'id');
+        //$data = $this->viewTask($task_id);
         //$task = array(
           //  'task_name' => $data[0]['TASK_NAME'],
           //  'task_info' => $data[0]['TASK_INFO'],
@@ -85,6 +85,21 @@ class Tasks extends CI_Controller {
 
         $response = $this->Task_model->createNewTask($task);
         print json_encode($response);
+    }
+
+    public function addUserToProject() {
+
+        $task_id = filter_input(INPUT_GET, 'taskId');
+        $share_user_id = filter_input(INPUT_GET, 'userId');
+
+        $data_one = array (
+            'user_id' => $share_user_id,
+            'task_id' => $task_id
+        );
+
+        $response =  $this->Task_model->updateTaskShare($data_one);
+        print json_encode($response);
+        
     }
 
 }

@@ -7,6 +7,32 @@
 
             </div>
 
+            <div id="overlay-back"></div> 
+            <div class="friends" ng-controller="getFriendsCtrl">
+            <div id="addSidenav" class="sideNav" >
+                <button type="button" onclick="closeNav()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
+                    <i class="fa fa-times"></i>
+                </button>
+                <div class="inner_center">
+                    <h5>Add Friend To Project</h5>
+                <br>
+                <div class="srcResults" ng-repeat="friends in friend">
+                    <img class="search profile" src="<?php echo base_url() ?>{{friends.URL}}" alt="profile" />
+                    <button type="button" style="float:right;" ng-click="addUsers(friends.ID)" class="btn btn-success btn-link btn-sm">
+                        <i class="fa fa-plus"></i>
+                    </button>
+                    <p>{{friends.FIRST_NAME}} {{friends.LAST_NAME}}</p>
+                    <p>{{friends.EMAIL}}</p>
+                    
+
+                </div>
+            </div>
+            </div>
+
+        </div>
+
+            
+
         </div>
 
 
@@ -32,9 +58,11 @@
                     </div>
                 </div>
                 <!--<img class="sml add profile " src="<?php echo base_url() ?>/assets/images/add.png" title="Add New User"/>-->
-                <a class="btn btn-success btn-link btn-sm add" id="ppButton" onClick="" title="Add New User">
+                <a class="btn btn-success btn-link btn-sm add" id="ppButton" onClick="showAddUser()" title="Add New User">
                     <i class="fa fa-plus"></i>
                 </a>
+
+                
 
 
             </div>
