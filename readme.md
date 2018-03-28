@@ -1,5 +1,5 @@
 
-# Schedulr
+# Schedulr - Organizational application for personal use.
 
 ## About:
 •	Schedulr is an organizational web app where users can create tasks. Tasks are conveniently displayed on the user’s home screen alongside a calendar to show, at a glance, what needs to be done. 
@@ -18,8 +18,7 @@
 •	MySQL for database creation and querying. 
 
 
-
-Organizational application for personal use.
+## Screenshots:
 
 <img width="1280" alt="landing_page" src="https://user-images.githubusercontent.com/6231909/36816851-266c7f30-1cad-11e8-85ce-f5f5df2c2afd.png">
 
