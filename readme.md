@@ -1,15 +1,20 @@
 
-## Schedulr
+# Schedulr
 
-# About:
+## About:
 •	Schedulr is an organizational web app where users can create tasks. Tasks are conveniently displayed on the user’s home screen alongside a calendar to show, at a glance, what needs to be done. 
-•	Users can add friends to tasks and collaborate on ideas in the tasks task board. 
+
+•	Users can add friends to tasks and collaborate on ideas in the tasks task board.
+
 •	Talk about issues on the tasks message board. 
+
 •	Download a pdf view of their month, week or day. For helpful organization.
 
-# Technology:
+## Technology:
 •	Built with PHP and Codeigniter on the backend.
+
 •	Using Angular 1.6.1, jQuery, JavaScript, CSS, HTML and Paper Kit 2 for the frontend.
+
 •	MySQL for database creation and querying. 
 
 
