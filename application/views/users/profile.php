@@ -145,8 +145,12 @@
 
                             <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
                                 <img class="user search profile" src="<?php echo base_url() ?>{{entry.URL}}" alt="profile" />
-                                <h5>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</h5>
+                                <button type="button" style="float:right;" ng-click="addFriend(entry.ID)" class="btn btn-success btn-link btn-sm">
+                                    <i class="fa fa-plus"></i>
+                                </button>
+                                <p>{{entry.FIRST_NAME}} {{entry.LAST_NAME}}</p>
                                 <p>{{entry.EMAIL}}</p>
+
                             </div>
                         </div>
                     </div>

@@ -32,6 +32,15 @@ class Users extends CI_Controller {
         $users_friends = $this->User_model->getUsersById($response);
         print json_encode($users_friends);
     }
+
+    public function addFriends() {
+        $user_id = $this->session->userdata('id');
+        $friend_id = filter_input(INPUT_GET, 'userId');
+
+        $reponse = $this->User_model->addFriends($user_id, $friend_id);
+        print json_encode($response);
+
+    }
     
     public function updateProfile(){
         $profile = json_decode(file_get_contents('php://input'), true);

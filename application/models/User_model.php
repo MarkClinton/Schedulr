@@ -203,6 +203,20 @@ class User_model extends CI_Model{
         }
     }
 
+    public function addFriends($user_id, $friend_id){
+
+        try{
+            $cond  = ['user_id' => $user_id, 'friend_id' => $friend_id];
+            $this->db->insert('FRIENDS', $cond);
+
+            $cond2  = ['user_id' => $friend_id, 'friend_id' => $user_id];
+            $this->db->insert('FRIENDS', $cond2);
+
+        }catch (Exception $e) {
+            return 400;
+        }
+    }
+
     public function imageUploadPath($user_id, $image){
 
         $check = "SELECT * FROM USER_IMAGE WHERE user_id = '" . $user_id ."'";

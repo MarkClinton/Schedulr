@@ -126,7 +126,7 @@ fetch.service('uploadFileData', ['$http', function($http) {
 }]);
 
 
-fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scope, $http, notify) {
+fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'getUsersFriends', 'notify', function ($scope, $http, getUsersFriends, notify) {
        
         
         $scope.change = function () {
@@ -141,17 +141,38 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'notify', function ($scop
                 $scope.entries = result.data;
             });
         };
+
+        $scope.isUser = function(data){
+            return (data.ID != $scope.data.admin.ADMIN);
+        };
+
+        $scope.addFriend = function (data) {
+            var addFriends = $http.get('addFriends?userId=' + data);
+            addFriends.then(function (response) {
+                console.dir(response);
+                getUsersFriends.getFriends().then(function(data){
+                    console.dir(data);
+                });
+        });
+
+        }
     }]);
 
 
 fetch.controller('showFriendsCtrl', ['$scope', '$http', 'getUsersFriends', 'notify', function ($scope, $http, getUsersFriends, notify) {
 
     $scope.friends = {};
-    var friends = $http.get('getFriends');
 
-    friends.then(function (response) {
-        $scope.friends = response.data;
+    getUsersFriends.getFriends().then(function(data){
+        $scope.friends = data;
     });
+
+    $scope.$watch(function(){
+        return getUsersFriends.returnFriends();
+    }, function(newValue, oldValue){
+        $scope.friends = getUsersFriends.returnFriends();
+    });
+
 
     $scope.removeFriend = function(data) {
         if (confirm("Are you sure?")) {
@@ -167,14 +188,22 @@ fetch.controller('showFriendsCtrl', ['$scope', '$http', 'getUsersFriends', 'noti
 }]);
 
 fetch.factory('getUsersFriends', ['$http', function($http) {
+
+    var friends = {};
+
     return{
-    getFriends: function(){
-        return $http.get('getFriends').then(function(response) {
+        getFriends: function(){
+            return $http.get('getFriends').then(function(response) {
                 var result = response.data;
+                friends = result;
                 return result;
-        }); 
-    }
-};
+            }); 
+        },
+
+        returnFriends: function(){
+            return friends;
+        }
+    };
 }]);
 
 

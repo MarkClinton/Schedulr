@@ -8,6 +8,7 @@ $route['users/login'] = 'users/login';
 $route['users/register'] = 'users/register';
 $route['users/getProfile'] = 'users/getProfile';
 $route['users/getFriends'] = 'users/getFriends';
+$route['users/addFriends'] = 'users/addFriends';
 $route['users/deleteFriend'] = 'users/deleteFriend';
 $route['users/updateProfile'] = 'users/updateProfile';
 $route['users/searchPeople'] = 'users/searchPeople';
