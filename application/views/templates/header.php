@@ -64,7 +64,7 @@
       <span class="navbar-toggler-bar"></span>
       <span class="navbar-toggler-bar"></span>
     </button>
-    <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr.</a>
+    <a class="navbar-brand" href="<?php echo base_url(); ?>users/index">Schedulr</a>
 
     <div class="collapse navbar-collapse" id="navbar-success">
       <!--<ul class="nav navbar-nav navbar-left">

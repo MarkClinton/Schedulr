@@ -7,7 +7,7 @@
             <div class="nav-tabs-wrapper">
                 <ul id="tabs" class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link active" data-toggle="tab" href="#upcoming" role="tab">Upcoming</a>
+                        <a class="nav-link active" data-toggle="tab" href="#upcoming" role="tab">All</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="tab" href="#all" role="tab">My Tasks</a>

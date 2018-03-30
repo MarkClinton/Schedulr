@@ -342,7 +342,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   box-sizing: border-box;
   border-width: 2px;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 600;
   /*padding: 0.5rem 18px;*/
   line-height: 1.75;
   cursor: pointer;
@@ -1941,7 +1941,8 @@ textarea.form-control {
 .navbar .navbar-brand {
   margin: 5px 0px;
   padding: 20px 15px;
-  font-size: 14px;
+  font-size: 12px;
+  font-weight: 600;
   color: #FFFFFF;
   /*text-transform: uppercase;*/
 }
