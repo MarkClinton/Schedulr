@@ -10,10 +10,10 @@
                         <a class="nav-link active" data-toggle="tab" href="#upcoming" role="tab">Upcoming</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#all" role="tab">All</a>
+                        <a class="nav-link" data-toggle="tab" href="#all" role="tab">My Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" data-toggle="tab" href="#group" role="tab">Groups</a>
+                        <a class="nav-link" data-toggle="tab" href="#group" role="tab">Group Tasks</a>
                     </li>
                 </ul>
             </div>

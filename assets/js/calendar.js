@@ -10,7 +10,7 @@ $(document).ready(function() {
 	eventSources: [{
 		events: function(start, end, timezone, callback) {
         $.ajax({
-            url: 'displayTasks',
+            url: 'displayUpcomingTasks',
             type: 'POST',
             dataType: 'json',
             data: {

@@ -120,13 +120,17 @@ class User_model extends CI_Model{
     
     public function getUpcomingTasks($user_id) {
         
-        $sql = " TASKS WHERE user_id = '" . $user_id . "'";
-        $limit=5;
+        $sql = "TASKS 
+                WHERE user_id = '" . $user_id . "' 
+                OR task_id IN (
+                    select task_id from SHARE 
+                    where user_id = '" . $user_id ."')";
+        //$limit=5;
         $start_row=0;
 
         $this->db->order_by("task_date", "ASC");
         $this->db->order_by("start_time", "ASC");
-        $query = $this->db->get($sql, $start_row, $limit);
+        $query = $this->db->get($sql, $start_row);
         return $query->result_array();  
     } 
     

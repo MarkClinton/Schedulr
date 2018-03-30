@@ -212,7 +212,7 @@ fetch.factory('remove', function($http) {
     var deleteData = {};
 
     return{
-        deleteData: function(data){
+         deleteData: function(data){
             deleteData = data;
             return $http.get('tasks/delete?id=' + data.TASK_ID)
             .then(function (response){
@@ -225,16 +225,21 @@ fetch.factory('remove', function($http) {
             return deleteData;
         },
 
-        removeFromList: function(list){
-            for(var i = 0; i < list.length; i++) {
-                var obj = list[i];
+        removeFromList: function(list, route){
+            if(list != undefined){
+                for(var i = 0; i < list.length; i++) {
+                    var obj = list[i];
+                    
+                    var toDelete = deleteData.TASK_ID;
 
-                if(deleteData.TASK_ID.indexOf(obj.TASK_ID) !== -1) {
-                    list.splice(i, 1);
-                    i--;
-                    return list;
-                }
+                    if(obj.TASK_ID == toDelete) {
+                        list.splice(i, 1);
+                        i--;
+                        return list;
+                    }
+                } 
             }
+            return null;  
         }
     };
 
@@ -262,7 +267,10 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
         $scope.$watch(function () {
             return remove.returnDeleted();
         }, function (val) {
-            $scope.userTasks = remove.removeFromList($scope.userTasks);   
+            var newList = remove.removeFromList($scope.userTasks, route);   
+            if (newList != null){
+                $scope.userTasks = newList
+            }
         });
         
         
@@ -270,15 +278,15 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
             window.location.href = "tasks/task?id=" + data.TASK_ID;
         };
         
-        $scope.delete = function(data) {
+        /*$scope.delete = function(data) {
             remove.remove(data);
-        }
+        }*/
 
         $scope.delete = function(data) {
-
+            //var deleted = remove.returnDeleted();
             var removeData = remove.deleteData(data);
-            var deleted = remove.returnDeleted();
-            console.log(removeData);
+            
+            //console.log(removeData);
             
         }; 
         
@@ -294,7 +302,10 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'r
         $scope.$watch(function () {
             return remove.returnDeleted();
         }, function (val) {
-            $scope.groupTasks = remove.removeFromList($scope.groupTasks);
+            var newList = remove.removeFromList($scope.groupTasks, route);   
+            if (newList != null){
+                $scope.userTasks = newList
+            }
         });
 
         $scope.showGroupTask = function(data){
@@ -302,35 +313,39 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'r
         }; 
         
         $scope.delete = function(data, index) {
+            //var deleted = remove.returnDeleted();
+            var removeData = remove.deleteData(data);
             
-           var removeData = remove.deleteData(data);
-            var deleted = remove.returnDeleted();
-            console.log(removeData);
+            //console.log(removeData);
             
         };
 }]);
 
 fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', 'getData', 'remove', function ($scope, $http, $rootScope, notify, getData, remove) {
         
-        $scope.$watch(function () {
-            return remove.returnDeleted();
-        }, function (val) {
-            $scope.allTasks = remove.removeFromList($scope.allTasks);
-        });
-
         var route = 'displayTasks';
         getData.getTasks(route).then(function(data){
             $scope.allTasks = data;
         });
-        
+
+        $scope.$watch(function () {
+            return remove.returnDeleted();
+        }, function (val) {
+            var newList = remove.removeFromList($scope.allTasks, route);   
+            if (newList != null){
+                $scope.userTasks = newList
+            }
+        });
+
         $scope.showTask = function(data){
             window.location.href = "tasks/task?id=" + data.TASK_ID;
         };
         
         $scope.delete = function(data) {
+            //var deleted = remove.returnDeleted();
             var removeData = remove.deleteData(data);
-            var deleted = remove.returnDeleted();
-            console.log(removeData);
+            
+            //console.log(removeData);
             
         };
         

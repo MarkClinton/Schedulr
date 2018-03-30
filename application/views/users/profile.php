@@ -54,10 +54,10 @@
 
             <div class="tab-content">
 
-                <div class="tab-pane active" id="tasks" role="tabpanel" ng-controller="displayAllCtrl">
+                <div class="tab-pane active" id="tasks" role="tabpanel">
 
-                    <div id="center_div" ng-controller="displayAllCtrl" ng-cloak>
-                        <div ng-repeat="tasks in allTasks" >
+                    <div id="center_div" ng-controller="displayUserCtrl" ng-cloak>
+                        <div ng-repeat="tasks in userTasks" >
 
                             <div class= "card">
                                 <div class="taskHead card_task">
