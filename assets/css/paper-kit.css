@@ -475,8 +475,9 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   color: #6bd098;
 }
 .btn-success.btn-link:hover, .btn-success.btn-link:focus, .btn-success.btn-link:active, .btn-success.btn-link.active, .open > .btn-success.btn-link.dropdown-toggle {
-  background-color: transparent;
-  color: #44c47d;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #6bd098 !important;
 }
 .btn-success.btn-link .caret {
   border-top-color: #6bd098;
@@ -504,8 +505,9 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   color: #51bcda;
 }
 .btn-info.btn-link:hover, .btn-info.btn-link:focus, .btn-info.btn-link:active, .btn-info.btn-link.active, .open > .btn-info.btn-link.dropdown-toggle {
-  background-color: transparent;
-  color: #2ba9cd;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #2ba9cd !important;
 }
 .btn-info.btn-link .caret {
   border-top-color: #51bcda;
@@ -562,8 +564,9 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   color: #f5593d;
 }
 .btn-danger.btn-link:hover, .btn-danger.btn-link:focus, .btn-danger.btn-link:active, .btn-danger.btn-link.active, .open > .btn-danger.btn-link.dropdown-toggle {
-  background-color: transparent;
-  color: #f33816;
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #f33816 !important;
 }
 .btn-danger.btn-link .caret {
   border-top-color: #f5593d;

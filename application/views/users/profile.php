@@ -8,7 +8,7 @@
             </div>
 
             <div class="profile_actions">
-                <center><a class="btn btn-success btn-link btn-sm" id="ppButton" onClick="pictureUpload()">
+                <center><a class="btn btn-link btn-success" id="ppButton" onClick="pictureUpload()">
                     <i class="fa fa-plus"></i>
                 </a></center>
                 <div class="sideNav pictureUpload" id="pictureUpload" ng-submit="uploadImage()">
