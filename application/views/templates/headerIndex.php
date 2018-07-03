@@ -3,26 +3,90 @@
     <title>Schedulr</title>
     <meta name="viewport" content="width=device-width">
 
+    <!--<script src="<?php echo base_url()?>/assets/js/angular.js"></script>
     <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="<?php echo base_url()?>/assets/js/validation.js" /></script>
-    <script src="<?php echo base_url()?>/assets/js/angular-notify.js"></script>
-    <script src="<?php echo base_url()?>/assets/js/main.js" /></script>
-    <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>
 
+    <!--
+      Loading JQuery twice is NOT the way to do it. This needs to be reviewed. 
+      Conflicting JS Files.
+    -->
+    <!--<script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/mobile.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/paper-kit.css">
+
+
+    <script src="<?php echo base_url()?>/assets/js/popper.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/validation.js" /></script>
+    <script src="<?php echo base_url()?>/assets/js/angular-notify.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/main.js" /></script>
+    <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>-->
+
+    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>
+
+    <!--
+      Loading JQuery twice is NOT the way to do it. This needs to be reviewed. 
+      Conflicting JS Files.
+    -->
+    <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-resource.min.js"></script>
+    
+
+  
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/angular-datepicker.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/wickedpicker.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/angular-notify.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/font-awesome.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.theme.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/jquery/jquery-ui.structure.css">
+  <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/fullcalendar.css' />
+  <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/qtip.css' />
+
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/mobile.css">
+  <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/paper-kit.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+  
+
+
+  <script src="<?php echo base_url()?>/assets/js/jquery-ui.min.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/timepickerdirective.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/wickedpicker.min.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/angular-notify.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/validation.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/display.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/task.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/profile.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/angular-datepicker.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/popper.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/moment.min.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/fullcalendar.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/main.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/qtip.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/calendar.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
+
+    
+
+
     
 
     
   </head>
 
   <body>
-    <div class="home">
+    <div class="home" id="home">
       <!--<nav class="navbar navbar-expand-md bg-transparent">-->
       <nav class="navbar navbar-expand-md">
         <div class="container">
@@ -32,18 +96,5 @@
             <span class="navbar-toggler-bar"></span>
           </button>
           <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
-          <div class="collapse navbar-collapse" id="navbar-success">
-            <ul class="nav navbar-nav ml-auto">
-              <li class="nav-item">
-                <!--<a class="btn btn-outline-info btn-round" href="<?php echo base_url(); ?>login">Sign In</a>-->
-
-                <a class="btn btn-outline-info btn-round" onclick="openLogin()">Sign In</a>
-              </li>
-              <li class="nav-item">
-                <a class="btn btn-round btn-info" onclick="openReg()">Sign Up</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+  
 

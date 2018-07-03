@@ -20,15 +20,17 @@ $(document).ready(function() {
             },
             success: function(response) {
                 var events = [];
-                for (var i in response){
-                	var dateTimeStart = response[i].TASK_DATE + " " + response[i].START_TIME;
-                	var dateTimeEnd = response[i].TASK_DATE + " " + response[i].END_TIME;
+
+                for (var i in response.tasks){
+                	var dateTimeStart = response.tasks[i].task_date + " " + response.tasks[i].start_time;
+                	var dateTimeEnd = response.tasks[i].task_date + " " + response.tasks[i].end_time;
                 	events.push({
-                		id:    response[i].TASK_ID,
-  						title: response[i].TASK_NAME,
+                		id:    response.tasks[i].id,
+  						title: response.tasks[i].name,
                         start: dateTimeStart,
                         end:   dateTimeEnd,
-                        description: response[i].TASK_INFO
+                        description: response.tasks[i].info,
+                        type: response.tasks[i].type
   					});
                 }
                 callback(events);
@@ -37,13 +39,23 @@ $(document).ready(function() {
     }
 	}],
     eventRender: function(event, element) {
+
+        console.dir(event.id);
     	var start = convertTimestamp(event.start);
     	var end   = convertTimestamp(event.end);
 
-        var contentInfo = '<h3>'+ event.title +'</h3>' + 
-				'<p><b>Start: </b> '+ start +'<br />' + 
-				'<b>End: </b> ' + end + '<br />' +
-				event.description + '</p><br />';
+        if(event.type == 1){
+                element.css('background-color', '#D48D95');
+            }else if(event.type == 2){
+                element.css('background-color', '#56BCD8');
+            }else if(event.type == 3){
+                element.css('background-color', '#68D5BD');
+            }else{
+                element.css('background-color', '#FBD76C');
+            }
+
+        var contentInfo = '<h4>'+ event.title +'</h4>' + 
+				'<p>'+ event.description + '</p><br />';
         element.qtip({
         	position: {
 				my: 'bottom center',
@@ -59,6 +71,9 @@ $(document).ready(function() {
         	style: 'qtip-blue',
             content: contentInfo
         });
+    },
+    eventClick: function(event){
+        window.location.href = "tasks/task?id=" + event.id;
     }
 
     })

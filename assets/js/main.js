@@ -29,18 +29,53 @@ $(document).ready(function () {
     
 });
 
+window.onload = function(){ 
+    document.getElementById('overlay-back').onclick = function(){
+        var reg = $('#reg').height(); 
+        var login = $('#login').height(); 
+        var mappop = $('#locationAdd').height(); 
+        var addUser = $('#addUser').height();
+        var addFriend = $('#addFriend').height();
+        var note = $('#note').height();
+        var file = $('#fileUp').height();
+        var pword = $('#update_password').height();
+
+        if(reg == 360){
+            closeReg();
+        }else if(mappop == 400){
+            closeLocation();
+        }else if(login == 250){
+            closeLogin();
+        }else if(addUser == 550){
+            closeAddUser();
+        }else if(addFriend == 500){
+            closeNav();
+        }else if(note == 250){
+            closeNote();
+        }else if(file == 150){
+            closeFile();
+        }else if(pword == 280){
+            closeUpdatePassword();
+        }
+    }
+};
+
 function openNav() {
-    document.getElementById("addSidenav").style.height = "500px";
+    document.getElementById("addFriend").style.height = "500px";
     $('#overlay-back').fadeIn(500); 
 }
 
 function closeNav() {
-    document.getElementById("addSidenav").style.height = "0px";
+    document.getElementById("addFriend").style.height = "0px";
     $('#overlay-back').fadeOut(500); 
+    setTimeout(function(){
+        document.getElementById("searchInput").value = "";
+    }, 600);
+
 }
 
 function openLogin() {
-    document.getElementById("login").style.height = "300px";
+    document.getElementById("login").style.height = "250px";
     $('#overlay-back').fadeIn(700); 
 }
 
@@ -50,12 +85,71 @@ function closeLogin() {
 }
 
 function openReg() {
-    document.getElementById("reg").style.height = "409px";
+    document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+    document.getElementById("reg").style.height = "360px";
     $('#overlay-back').fadeIn(700); 
 }
 
 function closeReg() {
     document.getElementById("reg").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+ 
+function showAddUser() {
+    document.getElementById("addUser").style.height = "550px";
+    $('#overlay-back').fadeIn(500); 
+}
+
+function closeAddUser() {
+    document.getElementById("addUser").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+
+function showNote() {
+    document.getElementById("note").style.height = "250px";
+    $('#overlay-back').fadeIn(500); 
+}
+
+function closeNote() {
+    document.getElementById("note").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+    setTimeout(function(){
+        document.getElementById("noteTextArea").value = "";
+    }, 600);
+}
+
+function showLocation() {
+    initMap();
+    document.getElementById("locationAdd").style.height = "400px";
+    $('#overlay-back').fadeIn(500); 
+
+}
+
+function closeLocation() {
+    document.getElementById("locationAdd").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+}
+
+function showFile() {
+    document.getElementById("fileUp").style.height = "150px";
+    $('#overlay-back').fadeIn(500); 
+}
+
+function closeFile() {
+    document.getElementById("fileUp").style.height = "0px";
+    $('#overlay-back').fadeOut(500); 
+    setTimeout(function(){
+        $('#upload-file-task').html("");
+    }, 600);
+}
+
+function showUpdatePassword() {
+    document.getElementById("update_password").style.height = "280px";
+    $('#overlay-back').fadeIn(500); 
+}
+
+function closeUpdatePassword() {
+    document.getElementById("update_password").style.height = "0px";
     $('#overlay-back').fadeOut(500); 
 }
 
@@ -75,18 +169,10 @@ function pictureUpload() {
         $('#ppButton').removeClass('btn-danger');
         $('#ppButton').addClass('btn-success');
         button.html("<i class='fa fa-plus'></i>");
-        document.getElementById('imageField').value = "";
+        setTimeout(function(){
+            $('#upload-file-info').html("");
+        }, 600);
     }
-}
- 
-function showAddUser() {
-    document.getElementById("addSidenav").style.height = "309px";
-    $('#overlay-back').fadeIn(500); 
-}
-
-function closeAddUser() {
-    document.getElementById("addSidenav").style.height = "0px";
-    $('#overlay-back').fadeOut(500); 
 }
 
 

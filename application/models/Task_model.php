@@ -2,6 +2,9 @@
 
 class Task_model extends CI_Model {
     
+    protected $delete = 1;
+    protected $not_deleted = 0;
+
     public function __construct() {
         parent::__construct();
     }
@@ -15,17 +18,15 @@ class Task_model extends CI_Model {
         $result[] = $task_details;
         $result[] = $shared_users;
 
-        //return $query->result_array();   
         return $result;
     }
 
     public function get_task_details($task_id){
 
-        $sql = "SELECT t.*, u.id as ADMIN, u.first_name, ui.url
-                FROM TASKS t
-                INNER JOIN USER u on u.id = t.user_id
-                INNER JOIN USER_IMAGE ui on ui.user_id = u.id
-                WHERE t.task_id = '" . $task_id . "'";
+        $sql = "SELECT t.*, u.id as ADMIN, u.first_name, u.img_url
+                FROM tasks t
+                INNER JOIN users u on u.id = t.user_id
+                WHERE t.id = '" . $task_id . "'";
 
         $query = $this->db->query($sql);
         return $query->result_array();
@@ -33,11 +34,10 @@ class Task_model extends CI_Model {
 
     public function get_shared_users($task_id){
 
-        $sql = "SELECT u.*, ui.url  
-                FROM USER u 
-                INNER JOIN SHARE s on s.user_id = u.id
-                INNER JOIN USER_IMAGE ui on ui.user_id = u.id
-                WHERE s.task_id = '" . $task_id . "'";
+        $sql = "SELECT u.*
+                FROM users u 
+                INNER JOIN group_tasks g on g.shared_with = u.id
+                WHERE g.task_id = '" . $task_id . "'";
 
         $query = $this->db->query($sql);
         return $query->result_array();
@@ -46,8 +46,9 @@ class Task_model extends CI_Model {
     public function deletetask($task_id) {
         
         try{
-            $this->db->where('TASK_ID', $task_id);
-            $query = $this->db->delete('TASKS');
+            $this->db->set('is_deleted', $this->delete);
+            $this->db->where('id', $task_id);
+            $this->db->update('tasks');
             return 200;
         } catch(Exception $e) {
             return 400;
@@ -55,16 +56,21 @@ class Task_model extends CI_Model {
     }
     
     public function createNewTask($task){
+
+        $data = array();
         
         try{
-            $this->db->insert('TASKS', $task); 
-            return 200;
+            $this->db->insert('tasks', $task);
+            $data['task_id'] = $this->db->insert_id();
+            $data['code'] = 200;
+            return $data;
         } catch(Exception $e){
             return 400;
         }  
     }
     
     public function updateTask($task, $task_id){
+
         try{
             $this->db->where('TASK_ID', $task_id);
             $this->db->update('TASKS', $task);
@@ -75,11 +81,75 @@ class Task_model extends CI_Model {
     }
 
     public function updateTaskShare($data_one) {
+        
         try{
-            $this->db->insert('SHARE', $data_one);
+            $this->db->insert('group_tasks', $data_one);
             return 200;
         } catch(Exception $e){
             return 400;
         } 
     }
+
+    public function taskMedia($task_id){
+        try{
+            $sql = "
+                SELECT t.*, l.lat, l.lng, l.name, u.first_name, u.last_name, u.img_url from task_media t
+                INNER JOIN users u on t.user_id = u.id
+                LEFT JOIN location l on t.location_id = l.id
+                WHERE task_id = '$task_id'
+                AND is_deleted = '" .$this->not_deleted . "'
+
+            ";
+
+            $query = $this->db->query($sql); 
+            return $query->result_array();
+        }catch(Exception $e){
+            return 400;
+        } 
+
+    }
+
+    public function deleteTaskMedia($media_id){
+
+        try{
+            $this->db->set('is_deleted', $this->delete);
+            $this->db->where('id', $media_id);
+            $this->db->update('task_media');
+            return 200;
+        }catch(Exception $e){
+            return 400;
+        } 
+    }
+
+
+    public function addFile($fileToUpload){
+
+        try{
+            $this->db->insert('task_media', $fileToUpload);
+            return 200;
+        } catch(Exception $e){
+            return 400;
+        } 
+    }
+
+
+    public function addLocation($location){
+
+        $data = array();
+        
+        try{
+            $this->db->insert('location', $location);
+            $data['location_id'] = $this->db->insert_id();
+            $data['code'] = 200;
+            return $data;
+        } catch(Exception $e){
+            return 400;
+        }  
+    }
+
+
+    public function fileUploadPath(){
+
+    }
+
 }

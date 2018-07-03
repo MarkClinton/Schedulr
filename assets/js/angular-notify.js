@@ -172,12 +172,13 @@ angular.module('cgNotify').run(['$templateCache', function($templateCache) {
     "    <div ng-show=\"$messageTemplate\" class=\"cg-notify-message-template\">\n" +
     "        \n" +
     "    </div>\n" +
+    /*
     "\n" +
     "    <button type=\"button\" class=\"cg-notify-close\" ng-click=\"$close()\">\n" +
     "        <span aria-hidden=\"true\">&times;</span>\n" +
     "        <span class=\"cg-notify-sr-only\">Close</span>\n" +
     "    </button>\n" +
-    "\n" +
+    "\n" +*/
     "</div>"
   );
 
