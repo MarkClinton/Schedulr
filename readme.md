@@ -1,7 +1,8 @@
 
 # Schedulr - Organizational application for personal use.
 
-## Working on deploying Schedulr to a production server for use
+## Currently working on deploying Schedulr to a production server.
+## See below for screenshots of the app on a local server
 
 ## About:
 •	Schedulr is an organizational web app where users can create tasks. Tasks are conveniently displayed on the user’s home screen alongside a calendar to show, at a glance, what needs to be done. 
@@ -21,7 +22,6 @@
 
 
 ## Screenshots: V1.1
-•	A few screenshots to show the app on a localhost server 
 
 <img width="1280" alt="landing_page" src="https://user-images.githubusercontent.com/6231909/42228824-eb1dee88-7eb2-11e8-95cd-391872db1404.png">
 
