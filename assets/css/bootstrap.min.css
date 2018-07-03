@@ -301,7 +301,6 @@ th {
 
 label {
   display: inline-block;
-  margin-bottom: .5rem;
 }
 
 button {
@@ -661,6 +660,21 @@ pre code {
     max-width: 1140px;
   }
 }
+@media (min-width: 1400px) {
+  .container {
+    max-width: 1370px;
+  }
+}
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1570px;
+  }
+}
+/*@media (min-width: 1900px) {
+  .container {
+    max-width: 1870px;
+  }
+}*/
 
 .container-fluid {
   width: 100%;
@@ -1897,7 +1911,7 @@ pre code {
 }
 
 select.form-control:not([size]):not([multiple]) {
-  height: calc(2.25rem + 2px);
+  height: 33px;
 }
 
 select.form-control:focus::-ms-value {
@@ -2884,7 +2898,7 @@ tbody.collapse.show {
 .dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  left: -105;
   z-index: 1000;
   display: none;
   float: left;
@@ -2899,6 +2913,10 @@ tbody.collapse.show {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+}
+
+.file {
+  left: 605;
 }
 
 .dropup .dropdown-menu {

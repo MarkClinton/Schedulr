@@ -1,24 +1,33 @@
-var fetch = angular.module('fetch', ['cgNotify']);
+
+/*
+ * There should only be one controller for this class with different scopes depending on data
+ * e.g. scope for upcoming, scope for all etc. 
+ *
+ * Make it easier to control all data being passed to the view
+ */
+
+
+var fetch = angular.module('fetch', ['cgNotify', 'fileService']);
 
 fetch.controller('profileCtrl', ['$scope', '$http', 'notify', 'getProfileImagePath', 'uploadFileData', function ($scope, $http, notify, getProfileImagePath, uploadFileData) {
 
         var users = $http.get('getProfile');
         users.then(function (response) {
-            var request = response.data; 
+            var request = response.data.profile; 
+            var request_details = response.data.profile_details;
             
 
-            $scope.img = request[0].URL;
-            $scope.profile = request;
+            $scope.img = request[0].img_url;
+            $scope.profile = request[0];
+            $scope.details = request_details[0];
         });
 
         $scope.uploadImage = function () {
             var file = $scope.imageFile;
-            console.dir(file);
             var uploadUrl = 'imageUpload';
             var name = $scope.imageFile.name;
 
             uploadFileData.fileToUrl(file, uploadUrl, name);
-            var pp = getProfileImagePath.imageUrl();
             
             getProfileImagePath.imageUrl().then(function(data){
                 $scope.img = data;
@@ -31,15 +40,22 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
         
         $scope.data = {};
         var users = $http.get('getProfile');
-
-        
         users.then(function (response) {
-            var request = response.data; 
-            $scope.data.first_name = request[0].FIRST_NAME;
-            $scope.data.last_name = request[0].LAST_NAME;
-            $scope.data.email = request[0].EMAIL;
-            $scope.data.password = request[0].PASSWORD;
+            var request = response.data.profile; 
+            $scope.data.first_name = request[0].first_name;
+            $scope.data.last_name = request[0].last_name;
+            $scope.data.email = request[0].email;
+            $scope.data.password = request[0].password;
         });
+
+        $scope.timeline = {};
+        var timeline = $http.get('getTimeline');
+        timeline.then(function (response) {
+            var request = response.data; 
+            $scope.timeline = request;
+            console.dir($scope.timeline);
+        });
+
         
         $scope.save = function () {
             $http(({
@@ -58,6 +74,24 @@ fetch.controller('updateProfileCtrl', ['$scope', '$http', 'notify', function ($s
                 } 
             });
         }
+
+        $scope.updatePword = function() {
+            $http(({
+                method: 'POST',
+                url: 'updatePassword',
+                data: $scope.update, //forms user object
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })).then(function (response) {
+                
+                var status = response.data;
+                if(status.code == 200){
+                    notify({ message:status.response} );
+                    window.setTimeout(function(){window.location.href = "profile"},1000); 
+                } else {
+                    notify({ message:status.response} );
+                } 
+            });
+        }
         
         
 }]);
@@ -66,64 +100,15 @@ fetch.factory('getProfileImagePath', ['$http', function($http) {
     return{
     imageUrl: function(){
         //profileImage
-        return $http.get('getProfile').then(function(response) {
+        return $http.get('profileImage').then(function(response) {
                 var result = response.data;
-                var img_pth = result[0].URL;
+                var img_pth = result[0].img_url;
                 return img_pth;
         }); 
     }
 };
 }]);
 
-//ng-model does not provide 2 way binding for file fields. This directive provides the missing binding 
-//needed to access file contents.
-fetch.directive('fileModel', function ($parse) {
-        return {
-            restrict: 'A', //the directive can be used as an attribute only
- 
-            /*
-             link is a function that defines functionality of directive
-             scope: scope associated with the element
-             element: element on which this directive used
-             attrs: key value pair of element attributes
-             */
-            link: function (scope, element, attrs) {
-                var model = $parse(attrs.fileModel),
-                    modelSetter = model.assign; //define a setter for demoFileModel
- 
-                //Bind change event on the element
-                element.bind('change', function () {
-                    //Call apply on scope, it checks for value changes and reflect them on UI
-                    scope.$apply(function () {
-                        //set the model value
-                        modelSetter(scope, element[0].files[0]);
-                    });
-                });
-            }
-        };
-    });
-
-// Reusable file upload service
-fetch.service('uploadFileData', ['$http', function($http) {
-
-    this.fileToUrl = function(file, url, fileName){
-
-        var fd = new FormData();
-        fd.append('file', file);
-        fd.append('name', fileName);
-
-        $http(({
-            method: 'POST',
-            url: url,
-                data: fd, //forms user object
-                headers: {'Content-Type': undefined,'Process-Data': false}
-            })).then(function (result) {
-            //location.reload();
-            console.dir(result);
-            console.log('Image upload');
-        });
-        }
-}]);
 
 
 fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'getUsersFriends', 'notify', function ($scope, $http, getUsersFriends, notify) {
@@ -143,15 +128,32 @@ fetch.controller('srchPeopleCtrl', ['$scope', '$http', 'getUsersFriends', 'notif
         };
 
         $scope.isUser = function(data){
-            return (data.ID != $scope.data.admin.ADMIN);
+            return (data.id != $scope.data.admin.ADMIN);
         };
+
+        $scope.remove = function(){
+            $scope.entries = null;
+        }
+
+        /*$scope.friendStatus = function(data){
+            console.dir(data);
+            if(data == 1){
+                return 'fa fa-check';
+            }
+            else if(data == 2){
+                return 'fa fa-hourglass-half';
+            }
+            else if(data == 4){
+                return 'fa fa-plus';
+            }
+        }*/
 
         $scope.addFriend = function (data) {
             var addFriends = $http.get('addFriends?userId=' + data);
             addFriends.then(function (response) {
                 console.dir(response);
                 getUsersFriends.getFriends().then(function(data){
-                    console.dir(data);
+                    $scope.change();
                 });
         });
 
@@ -214,7 +216,7 @@ fetch.factory('remove', function($http) {
     return{
          deleteData: function(data){
             deleteData = data;
-            return $http.get('tasks/delete?id=' + data.TASK_ID)
+            return $http.get('tasks/deleteTask?id=' + data.id)
             .then(function (response){
                 $('#calendar').fullCalendar( 'refetchEvents' );
                 return response.data;
@@ -230,9 +232,9 @@ fetch.factory('remove', function($http) {
                 for(var i = 0; i < list.length; i++) {
                     var obj = list[i];
                     
-                    var toDelete = deleteData.TASK_ID;
+                    var toDelete = deleteData.id;
 
-                    if(obj.TASK_ID == toDelete) {
+                    if(obj.id == toDelete) {
                         list.splice(i, 1);
                         i--;
                         return list;
@@ -256,13 +258,95 @@ fetch.factory('getData', function($http){
     return this;
 });
 
+fetch.factory('color', function () {
+    
+    var color = '';
 
-fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 'getData', 'remove', function ($scope, $http, $rootScope, notify, getData, remove) {
+    return {
+        getColor: function(type) {
+            if(type == 1){
+                color = 'task-meeting';
+            }else if(type == 2){
+                color = 'task-event';
+            }else if(type == 3){
+                color = 'task-personal';
+            }else{
+                color = 'task-work';
+            }
+            return color;
+        }
+    };
+
+});
+
+fetch.factory('date', function () {
+
+    return{
+        todaysDate: function(){
+            var today = new Date();
+
+            var dd = today.getDate();
+            var mm = today.getMonth()+1; 
+            var yyyy = today.getFullYear();
+
+            if(dd<10){
+                dd='0'+dd;
+            } 
+
+            if(mm<10){
+                mm='0'+mm;
+            }
+
+            var date = yyyy + '-' + mm + '-' + dd;
+            return date;
+        },
+
+        dateGreater: function(task, date){
+            if(task.task_date >= date){
+                return true;
+            }else{
+                return false;
+            }
+        },
+
+        dateLess: function(task, date){
+            if(task.task_date < date){
+                return true;
+            }else{
+                return false;
+            }
+        }
+    };
+
+
+});
+
+fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 'getData', 'remove', 'color', 'date', function ($scope, $http, $rootScope, notify, getData, remove, color, date) {
+
+        $scope.today = date.todaysDate();
+
+        $scope.filterByDate = function(task){
+            return date.dateGreater(task, $scope.today);
+        }
+
+        $scope.filterByExpired = function(task){
+            return date.dateLess(task, $scope.today);
+        }
+
+        $scope.userTasks = {};
+        $scope.created_by = '';
 
         var route = 'displayUpcomingTasks';
         getData.getTasks(route).then(function(data){
-            $scope.userTasks = data;
+            console.dir(data);
+            $scope.userTasks = data.tasks;
+            $scope.created_by = data.user_id;
         });
+
+        $scope.taskColor = function(type){
+            var css = color.getColor(type);
+            return css;
+        };
 
         $scope.$watch(function () {
             return remove.returnDeleted();
@@ -272,31 +356,37 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
                 $scope.userTasks = newList
             }
         });
+
         
-        
-        $scope.showTask = function(data){
-            window.location.href = "tasks/task?id=" + data.TASK_ID;
+        $scope.isAdmin = function(data){
+            return (data == $scope.created_by);
         };
         
-        /*$scope.delete = function(data) {
-            remove.remove(data);
-        }*/
+        $scope.showTask = function(data){
+            window.location.href = "tasks/task?id=" + data.id;
+        };
+        
+        
 
         $scope.delete = function(data) {
-            //var deleted = remove.returnDeleted();
             var removeData = remove.deleteData(data);
-            
-            //console.log(removeData);
-            
         }; 
+    
         
 }]);
 
-fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'remove', function ($scope, $http, notify, getData, remove){
-        
+fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'remove', 'color', 'date', function ($scope, $http, notify, getData, remove, color, date){
+            
+        $scope.today = date.todaysDate();
+
+        $scope.filterByDate = function(task){
+            return date.dateGreater(task, $scope.today);
+        }
+
         var route = 'displayGroupTasks';
         getData.getTasks(route).then(function(data){
-            $scope.groupTasks = data;
+            $scope.groupTasks = data.tasks;
+
         });
 
         $scope.$watch(function () {
@@ -308,8 +398,13 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'r
             }
         });
 
-        $scope.showGroupTask = function(data){
-            window.location.href = "tasks/task?id=" + data.TASK_ID; 
+        $scope.taskColor = function(type){
+            var css = color.getColor(type);
+            return css;
+        };
+
+        $scope.showTask = function(data){
+            window.location.href = "tasks/task?id=" + data.id; 
         }; 
         
         $scope.delete = function(data, index) {
@@ -321,11 +416,21 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'r
         };
 }]);
 
-fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', 'getData', 'remove', function ($scope, $http, $rootScope, notify, getData, remove) {
+fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', 'getData', 'remove', 'color', 'date', function ($scope, $http, $rootScope, notify, getData, remove, color, date) {
         
+        $scope.today = date.todaysDate();
+
+        $scope.filterByDate = function(task){
+            return date.dateGreater(task, $scope.today);
+        }
+
+        $scope.allTasks = {};
+        $scope.created_by = '';
+
         var route = 'displayTasks';
         getData.getTasks(route).then(function(data){
-            $scope.allTasks = data;
+            $scope.allTasks = data.tasks;
+            $scope.created_by = data.user_id;
         });
 
         $scope.$watch(function () {
@@ -337,8 +442,17 @@ fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', '
             }
         });
 
+        $scope.taskColor = function(type){
+            var css = color.getColor(type);
+            return css;
+        };
+
+        $scope.isAdmin = function(data){
+            return (data == $scope.created_by);
+        };
+
         $scope.showTask = function(data){
-            window.location.href = "tasks/task?id=" + data.TASK_ID;
+            window.location.href = "tasks/task?id=" + data.id;
         };
         
         $scope.delete = function(data) {

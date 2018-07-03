@@ -2,13 +2,14 @@
     position:fixed;
     top:0px;
     z-index: 9999;
-    max-width:400px;
+    width: 400px;
+    max-width:600px;
     text-align: center;
     
     background-color: #87D37C;
-    color: white;
+    color: white !important;
     padding: 15px;
-    border: 1px solid #87D37C;
+    /*border: 1px solid #87D37C;*/
     border-radius: 4px;
 
     -webkit-transition: top 0.5s ease-out,opacity 0.2s ease-out;
