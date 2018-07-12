@@ -31,6 +31,7 @@
 
     <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
     <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url()?>/assets/images/favicon-96x96.png">
 
     <!--
       Loading JQuery twice is NOT the way to do it. This needs to be reviewed. 

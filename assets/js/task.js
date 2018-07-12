@@ -32,6 +32,10 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
         var tasks = $http.get("viewTask?id=" + id);
             
         tasks.then(function (response) {
+            if(response.data == 400){
+                
+                window.setTimeout(function(){window.location.href = "../index"},1); 
+            }else{
             var task = response.data.task;
             $scope.data.admin = task[0][0];
             $scope.data.share = task[1];
@@ -44,6 +48,7 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             getTaskMedia.getMedia($scope.task_id).then(function(data){
                 $scope.data.media = data;
             });
+            }
         });
 
         $scope.isImage = function(file_name){

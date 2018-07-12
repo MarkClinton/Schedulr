@@ -51,7 +51,7 @@
                 <div class="tab-pane" id="expired" role="tabpanel">
                     <div ng-controller="displayUserCtrl" ng-cloak>
 
-                        <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterByExpired)">
+                        <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterByExpired) | orderBy: tasks.task_date:true">
                             <div class= "tasks">
                                 <div class="taskHead">
                                     <div class="circle left" ng-class="taskColor(tasks.type)"></div>

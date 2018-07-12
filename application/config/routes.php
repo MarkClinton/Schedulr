@@ -35,6 +35,7 @@ $route['users/tasks/fileUpload'] = 'tasks/fileUpload';
 $route['users/updatePassword'] = 'users/updatePassword';
 $route['users/recoverPassword'] = 'users/recoverPassword';
 $route['users/validateRecoverPassword?(:any)'] = 'users/validateRecoverPassword';
+$route['users/tasks/unauthorized'] = 'tasks/unauthorized';
 
 
 

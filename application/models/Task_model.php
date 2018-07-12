@@ -21,6 +21,30 @@ class Task_model extends CI_Model {
         return $result;
     }
 
+    public function checkTaskPrivilege($task_id){
+        
+        $response = array();
+
+        $sql = "SELECT t.user_id, gt.shared_with FROM tasks t 
+                LEFT JOIN group_tasks gt ON t.id = gt.task_id
+                WHERE t.id = '" . $task_id . "'";
+
+        $query = $this->db->query($sql);
+
+        $data = $query->result_array();
+        array_push($response, $data[0]['user_id']);
+
+        foreach($data as $d){
+            foreach($d as $k => $v){
+                if($k == 'shared_with'){
+                    array_push($response, $v);
+                }
+            }
+        }
+        return $response;
+
+    }
+
     public function get_task_details($task_id){
 
         $sql = "SELECT t.*, u.id as ADMIN, u.first_name, u.img_url
