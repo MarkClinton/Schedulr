@@ -23,13 +23,18 @@ class Tasks extends CI_Controller {
     }
 
     public function task() {
+        $task_id = filter_input(INPUT_GET, 'id');
+        $id = $this->session->userdata('id');
+        $check = $this->Task_model->checkTaskPrivilege($task_id);
 
-        if($this->session->userdata('id')){
+        if(!in_array($id, $check)){
+            redirect('/users/tasks/unauthorized', 'refresh');
+        }else if(!$id){
+            redirect('index', 'refresh');
+        }else{
             $this->load->view('templates/header');
             $this->load->view('tasks/task');
             $this->load->view('templates/footer');
-        }else{
-            redirect('index', 'refresh');
         }
     }
 
@@ -42,6 +47,12 @@ class Tasks extends CI_Controller {
         }else{
             redirect('index', 'refresh');
         }
+    }
+
+    public function unauthorized(){
+        $this->load->view('templates/header');
+        $this->load->view('errors/html/unauthorized');
+        $this->load->view('templates/footer');
     }
 
     public function viewTask() {

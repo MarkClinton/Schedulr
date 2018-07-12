@@ -1,0 +1,5 @@
+import requests
+
+data = requests.get("curl -H 'X-Sifter-Token: f08cf302bbc458e7bb8496e3b3e2f94c' \
+       -H 'Accept: application/json' \
+       'https://krossover.sifterapp.com/api/projects/33963/issues'").json()

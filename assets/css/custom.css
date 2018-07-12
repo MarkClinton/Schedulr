@@ -11,6 +11,27 @@ body{
     
 }
 
+.error-bg{
+    width: 200px;
+    height: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.error-container{
+    width: 500px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.image-error{
+    width: 200px;
+    height: 164px;
+    opacity: .6;
+}
+
 .left {
     float:left;
     margin-right: 5px;
@@ -958,6 +979,8 @@ img.add{
     height: 170px;
     width: 100%
 }
+
+
 
 
 
