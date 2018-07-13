@@ -334,6 +334,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
         }
 
         $scope.userTasks = {};
+        $scope.profile_tasks = {};
         $scope.created_by = '';
 
         var route = 'displayUpcomingTasks';

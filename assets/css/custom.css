@@ -148,6 +148,12 @@ body{
     z-index: -1;
 }
 
+.tasks_buffer{
+    width: 100%;
+    height: 50px;
+    text-align: center;
+}
+
 .contain{
     width: 350px;
     height: auto;
@@ -383,6 +389,11 @@ img.add{
     padding-top: 15px;
 }
 
+.profile-tasks{
+    width: 100%;
+    display: inline-block;
+}
+
 #profile_background{
     width: 100%;
     /*min-width: 500px;*/
@@ -402,7 +413,7 @@ img.add{
 
 #profile_dash{
     width: 76%;
-    height: 500px;
+    height: 100%;
     display: inline-block;
     overflow: scroll;
 }
@@ -753,9 +764,14 @@ img.add{
 
 }
 
-#center_div{
+.center_div{
     width: 90%;
-    margin-left: 5%;
+    height: initial;
+    vertical-align: top;
+    margin-left: 4%;
+    margin-bottom: 5px;
+    display: inline-table;
+    vertical-align: top;
 }
 
 .card{

@@ -76,9 +76,37 @@
             <div class="tab-content">
 
                 <div class="tab-pane active" id="tasks" role="tabpanel">
+                    <div class="profile-tasks" ng-controller="displayUserCtrl">
+                    <div class="center_div"  ng-cloak>
+                        
+                            <div ng-repeat="tasks in filteredTasks = (userTasks| filter: filterByDate)">
 
-                    <div id="center_div" ng-controller="displayUserCtrl" ng-cloak>
-                        <div ng-repeat="tasks in userTasks" >
+                                <div class= "card ">
+                                    <div ng-class="taskColor(tasks.type)" class="taskHead">
+                                        <h5 class="white" ng-click="showTask(tasks)">{{tasks.name}} </h5>
+                                    </div>
+                                    <div class="taskDetails">
+                                        <p> </p>
+                                        <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}} </p>
+                                        <!--<p>{{tasks.start_time}}</p>-->
+                                        <p>{{tasks.info}} </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="no-tasks" ng-show="filteredTasks.length == 0">
+                                <p>No current tasks to display</p>
+                            </div>
+                        </div>
+
+                   
+
+                    <div class="tasks_buffer">
+                        <p>Expired Tasks</p>
+                    </div>
+                    
+                    <div class="center_div"  ng-cloak>
+                        <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterByExpired) | orderBy: tasks.task_date:true">
 
                             <div class= "card ">
                                 <div ng-class="taskColor(tasks.type)" class="taskHead">
@@ -87,12 +115,15 @@
                                 <div class="taskDetails">
                                     <p> </p>
                                     <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}} </p>
-                                    <!--<p>{{tasks.start_time}}</p>-->
                                     <p>{{tasks.info}} </p>
                                 </div>
                             </div>
 
                         </div>
+                        <div class="no-tasks" ng-show="filteredExpired.length == 0">
+                            <p>No expired tasks to display</p>
+                        </div>
+                    </div>
                     </div>
 
 
