@@ -25,11 +25,11 @@ class Task_model extends CI_Model {
         
         $response = array();
 
-        $sql = "SELECT t.user_id, gt.shared_with FROM tasks t 
-                LEFT JOIN group_tasks gt ON t.id = gt.task_id
-                WHERE t.id = '" . $task_id . "'";
-
-        $query = $this->db->query($sql);
+        $this->db->select('t.user_id, g.shared_with');
+        $this->db->from('tasks as t');
+        $this->db->join('group_tasks as g', 't.id = g.task_id', 'left');
+        $this->db->where('t.id', $task_id);
+        $query = $this->db->get();
 
         $data = $query->result_array();
         array_push($response, $data[0]['user_id']);
@@ -46,24 +46,24 @@ class Task_model extends CI_Model {
     }
 
     public function get_task_details($task_id){
-
-        $sql = "SELECT t.*, u.id as ADMIN, u.first_name, u.img_url
-                FROM tasks t
-                INNER JOIN users u on u.id = t.user_id
-                WHERE t.id = '" . $task_id . "'";
-
-        $query = $this->db->query($sql);
+        
+        $this->db->select('t.*, u.id as ADMIN, u.first_name, u.img_url');
+        $this->db->from('tasks as t');
+        $this->db->join('users as u', 'u.id = t.user_id', 'inner');
+        $this->db->where('t.id', $task_id);
+        $query = $this->db->get();
+    
         return $query->result_array();
     }
 
     public function get_shared_users($task_id){
 
-        $sql = "SELECT u.*
-                FROM users u 
-                INNER JOIN group_tasks g on g.shared_with = u.id
-                WHERE g.task_id = '" . $task_id . "'";
+        $this->db->select('u.id, u.first_name, u.last_name, u.email, u.img_url');
+        $this->db->from('users as u');
+        $this->db->join('group_tasks as g', 'g.shared_with = u.id', 'inner');
+        $this->db->where('g.task_id', $task_id);
+        $query = $this->db->get();
 
-        $query = $this->db->query($sql);
         return $query->result_array();
     }
     
@@ -92,19 +92,29 @@ class Task_model extends CI_Model {
             return 400;
         }  
     }
+
+    public function updateDateTime($id, $tasks){
+        try{
+            $this->db->where('id', $id);
+            $this->db->update('tasks', $tasks);
+            return 200;
+        }catch (Exception $e){
+            return 400;
+        }
+    }
     
     public function updateTask($task, $task_id){
 
         try{
-            $this->db->where('TASK_ID', $task_id);
-            $this->db->update('TASKS', $task);
+            $this->db->where('id', $task_id);
+            $this->db->update('tasks', $task);
             return 200;
         }catch (Exception $e) {
             return 400;
         }
     }
 
-    public function updateTaskShare($data_one) {
+    public function addTaskShare($data_one) {
         
         try{
             $this->db->insert('group_tasks', $data_one);
@@ -114,18 +124,28 @@ class Task_model extends CI_Model {
         } 
     }
 
+    public function removeTaskShare($task_id, $remove_user) {
+        try{
+            $this->db->where('task_id', $task_id);
+            $this->db->where('shared_with', $remove_user);
+            $this->db->delete('group_tasks');
+            return 200;
+        } catch(Exception $e) {
+            return 400;
+        }
+    }
+
     public function taskMedia($task_id){
         try{
-            $sql = "
-                SELECT t.*, l.lat, l.lng, l.name, u.first_name, u.last_name, u.img_url from task_media t
-                INNER JOIN users u on t.user_id = u.id
-                LEFT JOIN location l on t.location_id = l.id
-                WHERE task_id = '$task_id'
-                AND is_deleted = '" .$this->not_deleted . "'
 
-            ";
+            $this->db->select('t.*, l.lat, l.lng, l.name, u.first_name, u.last_name, u.img_url');
+            $this->db->from('task_media as t');
+            $this->db->join('users as u', 't.user_id = u.id', 'inner');
+            $this->db->join('location as l', 't.location_id = l.id', 'left');
+            $this->db->where('t.task_id', $task_id);
+            $this->db->where('t.is_deleted', $this->not_deleted);
+            $query = $this->db->get();
 
-            $query = $this->db->query($sql); 
             return $query->result_array();
         }catch(Exception $e){
             return 400;

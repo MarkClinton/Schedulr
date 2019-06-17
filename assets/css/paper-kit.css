@@ -508,16 +508,16 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 }
 
 .btn-info {
-  background-color: #8FE7FF;
-  border-color: #8FE7FF;
+  background-color: #5AA3D4;
+  border-color: #5AA3D4;
   color: #FFFFFF;
   opacity: 1;
   filter: alpha(opacity=100);
 }
 .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .show > .btn-info.dropdown-toggle {
-  background-color: #A2EBFF;
+  background-color: #499ad0;
   color: #FFFFFF;
-  border-color: #A2EBFF;
+  border-color: #499ad0;
 }
 .btn-info .caret {
   border-top-color: #FFFFFF;
@@ -977,7 +977,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
   box-shadow: none;
   margin-top: 25px;
   display: inline-block;
-  width: 100px;
+  width: 80px;
   float: left;
   padding-left: 8px;
 }
@@ -4849,9 +4849,9 @@ select.form-control {
 @media screen and (max-width: 768px) {
   .navbar-collapse {
     position: fixed;
-    display: block;
-    top: 0;
-    height: 100%;
+    /*display: block;*/
+    top: 80;
+    height: 60%;
     width: 230px;
     right: 0;
     z-index: 1032;
@@ -4900,7 +4900,7 @@ select.form-control {
     height: 100%;
     width: 100%;
     position: absolute;
-    background-color: #3498db;
+    background-color: #5AA3D4;
     background-image: linear-gradient(to bottom, transparent 0%, rgba(112, 112, 112, 0) 60%, rgba(186, 186, 186, 0.15) 100%);
     display: block;
     content: "";

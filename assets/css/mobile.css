@@ -1,4 +1,4 @@
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 310px) and (max-width: 480px) {
 
     .container{
         padding: 0 !important;
@@ -33,11 +33,12 @@
 
     .profile_edit{
         width: 100%;
+        margin-left: 0;
     }
 
     .timeline{
-        width: 80%;
-        margin-left: 50px;
+        width: 100%;
+        margin-top: 50px;
     }
 
     #user-details-mobile{
@@ -57,11 +58,12 @@
     }
 
     img.profile{
-        height: 70px;
-        width: 70px;
+        height: 20px;
+        width: 20px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 15px;
+        margin-bottom: 15px;
         display: block;
     }
 
@@ -102,6 +104,137 @@
 
     .profile_actions{
         display:none;
+    }
+
+    .contain_index{
+        width: 80%;
+        top: 0;
+    }
+
+    .contain_index_text{
+        width: 100%;
+        display: block;
+        text-align: center;
+        display:none;
+    }
+
+    .image_contain_main{
+        width: 100%;
+        height: 30%;
+        display: block;
+        float: none;
+        margin: 0 auto;
+    }
+
+    .about_image{
+        height: 250px;
+    }
+
+    img.home{
+        height: 100%;
+        width: 100%;
+    }
+
+    .about{
+        width: 90%;
+    }
+
+    img.home-2{
+        width: 100%;
+        height: 20%;
+    }
+
+    .margin-top-index{
+        margin: 25 auto 0 auto !important;
+    }
+
+    .contain_main{
+        height: 80%;
+        min-height: 600px;
+    }
+
+    .mobile_welcome_sml{
+        display: block;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .mobile_welcome{
+        display:  none;
+    }
+
+    .form-create-task{
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+
+    .share-create-task{
+        width: 90%;
+        height: 200px;
+    }
+
+    .containTask{
+        height: auto;
+    }
+
+    .friend_layout{
+        width: auto;
+    }
+
+    #profile_background{
+        height:auto;
+    }
+
+    .taskBoard{
+        width: 100%;
+    }
+
+    .taskSideContain{
+        display:none;
+    }
+
+    .mobile_task_info{
+        display: block;
+    }
+
+    .taskHeader{
+        margin-left: 0;
+    }
+
+    .taskViewHead{
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .taskSideBar{
+        margin-left: 0;
+        height: auto;
+        padding: 0 0 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .error-bg{
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .sideNav{
+        width: 90%;
+    }
+
+    .sidenav_big{
+        width: 90%;
+        overflow-y:scroll;
+    }
+
+    .contain{
+        margin: 0;
+    }
+
+    .sidenav-index{
+        width: 90%;
     }
 
 
@@ -112,7 +245,7 @@
 @media (min-width: 481px) and (max-width: 767px) {
 
     .container{
-        padding: 0 !important;
+        padding: 0;
     }
 
     #profile_background{
@@ -138,11 +271,12 @@
 
     .profile_edit{
         width: 100%;
+        margin-left: 0;
     }
 
     .timeline{
-        width: 80%;
-        margin-left: 50px;
+        width: 100%;
+        margin-top: 50px;
     }
 
     #user-details-mobile{
@@ -168,11 +302,12 @@
     }
 
     img.profile{
-        height: 70px;
-        width: 70px;
+        height: 20px;
+        width: 20px;
         margin-right: auto;
         margin-left: auto;
         margin-top: 15px;
+        margin-bottom: 15px;
         display: block;
     }
 
@@ -182,7 +317,7 @@
     }
 
     p{
-        font-size: 10px !important;
+        font-size: 10px;
     }
 
     img.user{
@@ -192,10 +327,6 @@
 
     .contain_reg{
         display: none;
-    }
-
-    .contain{
-        width: 80%;
     }
 
     #dashboard{
@@ -214,10 +345,137 @@
         display:none;
     }
 
+    .contain_main{
+        min-height: 400px;
+    }
+
+    .contain_index{
+        width: 80%;
+        top: 0;
+    }
+
+    .contain_index_text{
+        width: 100%;
+        display: block;
+        text-align: center;
+        display:none;
+    }
+
+    .mobile_welcome{
+        display: block;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .image_contain_main{
+        width: 100%;
+        display: block;
+        float: none;
+        margin: 0 auto;
+    }
+
+    .about_image{
+        height: 250px;
+    }
+
+    img.home{
+        height: 100%;
+    }
+
+    img.home-2{
+        width: 300;
+        height: 200;
+    }
+
+    .margin-top-index{
+        margin: 25 auto 0 auto;
+    }
+
+    .form-create-task{
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+
+    .share-create-task{
+        width: 90%;
+        height: 200px;
+    }
+
+    .containTask{
+        height: auto;
+    }
+
+
+    .friend_layout{
+        width: auto;
+    }
+
+
+    #profile_background{
+        height:auto;
+    }
+
+    .taskBoard{
+        width: 100%;
+    }
+
+    .taskSideContain{
+        display:none;
+    }
+
+    .mobile_task_info{
+        display: block;
+    }
+
+    .taskHeader{
+        margin-left: 0;
+    }
+
+    .taskViewHead{
+        margin-right: 0;
+        width: 100%;
+    }
+    
+    .taskSideBar{
+        margin-left: 0;
+        height: auto;
+        padding: 0 0 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .error-bg{
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .sideNav{
+        width: 90%;
+    }
+
+    .sidenav_big{
+        width: 90%;
+        overflow-y:scroll;
+    }
+
+    .sidenav-index{
+        width: 80%;
+    }
+
+
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
-  
+@media (min-width: 768px) and (max-width: 1250px) {
+
+    .contain_index{
+        width: 100%;
+    }
+
+    img.home{
+        height: 100%;
+    }
+    
     #dashboard{
         width: 30%;
     }
@@ -225,6 +483,101 @@
     #calendar{
         width: 50%;
     }
+
+    #profile_background{
+        height:auto;
+    }
+
+    img.profile{
+        height: 20px;
+        width: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        display: block;
+    }
+
+    .share-create-task{
+        margin-right: 0%;
+    }
+
+    .containTask{
+        height: auto;
+    }
+
+    .card{
+        width: 30%;
+        height: 110px;
+    }
+
+    .profile_edit{
+        width: 50%;
+        margin-left: 25%;
+    }
+
+    .timeline{
+        width: 50%;
+        margin-top: 50px;
+        margin-left: 25%;
+    }
+
+    .taskBoard{
+        width: 100%;
+    }
+
+    .about_image{
+        height: 350px;
+    }
+
+    .taskSideContain{
+        display:none;
+    }
+
+    .mobile_task_info{
+        display: block;
+    }
+
+    .taskHeader{
+        width: none;
+        margin-left: 0;
+    }
+
+    .taskViewHead{
+        margin-right: 0;
+        width: 100%;
+    }
+
+    .taskSideBar{
+        margin-left: 0;
+        height: auto;
+        padding: 0 0 0 20px;
+        margin-bottom: 20px;
+    }
+
+    .error-bg{
+        width: 30%;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+
+    .sideNav{
+        width: 90%;
+    }
+
+    .sidenav_big{
+        width: 90%;
+        overflow-y:scroll;
+    }
+
+    .form-create-task{
+        margin-left: 5%;
+        margin-top: 20px;
+    }
+
+
+    
   
 }
 

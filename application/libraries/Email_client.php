@@ -30,17 +30,16 @@ class Email_client extends CI_Controller{
 	public function setSendTo($address){
 		$this->send_to = $address;
 	}
-    
-    public function password_reset($tok, $user){
 
+	public function password_reset($tok, $user){
+		$reset_password_link = $this->reset_link;
+		$reset_password_link .= $tok;
+		$body_content = file_get_contents(APPPATH.'views/email_temps/password_reset.html');
+		$body_content = str_replace('%first_name_replace%', $user["first_name"], $body_content); 
+		$body_content = str_replace('%last_name_replace%', $user["last_name"], $body_content); 
+		$body_content = str_replace('%password_reset_link%', $reset_password_link, $body_content);
     	$this->setSubject("Password Reset From Schedulr");
-    	$this->setBody(
-    		"Hey " .
-    		$user['first_name'] .
-    		".<br> You requested a password reset from us. Please follow the link below to reset it. <br>" .
-    		"<a href=" . $this->reset_link . $tok .">" . $this->reset_link . $tok . "</a>"
-    	);
-    	//$this->setBody(file_get_contents(APPPATH.'views/email_temps/password_reset.html'));
+		$this->setBody($body_content);
     	$this->setSendTo($user['email']);
     	$mailed = $this->send();
     	return $mailed;
@@ -48,13 +47,11 @@ class Email_client extends CI_Controller{
 
 	public function welcome_mail($user){
 		
-		$this->setSubject("Welcome To Schedulr");
-    	$this->setBody(
-    		"Hey " .
-    		$user['firstName'] . " " . $user['lastName'] .
-    		".<br> Thanks for signing up to Schedulr!"
-    	);
-    	//$this->setBody(file_get_contents(APPPATH.'views/email_temps/password_reset.html'));
+		$body_content = file_get_contents(APPPATH.'views/email_temps/welcome.html');
+		$body_content = str_replace('%first_name_replace%', $user["firstName"], $body_content); 
+		$body_content = str_replace('%last_name_replace%', $user["lastName"], $body_content); 
+    	$this->setSubject("Welcome to Schedulr");
+		$this->setBody($body_content);
     	$this->setSendTo($user['email']);
     	$mailed = $this->send();
     	return $mailed;
@@ -82,10 +79,11 @@ class Email_client extends CI_Controller{
 		$mailCheck = [];
 
 		if(!$this->mail->Send()) {
+			// If something wrong happens with the mailer it will say this. 
 			$mailCheck['code'] = 400;
-			$mailCheck['response'] = "Email could not be sent. Please try again";
+			$mailCheck['response'] = "Email could not be sent. Please try again.";
 			
-			//echo "Mailer Error: " . $this->mail->ErrorInfo;
+			//print "Mailer Error: " . $this->mail->ErrorInfo;
 		} else {
 			$mailCheck['code'] = 200;
 			$mailCheck['response'] = "Email sent";
@@ -96,5 +94,8 @@ class Email_client extends CI_Controller{
 		return $mailCheck;
 
 	}
+
+
+
     
 }

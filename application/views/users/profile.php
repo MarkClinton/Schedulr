@@ -23,7 +23,7 @@
                                 onchange="$('#upload-file-info').html(this.files[0].name)" 
                                 file-model="imageFile" name ="file" hidden>
                             </label>
-                            <span class="upload-file-text" id="upload-file-info"></span>
+                            <span class="upload-file-text" id="upload-file-info" onchange="$('#upload-file-info').html(this.files[0].name)"></span>
                         </div>
                         
                         <br>
@@ -79,11 +79,11 @@
                     <div class="profile-tasks" ng-controller="displayUserCtrl">
                     <div class="center_div"  ng-cloak>
                         
-                            <div ng-repeat="tasks in filteredTasks = (userTasks| filter: filterByDate)">
+                            <div ng-repeat="tasks in filterAll = (userTasks | filter: filterActive)">
 
-                                <div class= "card ">
+                                <div class= "card " ng-click="showTask(tasks)">
                                     <div ng-class="taskColor(tasks.type)" class="taskHead">
-                                        <h5 class="white" ng-click="showTask(tasks)">{{tasks.name}} </h5>
+                                        <h5 class="white">{{tasks.name}} </h5>
                                     </div>
                                     <div class="taskDetails">
                                         <p> </p>
@@ -94,23 +94,26 @@
                                 </div>
 
                             </div>
-                            <div class="no-tasks" ng-show="filteredTasks.length == 0">
-                                <p>No current tasks to display</p>
+                            <div class="no-tasks" ng-show="filterAll.length == 0">
+                                <h4 style="text-align: center">No current tasks to display</h4>
                             </div>
                         </div>
 
                    
 
-                    <div class="tasks_buffer">
-                        <p>Expired Tasks</p>
-                    </div>
+                    
                     
                     <div class="center_div"  ng-cloak>
-                        <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterByExpired) | orderBy: tasks.task_date:true">
-
-                            <div class= "card ">
+                        <div class="tasks_buffer" ng-show="filteredExpired.length > 0">
+                            <br>
+                            <h4>Expired Tasks</h4>
+                            <br>
+                        </div>
+                        <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterLess) | orderBy: tasks.task_date:true | limitTo:10">
+                            
+                            <div class= "card " ng-click="showTask(tasks)">
                                 <div ng-class="taskColor(tasks.type)" class="taskHead">
-                                    <h5 class="white" ng-click="showTask(tasks)">{{tasks.name}} </h5>
+                                    <h5 class="white" >{{tasks.name}} </h5>
                                 </div>
                                 <div class="taskDetails">
                                     <p> </p>
@@ -118,10 +121,6 @@
                                     <p>{{tasks.info}} </p>
                                 </div>
                             </div>
-
-                        </div>
-                        <div class="no-tasks" ng-show="filteredExpired.length == 0">
-                            <p>No expired tasks to display</p>
                         </div>
                     </div>
                     </div>
@@ -239,7 +238,7 @@
                                 <h5>{{friend.first_name}} {{friend.last_name}}</h5>
                                 <div class="email"><p>{{friend.email}}</p></div>
                                 </div>
-                                <button type="button" ng-click="removeFriend(friend.id)" class="btn btn-sm2 btn-danger top-sm pull-right">
+                                <button type="button" ng-click="removeFriend(friend.id, friend.first_name, friend.last_name)" class="btn btn-sm2 btn-danger top-sm pull-right">
                                 <i class="fa fa-times" aria-hidden="true"></i>
                             </button>
 
@@ -256,9 +255,10 @@
                             <div class="inner_center">
                                 <center><h3>Add Friends</h3></center>
                             </br>
-                            <input class="input2" id="searchInput" type="text" ng-model="src.searchText" ng-change="change(text)" placeholder="Search By Email.." />
-
-                            <div class="srcResults" ng-repeat="entry in entries" ng-hide="!src.searchText.length">
+                            <form ng-submit='change(text)'>
+                                <input class="input2" id="searchInput" type="text" ng-model="src.searchText" placeholder="Search By Email.." />
+                            </form>
+                            <div class="srcResults" ng-repeat="entry in entries" ng-show="src.searchText.length">
                                 <img class="user search profile" src="<?php echo base_url() ?>{{entry.img_url}}" alt="profile" />
 
                                 <button ng-show="entry.status == 1" type="button" style="float:right;cursor:default" class="btn btn-primary btn-link btn-sm">

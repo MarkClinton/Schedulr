@@ -10,10 +10,9 @@
                         <input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text" required>
 
                         
-                        <input ui-timepicker class="form-control-2" ng-model="data.inputTaskStart" placeholder="Task Start Time" id="selector" type="text" required>
-
-                        
-                        <input ui-timepicker class="form-control-2 fc2-left" ng-model="data.inputTaskEnd" placeholder="Task End Time" id="selector2" type="text" required>
+                        <input ui-timepicker class="form-control-2" ng-model="data.inputTaskStart" placeholder="Task Start Time" id="selector_start_create" type="text" required>
+                        <span class="contain_text_middle"> <h4>until</h4></span>
+                        <input ui-timepicker class="form-control-2 fc2-left" ng-model="data.inputTaskEnd" placeholder="Task End Time" id="selector_end_create" type="text" required>
                         
                         <input style="display: none !important;" class="form-control" ng-model="data.sharedWith" type="text" id="datepicker">
 
@@ -38,8 +37,9 @@
 
         <div ng-controller="getFriendsCtrl"
         <div class="share-create-task">
-            <h5 style="text-align: left;">Share With</h5>
+            
             <div class="create-share-friends">
+                <h5 style="text-align: left;">Share With</h5>
                 <div ng-repeat="friend in friends">
                     <div class="par_layout">
                         <img class="sml profile shre" ng-click="addToShare(friend)" src="<?php echo base_url() ?>{{friend.img_url}}" title="{{friend.first_name}}" alt="profile" />

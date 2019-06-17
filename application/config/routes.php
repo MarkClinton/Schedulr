@@ -25,6 +25,7 @@ $route['users/tasks/updateTask'] = 'tasks/updateTask';
 $route['users/tasks/createTask'] = 'tasks/createTask';
 $route['users/tasks/create'] = 'tasks/create';
 $route['users/tasks/addUser'] = 'tasks/addUserToProject';
+$route['users/tasks/removeUser'] = 'tasks/removeUserFromProject';
 $route['users/getTimeline'] = 'users/getTimeline';
 $route['users/profileImage'] = 'users/profileImage';
 $route['users/tasks/addFileToProject'] = 'tasks/addFileToProject';
@@ -36,6 +37,7 @@ $route['users/updatePassword'] = 'users/updatePassword';
 $route['users/recoverPassword'] = 'users/recoverPassword';
 $route['users/validateRecoverPassword?(:any)'] = 'users/validateRecoverPassword';
 $route['users/tasks/unauthorized'] = 'tasks/unauthorized';
+$route['users/tasks/updateDateTime'] = 'tasks/updateDateTime';
 
 
 

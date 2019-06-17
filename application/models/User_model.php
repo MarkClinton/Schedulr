@@ -10,7 +10,6 @@ class User_model extends CI_Model{
     }
     
     public function create_user($data){
-        //$md_pword = md5($data['password']);
         $return = [];
         $options = ['cost' => 12];
         $password = $this->hashString($data['password']);
@@ -57,10 +56,12 @@ class User_model extends CI_Model{
 
     public function updatePassword($data){
 
-        $user = $this->getUsersById($data['user']);
+        $user = $this->getUserByEmail($data['user']);
         $user = $user[0];
         $users_pword = $user['password'];
-        $user_id = $data['user'];
+        $user_id = $user['id'];
+
+
 
         $return = [];
 
@@ -68,7 +69,7 @@ class User_model extends CI_Model{
             $data['new_password'] === $data['confirm_new_password']){
             try{
 
-                $new_user_password = $this->hashString($data['password']);
+                $new_user_password = $this->hashString($data['new_password']);
 
                 $this->db->set('password', $new_user_password);
                 $this->db->where('id', $user_id);
@@ -94,7 +95,6 @@ class User_model extends CI_Model{
         $return = [];
 
         try{
-
             $new_user_password = $this->hashString($password);
 
             $this->db->set('password', $new_user_password);
@@ -115,7 +115,6 @@ class User_model extends CI_Model{
 
     public function addToRecover($data){
         try{
-
             $this->db->insert('recover', $data);
             return 200;
 
@@ -129,7 +128,6 @@ class User_model extends CI_Model{
 
         $email = $data['email'];
         try{
-            //$sql = 'UPDATE user SET FIRST_NAME = ' + $user['FIRST_NAME'] + ' WHERE EMAIL = ' + $email;
             $this->db->where('email', $email);
             $this->db->update('users', $data);
             return 200;
@@ -137,24 +135,18 @@ class User_model extends CI_Model{
             return 400;
         }
     }
-    // NEEDS ATTENTION
+
     public function search_people($search, $user) {
 
-        $name = "%$search%";
-        $sql = "SELECT u.*, f.status FROM users u
-                LEFT JOIN friends f on u.id = f.friend_id AND f.user_id = '$user'
-                WHERE u.email LIKE '$name'
-                AND u.id NOT IN ('$user')
-        ";
+        $this->db->select('u.id, u.first_name, u.last_name, u.email, u.img_url, f.status');
+        $this->db->from('users as u');
+        $this->db->join('friends as f', 'u.id = f.friend_id and f.user_id = '.$user, 'left');
+        $this->db->where('u.email', $search);
+        //$this->db->where('f.user_id', $user);
+        $this->db->where_not_in('u.id', $user);
+        $query = $this->db->get();
 
-        //"SELECT * FROM users WHERE email LIKE '$name'"
-
-        $query = $this->db->query($sql);
         return $query->result_array();
-        
-        //$response = $this->db->select('*')->from('USER')->where("FIRST_NAME LIKE '%$search'")->get();
-        //return $response->result_array();
-        //$this->db->or_like('LAST_NAME', $search);
         
     }
     public function login($data) {
@@ -168,7 +160,6 @@ class User_model extends CI_Model{
         $code = 0;
         try {
             $user = $this->getUserByEmail($email);
-
             if (!$user) {
                 $return['code'] = 400;
                 $return['response'] = "Wrong email or password";
@@ -176,8 +167,8 @@ class User_model extends CI_Model{
 
                 $usrPword = $user[0]['password'];
 
-                //if ($password == $usrPword) {
                 if(password_verify($password, $usrPword)){
+                    
                     $this->setSession($email);
                     $return['code'] = 200;
                     $return['response'] = "Login successful";
@@ -195,11 +186,14 @@ class User_model extends CI_Model{
 
     public function getUserByEmail($email) {
 
-        
-        $sql = "SELECT * FROM users 
-                WHERE email = '" . $email . "'";
+        //Need to return password for login. Does not show to end user
+        $this->db->select('id, first_name, last_name, email, img_url, password');
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $query = $this->db->get();
+
+
         try {
-            $query = $this->db->query($sql);
             $result = $query->num_rows();
             
             if ($result === 1) {
@@ -215,11 +209,13 @@ class User_model extends CI_Model{
 
     public function getUser($id) {
 
-        //$sql = "SELECT * FROM USER WHERE email = '" . $email . "'";
-        $sql = "SELECT * FROM users 
-                WHERE id = '" . $id . "'";
+        $this->db->select('id, first_name, last_name, email, img_url');
+        $this->db->from('users');
+        $this->db->where('id', $id);
+        $query = $this->db->get();
+
+
         try {
-            $query = $this->db->query($sql);
             $result = $query->num_rows();
             
             if ($result === 1) {
@@ -294,8 +290,13 @@ class User_model extends CI_Model{
 
     public function setSession($email){
         
-        $sql = "SELECT * FROM users WHERE email = '" . $email . "' LIMIT 1";
-        $result = $this->db->query($sql);
+        $limit = 1;
+        $this->db->select();
+        $this->db->from('users');
+        $this->db->where('email', $email);
+        $this->db->limit($limit);
+        $result = $this->db->get();
+
         $row = $result->row();
         
         $sess_data = array(
@@ -308,7 +309,6 @@ class User_model extends CI_Model{
         );
         
         $this->session->set_userdata($sess_data);
-        
     }
     
     public function deleteSession(){
@@ -318,76 +318,95 @@ class User_model extends CI_Model{
     
     public function getUpcomingTasks($user_id) {
 
-        $sql = "tasks 
-                WHERE user_id = '" . $user_id . "'
-                AND is_deleted = '" . $this->is_deleted ."'
-                OR id IN (
-                    select task_id from group_tasks 
-                    where shared_with = '" . $user_id ."')";
-        //$limit=5;
-        $start_row=0;
+        $this->db->select('task_id');
+        $this->db->from('group_tasks');
+        $this->db->where('shared_with', $user_id);
+        $group_tasks_raw = $this->db->get();
 
+        $group_tasks = array();
+        foreach ($group_tasks_raw->result() as $row) {
+            $group_tasks[] =  $row->task_id;
+        }
+
+        $this->db->select();
+        $this->db->from('tasks');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('is_deleted', $this->is_deleted);
+        if($group_tasks){
+            $this->db->or_where_in('id', $group_tasks);
+        }
         $this->db->order_by("task_date", "ASC");
         $this->db->order_by("start_time", "ASC");
-        $query = $this->db->get($sql, $start_row);
+        $query = $this->db->get();
+
         return $query->result_array();  
     } 
     
     public function getUsersTasks($user_id) { 
         
-        $sql = " tasks WHERE user_id = '" . $user_id . "'
-                AND is_deleted = '" . $this->is_deleted . "'";
-        $start_row=0;
-
+        $this->db->select();
+        $this->db->from('tasks');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('is_deleted', $this->is_deleted);
         $this->db->order_by("task_date", "ASC");
         $this->db->order_by("start_time", "ASC");
-        $query = $this->db->get($sql, $start_row);
+        $query = $this->db->get();
         return $query->result_array(); 
     }
     
     public function getUsersGroupTasks($user_id){
 
-        $sql = "SELECT task_id FROM group_tasks WHERE shared_with = '" . $user_id . "'";
-        
-        $queryShare = $this->db->query($sql);
+        $this->db->select('task_id');
+        $this->db->from('group_tasks');
+        $this->db->where('shared_with', $user_id);
+        $queryShare = $this->db->get();
+
         $temp = array();
-        
         foreach ($queryShare->result() as $row) {
             $temp[] =  $row->task_id;
         }
+        if($temp){
+            $this->db->select();
+            $this->db->from('tasks');
+            $this->db->where_in('id', $temp);
+            $query = $this->db->get();
+            $query = $query->result_array();
+        }else{
+            $query = [];
+        }
         
-        $ids = join("','",$temp);
-        $sql2 = "tasks WHERE id IN ('$ids')";
-        $query = $this->db->get($sql2);
-        
-        return $query->result_array();
+        return $query;
     }
 
     public function getUsersById($ids){
-
-        $sql = "SELECT * FROM users
-                WHERE id IN ('$ids')";
-
-        $users = $this->db->query($sql);
-        return $users->result_array();
+        if($ids){
+            $this->db->select('id, first_name, last_name, email, img_url');
+            $this->db->from('users');
+            $this->db->where_in('id', $ids);
+            $query = $this->db->get();
+            $query = $query->result_array();
+        }else{
+            $query =[];
+        }
+        return $query;
     }
 
 
     public function getFriends($user_id){
 
-        $sql = "SELECT friend_id FROM friends WHERE user_id = '" . $user_id . "' 
-                AND is_deleted = $this->is_deleted";
+        $this->db->select('friend_id');
+        $this->db->from('friends');
+        $this->db->where('user_id', $user_id);
+        $this->db->where('is_deleted', $this->is_deleted);
+        $query = $this->db->get();
 
-        $query = $this->db->query($sql);
         $friend_ids = array();
 
         foreach ($query->result() as $row) {
             $friend_ids[] =  $row->friend_id;
         }
 
-        $ids = join("','", $friend_ids);
-        return $ids;
-
+        return $friend_ids;
     }
 
     public function removeFriend($friend_id, $user_id) {
@@ -478,21 +497,24 @@ class User_model extends CI_Model{
 
     public function getImagePath($user){
 
-         $sql = "SELECT img_url FROM users WHERE id = '" . $user . "'";
+        $this->db->select('img_url');
+        $this->db->from('users');
+        $this->db->where('id', $user);
+        $query = $this->db->get();
 
-         $query_res = $this->db->query($sql);
-         return $query_res->result_array();
+        return $query->result_array();
     }
 
     public function checkResetToken($token){
 
-        $sql = "SELECT * FROM recover
-                WHERE token = '" .$token . "'
-                AND used = 0
-                AND expr_date >= NOW()";
+        $this->db->select('token, expr_date, id, used');
+        $this->db->from('recover');
+        $this->db->where('token', $token);
+        $this->db->where('used', 0);
+        $this->db->where('expr_date > NOW()');
+        $query = $this->db->get();
 
-        $query_res = $this->db->query($sql);
-        return $query_res->result_array();
+        return $query->result_array();
 
     }
 

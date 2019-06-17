@@ -65,6 +65,19 @@ class Tasks extends CI_Controller {
         print json_encode($tasks);
     }
 
+    public function updateDateTime(){
+        $update = json_decode(file_get_contents('php://input'), true);
+        $id = $update['id'];
+        $task = array(
+            'start_time' => $update['start_time'],
+            'end_time' => $update['end_time'],
+            'task_date' => $update['task_date']
+        );
+
+        $response = $this->Task_model->updateDateTime($id, $task);
+        print json_encode($response);
+    }
+
     public function updateTask() {
 
         $update = json_decode(file_get_contents('php://input'), true);
@@ -77,11 +90,11 @@ class Tasks extends CI_Controller {
             'end_time' => $update['inputTaskEnd'],
             'task_date' => $update['inputTaskDate'],
             'info' => $update['inputTaskInfo'],
-            'user_id' => $this->session->userdata('id'),
-            'updated_at' => $timestamp
+            'updated_at' => $timestamp,
+            'type' => $update['types']
         );
 
-        $task_id = $update['id'];
+        $task_id = $update['task_id'];
 
         $response = $this->Task_model->updateTask($task, $task_id);
         print json_encode($response);
@@ -166,6 +179,17 @@ class Tasks extends CI_Controller {
 
     }
 
+    public function removeUserFromProject() {
+        $task_id = filter_input(INPUT_GET, 'taskId');
+        $remove_user = filter_input(INPUT_GET, 'userId');
+        $timestamp = date('Y-m-d G:i:s');
+        $timeline_type = 2;
+
+        $response = $this->Task_model->removeTaskShare($task_id, $remove_user);
+        print json_encode($response);
+
+    }
+
     public function addUserToProject() {
 
         $task_id = filter_input(INPUT_GET, 'taskId');
@@ -188,7 +212,7 @@ class Tasks extends CI_Controller {
             'type_data_id' => $task_id
         ); 
 
-        $response =  $this->Task_model->updateTaskShare($data_one);
+        $response =  $this->Task_model->addTaskShare($data_one);
         $this->User_model->addToUserTimeline($data_timeline);
         print json_encode($response);
         

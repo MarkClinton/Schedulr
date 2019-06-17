@@ -51,7 +51,8 @@ user.controller('indexCtrl', ['$scope', '$http', 'notify', function ($scope, $ht
                     notify({ message:status.response} );
                     window.setTimeout(function(){window.location.href = "users/index"},1000); 
                 } else {
-                    notify({message:status.response, classes: 'alert-danger'} );
+                    //console.log('Email was not sent');
+                    notify({message:status.response});
                 } 
             });
     }

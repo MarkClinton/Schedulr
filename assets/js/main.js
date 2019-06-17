@@ -26,8 +26,25 @@ $(document).ready(function () {
         return days[d.getDay()] + ' ' + months[d.getMonth()] + ' ' + d.getDate() + ' ' + d.getFullYear();
     }
 
-    
+
+    //Wicked picker set up for create task page
+    $('#selector_start_create').wickedpicker({twentyFour: true, now: "12:00", title: "Start Time", show: showPicker});
+    $('#selector_end_create').wickedpicker({twentyFour: true, now: "12:00", title: "End Time", show: showPicker});
+
+    $('#selector_start_create,#selector_end_create').focus(function(){
+        $('.wickedpicker').css({'display': 'none'});
+    });
+
+    $('#selector_start_update,#selector_end_update').focus(function(){
+        $('.wickedpicker').css({'display': 'none'});
+    }); 
 });
+
+// Function needed to change titles on wickedpicker. Only solution. 
+
+function showPicker( element ) {
+    $( '.wickedpicker__title' ).contents().first().replaceWith( ( ( this.options !== undefined ) ? this.options.title : this.title ) );
+}
 
 window.onload = function(){ 
     document.getElementById('overlay-back').onclick = function(){
@@ -39,6 +56,7 @@ window.onload = function(){
         var note = $('#note').height();
         var file = $('#fileUp').height();
         var pword = $('#update_password').height();
+        var update = $('#updateTask').height();
 
         if(reg == 360){
             closeReg();
@@ -48,7 +66,7 @@ window.onload = function(){
             closeLogin();
         }else if(addUser == 550){
             closeAddUser();
-        }else if(addFriend == 500){
+        }else if(addFriend == 350){
             closeNav();
         }else if(note == 250){
             closeNote();
@@ -56,12 +74,14 @@ window.onload = function(){
             closeFile();
         }else if(pword == 280){
             closeUpdatePassword();
+        }else if(update == 500){
+            closeUpdate();
         }
     }
 };
 
 function openNav() {
-    document.getElementById("addFriend").style.height = "500px";
+    document.getElementById("addFriend").style.height = "350px";
     $('#overlay-back').fadeIn(500); 
 }
 
@@ -74,9 +94,23 @@ function closeNav() {
 
 }
 
+function openUpdate() {
+    document.getElementById("updateTask").style.height = "500px";
+    $('#overlay-back').fadeIn(700); 
+}
+
+function closeUpdate() {
+    document.getElementById("updateTask").style.height = "0px";
+    $('#overlay-back').fadeOut(700); 
+}
+
 function openLogin() {
     document.getElementById("login").style.height = "250px";
     $('#overlay-back').fadeIn(700); 
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('#menu-collapse').trigger('click');
+    };
+
 }
 
 function closeLogin() {
@@ -88,6 +122,9 @@ function openReg() {
     document.getElementById('home').scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
     document.getElementById("reg").style.height = "360px";
     $('#overlay-back').fadeIn(700); 
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        $('#menu-collapse').trigger('click');
+    };
 }
 
 function closeReg() {
@@ -174,6 +211,9 @@ function pictureUpload() {
         }, 600);
     }
 }
+
+
+
 
 
 

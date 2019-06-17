@@ -4,24 +4,25 @@ class Users extends CI_Controller {
 
     protected $is_used = 0;
 
-    
-    public function __construct() {
+    public function __construct() 
+    {
         parent::__construct();
         $this->load->model('User_model');
         $this->load->library('email_client');
 
     }
     
-    public function view($page = 'index'){ 
-        if(!file_exists(APPPATH.'views/users/'.$page.'.php')){
-                show_404();
-            }
+    public function view ($page = 'index')
+    { 
+        if(!file_exists(APPPATH.'views/users/'.$page.'.php')) {
+            show_404();
+        }
 
-        if ($this->session->userdata('id')){
+        if ($this->session->userdata('id')) {
             $this->load->view('templates/header');
             $this->load->view('users/'.$page);
             $this->load->view('templates/footer');
-        }else{
+        } else {
             redirect('index', 'refresh');
         }
      
@@ -75,8 +76,7 @@ class Users extends CI_Controller {
         $user = array(
             'first_name' => $profile['first_name'],
             'last_name'  => $profile['last_name'],
-            'email'      => $profile['email'],
-            'password'   => $profile['password']
+            'email'      => $profile['email']
         );
 
         $response = $this->User_model->update_user($user);
@@ -86,7 +86,7 @@ class Users extends CI_Controller {
     public function updatePassword(){
 
         $update = json_decode(file_get_contents('php://input'), true);
-        $user = $user_id = $this->session->userdata('id');
+        $user = $user_id = $this->session->userdata('email');
 
         $toUpdate = array(
             'user' => $user,
@@ -257,7 +257,7 @@ class Users extends CI_Controller {
             $return['code'] = 200;
             $return['response'] = "Email sent";
         }
-        // Always display that an email has been sent even if user doesnt exist. Added security.
+        // Always display that an email has been sent even if user doesnt exist. Added security. Unless the mailer is broken.
         print json_encode($return); 
     }
 

@@ -1,7 +1,7 @@
-var task = angular.module('task', ['720kb.datepicker', 'cgNotify', 'ngMap', 'fileService']);
+var task = angular.module('task', ['720kb.datepicker', 'cgNotify', 'ngMap', 'fileService', 'cp.ngConfirm']);
 
-task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'getUserFriends', 'sharedWith', 'getTaskMedia', 'NgMap', 'uploadFileData', 
-    function ($scope, $http, getTaskShareData, notify, getUserFriends, sharedWith, getTaskMedia, NgMap, uploadFileData) {
+task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'getUserFriends', 'sharedWith', 'getTaskMedia', 'NgMap', 'uploadFileData', '$ngConfirm',
+    function ($scope, $http, getTaskShareData, notify, getUserFriends, sharedWith, getTaskMedia, NgMap, uploadFileData, $ngConfirm) {
         $scope.googlemap = 'https://maps.google.com/maps/api/js?key=AIzaSyAKGQaIHaiRawx9GHR2CgzsGptwWdiNv2w';
         $scope.map = [
             {
@@ -11,8 +11,13 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                 coords: {lat: 40.6782, lng: -73.9442 }
             }
         ];
-
         $scope.data = {};
+        $scope.data.types = [
+            {'id': 1, 'value': 'Meeting'},
+            {'id': 2, 'value': 'Event'},
+            {'id': 3, 'value': 'Personal'},
+            {'id': 4, 'value': 'Work'}
+        ];
         
         function getQueryVariable(variable)
         {
@@ -33,14 +38,18 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             
         tasks.then(function (response) {
             if(response.data == 400){
-                
                 window.setTimeout(function(){window.location.href = "../index"},1); 
             }else{
             var task = response.data.task;
             $scope.data.admin = task[0][0];
+            
+            $('#selector_start_update').wickedpicker({now: $scope.data.admin.start_time, twentyFour: true, title: "Start Time", show: showPicker});
+            $('#selector_end_update').wickedpicker({now: $scope.data.admin.end_time, twentyFour: true, title: "End Time", show: showPicker});
+
+            $scope.data.admin.typename = $scope.data.types[$scope.data.admin.type - 1];
             $scope.data.share = task[1];
             $scope.data.logged = response.data.admin;
-
+            
             getUserFriends.getFriends().then(function(data){
                 $scope.data.friends = sharedWith.filterShareWithOnTask(data, $scope.data.share);
             });
@@ -50,6 +59,8 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             });
             }
         });
+
+        
 
         $scope.isImage = function(file_name){
             var ext = ["jpg", "jpeg", "png", "gif"];
@@ -96,47 +107,53 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             var addU = $http.get('addUser?taskId=' + $scope.task_id + '&userId=' + user_id);
 
             addU.then(function (response) {
+                $scope.data.friends = sharedWith.addAndRemoveFriendProject($scope.data.friends, user_id);
+
                 getTaskShareData.getParticipants($scope.task_id).then(function(data){
-                    $scope.data.friends = sharedWith.addAndRemoveFriendProject($scope.data.friends, user_id);
                     $scope.data.share = data;
-                    
                 });
+
             })
+            
         }
 
-        $scope.update = function () {
+        $scope.removeFromShare = function(data) {
+            var user_id = data;
 
-            $scope.data.inputTaskStart = $('#selector').val().replace(/\s/g, '');
-            $scope.data.inputTaskEnd = $('#selector2').val().replace(/\s/g, '');
-            
-            $http(({
-                method: 'POST',
-                url: 'updateTask',
-                data: $scope.data, //forms user object
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })).then(function (response) {
+            var removeU = $http.get('removeUser?taskId=' + $scope.task_id + '&userId=' + user_id);
+            removeU.then(function(response) {
+                $scope.data.share = sharedWith.addAndRemoveFriendProject($scope.data.share, user_id);
                 
-                var status = response.data;
-                if(status == 200){
-                    notify({ message:'Task Updated successfully'} );
-                    window.setTimeout(function(){window.location.href = "../users/index"},1000); 
-                } else {
-                    notify({ message:'Task Could Not Be Created. Please Try Again.'} );
-                } 
-            });
-
-        };
+                getUserFriends.getFriends().then(function(data){
+                    $scope.data.friends = sharedWith.filterShareWithOnTask(data, $scope.data.share);
+                });
+            })
+            
+        }
 
         $scope.deleteMedia = function(data){
-            if (confirm("Are you sure?")) {
-                console.dir(data);
-                var deleteMedia = $http.get('deleteMedia?media_id=' + data);
-                deleteMedia.then(function (response) {
-                    getTaskMedia.getMedia($scope.task_id).then(function(data){
-                        $scope.data.media = data;
-                    });       
-                })
-            } 
+            $ngConfirm({
+                title: 'Confirm?',
+                content: ' Are you sure you want to remove this item?',
+                buttons: {
+                    sayBoo: {
+                        text: 'Remove',
+                        btnClass: 'btn-red',
+                        action: function(button){
+                            var deleteMedia = $http.get('deleteMedia?media_id=' + data);
+                            deleteMedia.then(function (response) {
+                                getTaskMedia.getMedia($scope.task_id).then(function(data){
+                                    $scope.data.media = data;
+                                });       
+                            })
+                            return true; // prevent close;
+                        }
+                    },
+                    close: function(button){
+                        // closes the modal
+                    },
+                }
+            });
         }
 
         $scope.addNote = function(){
@@ -186,9 +203,7 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                     getTaskMedia.getMedia($scope.task_id).then(function(data){
                         $scope.data.media = data;
                     });
-
             });
-
         }
 
         $scope.addFile = function (){
@@ -209,6 +224,40 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                 });
             });
         }
+
+        $scope.submit = function () {
+            $scope.data.admin.type = $scope.data.admin.typename.id;
+            $scope.update = {};
+            $scope.update.task_id = $scope.task_id;
+            $scope.update.inputTaskName = $scope.data.admin.name;
+            $scope.update.inputTaskName = $scope.data.admin.name;
+
+            $scope.data.admin.start_time = $('#selector_start_update').val().replace(/\s/g, '');
+            $scope.data.admin.end_time = $('#selector_end_update').val().replace(/\s/g, '');
+
+            $scope.update.inputTaskStart = $scope.data.admin.start_time;
+            $scope.update.inputTaskEnd = $scope.data.admin.end_time;
+            $scope.update.inputTaskDate = $scope.data.admin.task_date;
+            $scope.update.types = $scope.data.admin.typename.id;
+            $scope.update.inputTaskInfo = $scope.data.admin.info;
+
+            $http(({
+                method: 'POST',
+                url: 'updateTask',
+                data: $scope.update, //forms user object
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            })).then(function (response) {
+                    
+                var status = response.status;
+                if(status == 200){
+                    notify({ message:'Task Updated successfully'} );
+                    //window.setTimeout(function(){window.location.href = "../users/index"},1000); 
+                    closeUpdate();
+                } else {
+                    notify({ message:'Task Could Not Be Updated. Please Try Again.', classes: 'alert-danger'} );
+                }   
+            });
+        };
 
     }]);
 
@@ -286,19 +335,18 @@ task.factory('sharedWith', function () {
             return list;
         },
         filterShareWithOnTask: function(friends, shared) {
-
             if(shared != undefined && shared.length > 0){
                 for(var i = 0; i < shared.length; i++){
                     for(var j = 0; j < friends.length; j++){
                         if(shared[i].id === friends[j].id){
-                            friends.splice(friends[j], 1);
+                            friends.splice(j, 1);
                         } 
                     }
                 }
             }else{
                 return friends;
             }
-            return friends;
+            return friends; 
         }
             
     };
@@ -353,39 +401,6 @@ task.controller('getFriendsCtrl', ['$scope', '$http', 'notify', 'sharedWith', 'g
 
 task.controller('createCtrl', ['$scope', '$http', 'notify', 'sharedWith', function ($scope, $http, notify, sharedWith) {
 
-        $('#selector').wickedpicker({
-            twentyFour: true,
-            now: "12 : 00",
-            upArrow: 'wickedpicker__controls__control-up',
-            downArrow: 'wickedpicker__controls__control-down',
-            close: 'wickedpicker__close',
-            hoverState: 'hover-state',
-            title: 'Start Time',
-            show : showPicker
-        });
-
-        $('#selector2').wickedpicker({
-            twentyFour: true,
-            now: "12 : 00",
-            upArrow: 'wickedpicker__controls__control-up',
-            downArrow: 'wickedpicker__controls__control-down',
-            close: 'wickedpicker__close',
-            hoverState: 'hover-state',
-            title: 'End Time',
-            show : showPicker
-        });
-
-        function showPicker( element ) {
-            $( '.wickedpicker__title' ).contents().first().replaceWith( ( ( this.options !== undefined ) ? this.options.title : this.title ) );
-        }
-
-        $('#selector,#selector2').focus(function(){
-            $('.wickedpicker').css({'display': 'none'});
-        });
-
-        
-
-
         $scope.data = {};
         $scope.data.inputTaskStart = "12:00";
         $scope.data.inputTaskEnd = "12:00";
@@ -400,10 +415,9 @@ task.controller('createCtrl', ['$scope', '$http', 'notify', 'sharedWith', functi
         $scope.selectedItem = null;
 
         $scope.submit = function () {
-            console.log($scope.selectedItem.id);
 
-            $scope.data.inputTaskStart = $('#selector').val().replace(/\s/g, '');
-            $scope.data.inputTaskEnd = $('#selector2').val().replace(/\s/g, '');
+            $scope.data.inputTaskStart = $('#selector_start_create').val().replace(/\s/g, '');
+            $scope.data.inputTaskEnd = $('#selector_end_create').val().replace(/\s/g, '');
             $scope.data.sharedWith = sharedWith.getShared();
             $scope.data.types = $scope.selectedItem.id;
 

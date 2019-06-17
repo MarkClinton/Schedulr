@@ -2,8 +2,9 @@
 <head>
   <title>Schedulr</title>
   <meta name="viewport" content="width=device-width">
-    <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
     <script src="<?php echo base_url()?>/assets/js/jquery.js"></script>
+    <script src="<?php echo base_url()?>/assets/js/angular.js"></script>
+
     <script src="<?php echo base_url()?>/assets/js/paper-kit.js"></script>
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url()?>/assets/images/favicon-96x96.png">
 
@@ -32,6 +33,7 @@
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/custom.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/mobile.css">
   <link rel="stylesheet" href="<?php echo base_url()?>/assets/css/paper-kit.css">
+  <link rel='stylesheet' href='<?php echo base_url()?>/assets/css/angular-confirm.min.css' />
   <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
   
 
@@ -40,6 +42,7 @@
   <script src="<?php echo base_url()?>/assets/js/timepickerdirective.js"></script>
   <script src="<?php echo base_url()?>/assets/js/wickedpicker.min.js"></script>
   <script src="<?php echo base_url()?>/assets/js/angular-notify.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/angular-confirm.js"></script>
   <script src="<?php echo base_url()?>/assets/js/validation.js"></script>
   <script src="<?php echo base_url()?>/assets/js/display.js"></script>
   <script src="<?php echo base_url()?>/assets/js/task.js"></script>
@@ -55,6 +58,8 @@
   <script src="<?php echo base_url()?>/assets/js/qtip.js"></script>
   <script src="<?php echo base_url()?>/assets/js/calendar.js"></script>
   <script src="<?php echo base_url()?>/assets/js/bootstrap.min.js"></script>
+  <script src="<?php echo base_url()?>/assets/js/bootstrap-switch.min.js"></script>
+
 
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAKGQaIHaiRawx9GHR2CgzsGptwWdiNv2w"></script>
 
