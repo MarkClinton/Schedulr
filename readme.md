@@ -19,16 +19,16 @@ Profile tab shows your information and a list of 10 of your recent activities. T
 ## Technologies.
 
 
-•	Codeigniter 3.1.3 - https://www.codeigniter.com/
-•	AngularJS 1.6.1 - https://angularjs.org/
-•	Bootstrap v4.0 – https://getbootstrap.com
-•	Paperkit UI - https://www.creative-tim.com/product/paper-kit-2
-•	FullCalendar v3.6.2 - https://fullcalendar.io/
-•	Wickerpicker - https://ericjgagnon.github.io/wickedpicker/
-•	jQuery 1.12.4 – http://jquery.com/
-•	AngularJS Google Maps v1.18.4
-•	MySQL
-•	Landing page image of people were designed by Freepik - http://www.freepik.com
+*	Codeigniter 3.1.3 - https://www.codeigniter.com/
+*	AngularJS 1.6.1 - https://angularjs.org/
+*	Bootstrap v4.0 – https://getbootstrap.com
+*	Paperkit UI - https://www.creative-tim.com/product/paper-kit-2
+*	FullCalendar v3.6.2 - https://fullcalendar.io/
+*	Wickerpicker - https://ericjgagnon.github.io/wickedpicker/
+*	jQuery 1.12.4 – http://jquery.com/
+*	AngularJS Google Maps v1.18.4
+*	MySQL
+*	Landing page image of people were designed by Freepik - http://www.freepik.com
 
 
 
