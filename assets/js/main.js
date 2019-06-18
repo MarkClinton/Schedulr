@@ -38,6 +38,7 @@ $(document).ready(function () {
     $('#selector_start_update,#selector_end_update').focus(function(){
         $('.wickedpicker').css({'display': 'none'});
     }); 
+    
 });
 
 // Function needed to change titles on wickedpicker. Only solution. 
@@ -47,7 +48,7 @@ function showPicker( element ) {
 }
 
 window.onload = function(){ 
-    document.getElementById('overlay-back').onclick = function(){
+    $('#overlay-back').onclick = function(){
         var reg = $('#reg').height(); 
         var login = $('#login').height(); 
         var mappop = $('#locationAdd').height(); 
