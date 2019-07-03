@@ -16,7 +16,7 @@ class Email_client extends CI_Controller{
     {
         require_once(APPPATH."libraries/phpmailer.php");
         require_once(APPPATH."libraries/SMTP.php");
-        $this->mail = new phpmailer();
+        $this->mail = new PHPMailer();
     }
 
 	public function setSubject($subject){

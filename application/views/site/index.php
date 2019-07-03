@@ -44,8 +44,10 @@
   Login popup container
  -->
   <div id = "login" class="login sideNav-index">
+    <button type="button" onclick="closeLogin()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
+      <i class="fa fa-times"></i>
+    </button>
     <div class="contain">
-
       <h3>Login</h3>
       <form class="form-horizontal" ng-controller="indexCtrl" ng-submit="login()">
         <fieldset>
@@ -76,6 +78,9 @@
     Register popup container
     -->
     <div id= "reg" class="sideNav-index reg">
+      <button type="button" onclick="closeReg()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
+        <i class="fa fa-times"></i>
+      </button>
       <div class="contain">
         <h3>Sign Up</h3>
         <form class="form-horizontal" ng-controller="indexCtrl" ng-submit="register()">
