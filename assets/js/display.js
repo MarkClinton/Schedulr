@@ -583,9 +583,9 @@ fetch.controller('calendarCtrl', ['$scope', '$http', 'notify', 'remove', functio
             center: 'title',
             left: 'prev,next'
         },
-        dayClick: function (date, jsEvent, view, resourceObj) {
+        dayClick: function (date, jsEvent, view, resourceObj) {     
 
-            $scope.data.inputTaskDate = convertTimestamp(date.format());
+            $scope.data.inputTaskDate = date.format();
             $scope.data.inputTaskStart = "12:00";
             $scope.data.inputTaskEnd = "12:00";
             $scope.data.inputTaskName = '';
