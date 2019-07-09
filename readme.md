@@ -1,5 +1,5 @@
 ## About.
-## http://3.9.126.153/Schedulr
+## http://www.schedulr.cc/
 
 Schedulr is an organizational tool designed to show you a snapshot of your weekly, monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you on the task list to the left of the user’s home page, as well as a calendar option on the right. 
 All tasks shown on the calendar are color coded depending on the type of task. The color information is found below the calendar for ease of use. A snippet of task information is shown on the task list to the left as well as when you hover over a calendar entry. These tasks can be accessed by clicking on them from either location. 
