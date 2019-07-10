@@ -161,7 +161,9 @@
     </div>
 
     <div class="foot_index bg-blue">
-      </div>
+      <br>
+      <center><a href="https://github.com/MarkClinton/Schedulr"><span><i style="color:white" class="fa fa-github-square fa-10x"></i><h3 style="color:white;">Github</h3></span></a></center>
+    </div>
     </div>
   </div>
 
