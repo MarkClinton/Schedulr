@@ -1162,16 +1162,15 @@ img.add{
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 50%;
+    top: 110%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
     text-align: center;
-    background-color: white;
+    /*background-color: white;*/
     width:65px;
     height:65px;
     border-radius: 50%;
-    background:#c0392b;
     margin-bottom: 20px;
   }
   

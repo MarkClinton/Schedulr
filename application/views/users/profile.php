@@ -214,7 +214,7 @@
                                 <div class="user_profile_contain">
                                     <img class="user profile " src="<?php echo base_url() ?>{{friend.img_url}}" alt="profile" />
                                     <div class="middle">
-                                        <button type="button" ng-click="removeFriend(friend.id, friend.first_name, friend.last_name)" class="btn btn-lg btn-link btn-just-icon top-md">
+                                        <button type="button" ng-click="removeFriend(friend.id, friend.first_name, friend.last_name)" class="btn-sm btn-danger btn-just-icon top-md">
                                             <i class="fa fa-times fa-10x" aria-hidden="true"></i> 
                                         </button>
                                     </div>
