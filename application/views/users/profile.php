@@ -54,7 +54,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
+                            <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Active Tasks</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
@@ -91,7 +91,7 @@
                             </div>
                         </div>
 
-                        <div class="center_div" ng-cloak>
+                        <!--<div class="center_div" ng-cloak>
                             <div class="tasks_buffer" ng-show="filteredExpired.length > 0">
                                 <br>
                                 <h4>Expired Tasks</h4>
@@ -109,7 +109,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
 
