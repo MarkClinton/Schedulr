@@ -156,6 +156,30 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             });
         }
 
+        $scope.deleteTask = function(){
+            $ngConfirm({
+                title: 'Confirm?',
+                content: ' Are you sure you want to delete this task?',
+                buttons: {
+                    sayBoo: {
+                        text: 'Remove',
+                        btnClass: 'btn-red',
+                        action: function(button){
+                            return $http.get('deleteTask?id=' + $scope.task_id)
+                                .then(function (response) {
+                                    notify({ message:'Task Deleted'} );
+                                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                                });
+                            return true; // close;
+                        }
+                    },
+                    close: function(button){
+                        // closes the modal
+                    },
+                }
+            });
+        }
+
         $scope.addNote = function(){
 
             var note = [{

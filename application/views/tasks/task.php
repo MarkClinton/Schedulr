@@ -93,7 +93,7 @@
                     </a>-->
 
                         <a class="btn btn-success btn-sm pull-right" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">
-                            Add <i class="fa fa-caret-down"></i>
+                            <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu file dropdown-info" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" onClick="showNote()">Note</a>
@@ -102,8 +102,11 @@
                         </ul>
                     </div>
 
-                    <a ng-show="isAdmin()" class="btn btn-info btn-sm pull-left" role="button" onclick="openUpdate()">
-                        Edit <i class="fa fa-edit"></i>
+                    <a ng-show="isAdmin()" class="btn btn-info btn-sm left" role="button" onclick="openUpdate()">
+                        <i class="fa fa-edit"></i>
+                    </a>
+                    <a ng-show="isAdmin()" class="btn btn-danger btn-sm left" role="button" ng-click="deleteTask()">
+                        <i class="fa fa-trash"></i>
                     </a>
 
                 </div>

@@ -411,7 +411,7 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
     };
 
     $scope.delete = function (data) {
-        sremove.deleteData(data);
+        remove.deleteData(data);
     };
 
 
