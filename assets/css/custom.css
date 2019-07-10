@@ -882,6 +882,10 @@ img.add{
     margin-top: 10px;
 }
 
+.top-md{
+    margin-top: 8px;
+}
+
 .pull-right {
     float: right !important;
 }
@@ -1147,10 +1151,42 @@ img.add{
     margin-right: 0;
 }
 
+.user_profile_contain{
+    position: relative;
+    width: 60px;
+    margin-right: auto;
+    margin-left: auto;
+}
 
-
-
-
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: white;
+    width:65px;
+    height:65px;
+    border-radius: 50%;
+    background:#c0392b;
+    margin-bottom: 20px;
+  }
+  
+  .user_profile_contain:hover{
+    opacity: 1;
+  }
+  
+  .user_profile_contain:hover .middle {
+    opacity: 1;
+  }
+  
+  .text {
+    color: white;
+    font-size: 16px;
+  }
 
 
 
