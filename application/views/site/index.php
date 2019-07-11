@@ -36,7 +36,6 @@
       <h4 style="color:white;">Personal or shared!</h4>
       <h4 style="color:white;">Sign up now to enjoy!</h4>
     </div>
-
   </div>
 
 
