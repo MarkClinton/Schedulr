@@ -164,12 +164,12 @@ fetch.controller('showFriendsCtrl', ['$scope', '$ngConfirm', '$http', 'getUsersF
     $scope.removeFriend = function (id, f_name, l_name) {
 
         $ngConfirm({
-            title: 'Confirm?',
-            content: ' Are you sure you want to remove <strong>' + f_name + ' ' + l_name + '</strong> as your friend?',
+            title: '<h3>Confirm?</h3>',
+            content: '<div style="height: 40px"><p>Are you sure you want to remove <strong>' + f_name + ' ' + l_name + '</strong> as your friend?</p></div>',
             buttons: {
                 sayBoo: {
                     text: 'Remove',
-                    btnClass: 'btn-red',
+                    btnClass: 'btn-sm btn-danger',
                     action: function (button) {
                         var deleteFriend = $http.get('deleteFriend?userId=' + id);
                         deleteFriend.then(function (response) {
@@ -217,9 +217,9 @@ fetch.factory('remove', function ($http, $ngConfirm) {
     return {
         deleteData: function (data) {
             $ngConfirm({
-                title: 'Confirm?',
-                content: ' Are you sure you want to delete this task?',
-                buttons: {
+            title: '<h3>Confirm?</h3>',
+            content: '<div style="height: 40px"><p>Are you sure you want to delete this task?</p></div>',
+            buttons: {
                     sayBoo: {
                         text: 'Remove',
                         btnClass: 'btn-red',

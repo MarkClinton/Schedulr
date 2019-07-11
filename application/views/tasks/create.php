@@ -1,7 +1,7 @@
 <div class="container">
 
     <div class="containTask" ng-app="task">
-        <div class="form-create-task">
+        <div class="form-create-task margined-top">
             <h5 style="text-align: left;">Create New</h5>
             
             <form name="saveTaskData" class="form-horizontal" ng-controller="createCtrl" ng-submit="submit()"> 

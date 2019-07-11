@@ -14,7 +14,7 @@
                 <div class="sideNav-index pictureUpload" id="pictureUpload" ng-submit="uploadImage()">
                     <div class="pictureUploadHeader">
                         <center>
-                            <p>Upload Profile Picture</p>
+                            <h6>Upload Profile Picture</h6>
                         </center>
                     </div>
                     <form method="POST" enctype="multipart/form-data">
@@ -54,7 +54,7 @@
                 <div class="nav-tabs-wrapper">
                     <ul id="tabs" class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
-                            <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Active Tasks</a>
+                            <a class="nav-link active" data-toggle="tab" href="#tasks" role="tab">Tasks</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-toggle="tab" href="#friends" role="tab">Friends</a>
@@ -138,7 +138,7 @@
                                 </div>
                             </form>
                             <div class="left margin-left top-margin">
-                                <a onClick="showUpdatePassword()">Update Password</a>
+                                <a onClick="showUpdatePassword()"><h6 style="color: #51bcda">Update Password</h6></a>
                             </div>
                         </div>
 
@@ -157,14 +157,14 @@
 
                 <div class="pop-contain">
                     <div id="update_password" class="sideNav" ng-controller="updateProfileCtrl" ng-submit="updatePword()">
-
-                        <button type="button" onclick="closeUpdatePassword()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                            <i class="fa fa-times"></i>
-                        </button>
+                        <div class="nav-header">
+                            <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Update Password</h6>
+                            <button type="button" onclick="closeUpdatePassword()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
 
                         <div class="inner_center">
-                            <h3>Update Password</h3>
-
                             <form class="form-horizontal">
 
                                 <div class="form-group">
@@ -215,7 +215,7 @@
                                     <img class="user profile " src="<?php echo base_url() ?>{{friend.img_url}}" alt="profile" />
                                     <div class="middle">
                                         <button type="button" ng-click="removeFriend(friend.id, friend.first_name, friend.last_name)" class="btn-sm btn-danger btn-just-icon top-md">
-                                            <i class="fa fa-times fa-10x" aria-hidden="true"></i> 
+                                            <i class="fa fa-times fa-10x" aria-hidden="true"></i>
                                         </button>
                                     </div>
                                 </div>
@@ -230,15 +230,15 @@
 
                     <div class="friends" ng-controller="srchPeopleCtrl">
                         <div id="addFriend" class="sidenav">
-                            <button type="button" ng-click="remove()" onclick="closeNav()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                                <i class="fa fa-times"></i>
-                            </button>
-                            <!--<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>-->
+                            <div class="nav-header">
+                                <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Add Friends</h6>
+                                <button type="button" onclick="closeNav()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                            </div>
+          
                             <div class="inner_center">
-                                <center>
-                                    <h3>Add Friends</h3>
-                                </center>
-                                </br>
+                                <br>
                                 <form ng-submit='change(text)'>
                                     <input class="input2" id="searchInput" type="text" ng-model="src.searchText" placeholder="Search By Email.." />
                                 </form>

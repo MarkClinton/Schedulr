@@ -5,14 +5,15 @@
             <div id="overlay-back"></div>
 
             <div id='updateTask' class="sidenav_med" ng-controller="calendarCtrl" ng-submit="submit()" ngCloak>
-                
-                <button type="button" onclick="closeUpdate()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                    <i class="fa fa-times"></i>
-                </button>
+                <div class="nav-header">
+                <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Quick Create</h6>
+                    <button type="button" onclick="closeUpdate()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
                 <button style="display: none" id="refreshList" ng-click="updateListFunc()">{{updateList}}</button>
                 <div class="contain">
                 <div class="form-create-task margin-left-1">
-                    <h5 style="text-align: center;">Quick Task Create</h5>
 
                     <form name="saveTaskData" class="form-horizontal" ng-submit="submit()">
                         <div class="panel panel-primary">

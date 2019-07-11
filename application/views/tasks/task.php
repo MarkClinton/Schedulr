@@ -31,11 +31,14 @@
 
             <div class="taskBoard">
                 <div id='updateTask' class="sidenav_big">
-                    <button type="button" onclick="closeUpdate()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                        <i class="fa fa-times"></i>
-                    </button>
+                    <div class="nav-header">
+                        <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Edit Task</h6>
+                        <button type="button" onclick="closeUpdate()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+
                     <div class="form-create-task margin-left-1">
-                        <h5 style="text-align: left;">Edit Task</h5>
 
                         <form name="saveTaskData" class="form-horizontal" ng-submit="submit()">
                             <div class="panel panel-primary">
@@ -167,11 +170,13 @@
 
                 <div class="pop-contain">
                     <div id="note" class="sideNav">
-                        <button type="button" onclick="closeNote()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                            <i class="fa fa-times"></i>
-                        </button>
+                        <div class="nav-header">
+                            <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Add Note</h6>
+                            <button type="button" onclick="closeNote()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
                         <div class="inner_center">
-                            <h3>Add New Note</h3>
 
                             <form name="saveTaskData" class="form-horizontal" ng-submit="addNote()">
                                 <div class="panel panel-primary">
@@ -192,11 +197,13 @@
 
                 <div class="pop-contain">
                     <div id="fileUp" class="sideNav">
-                        <button type="button" onclick="closeFile()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
-                            <i class="fa fa-times"></i>
-                        </button>
+                        <div class="nav-header">
+                            <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">New File</h6>
+                            <button type="button" onclick="closeFile()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
                         <div class="inner_center">
-                            <h3>Add New File</h3>
 
                             <form method="POST" enctype="multipart/form-data" ng-submit="addFile()">
                                 <br>
@@ -219,7 +226,7 @@
 
                 <div class="friends">
                     <div id="addUser" class="sideNav">
-                        <button type="button" onclick="closeAddUser()" class="btn btn-danger btn-link btn-sm top-margin pull-right">
+                        <button type="button" onclick="closeAddUser()" class="btn btn-neutral btn-sm top-margin pull-right">
                             <i class="fa fa-times"></i>
                         </button>
                         <div class="inner_center">

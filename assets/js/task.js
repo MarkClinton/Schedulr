@@ -133,8 +133,8 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
 
         $scope.deleteMedia = function(data){
             $ngConfirm({
-                title: 'Confirm?',
-                content: ' Are you sure you want to remove this item?',
+                title: '<h3>Confirm?</h3>',
+                content: '<div style="height: 40px"><p>Are you sure you want to remove this item?</p></div>',
                 buttons: {
                     sayBoo: {
                         text: 'Remove',
@@ -158,8 +158,8 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
 
         $scope.deleteTask = function(){
             $ngConfirm({
-                title: 'Confirm?',
-                content: ' Are you sure you want to delete this task?',
+                title: '<h3>Confirm?</h3>',
+                content: '<div style="height: 40px"><p>Are you sure you want to delete this task?</p></div>',
                 buttons: {
                     sayBoo: {
                         text: 'Remove',
