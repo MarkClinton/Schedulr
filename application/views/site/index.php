@@ -21,11 +21,12 @@
     </div>
 
     <div class="mobile_welcome">
-      <h1 style="color:white;">Your day? Sorted.</h1>
+      <h1 style="color:white;">Your day? Sorted!</h1>
       <br>
-      <h3 style="color:white;">Schedulr helps you keep track of your tasks and events.</h3>
-      <h3 style="color:white;">Personal or shared!</h3>
-      <h3 style="color:white;">Sign up now to enjoy!</h3>
+      <h4 style="color:white;">Schedulr is an organizational tool designed to show you a snapshot of your weekly, 
+      monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you</h4>
+      <br>
+      <h4 style="color:white;">Sign up now to enjoy!</h4>
     </div>
 
     <div class="mobile_welcome_sml">
@@ -128,7 +129,7 @@
     <img class="home" src="assets/images/home_image_1.png" alt="main_icon">
   </div>
 
-  <div class="about margin-top-index">
+  <div class="about margined-top">
     <span>
       <h1 style="color: #5AA3D4; display:inline;">" </h1>
       <h3 style="color:#7A7A7A; display: inline;">Organize your daily tasks. Easily.</h3>
@@ -165,8 +166,7 @@
   <div class="about_image_md">
     <img class="home-2" src="assets/images/home_main_secondary.png" alt="main_icon">
   </div>
-  <h1 style="color:#7A7A7A;">Peace of mind</h1>
-  <br>
+  <h1 style="color:#7A7A7A;">peace of mind</h1>
   <br>
   <h4 style="color:#7A7A7A;">Schedulr allows a snapshot of your day,
     week and month.</h4>
@@ -180,8 +180,9 @@
 
 <div class="foot_index bg-blue">
   <br>
+  <br>
   <center><a href="https://github.com/MarkClinton/Schedulr"><span><i style="color:white" class="fa fa-github-square fa-10x"></i>
-        <h3 style="color:white;">Github</h3>
+        <h6 style="color:white;">Github</h6>
       </span></a></center>
 </div>
 </div>
