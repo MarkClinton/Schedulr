@@ -57,7 +57,6 @@
                                     <br>
 
                                     <select class="form-control" ng-model="data.admin.typename" ng-options="type as type.value for type in data.types" required>
-                                        <!--<option value="" disabled selected>Choose Type</option>-->
                                     </select>
 
                                     <textarea class="form-control" ng-model="data.admin.info" placeholder="Task Information" type="text" required></textarea>
@@ -88,12 +87,8 @@
 
 
                 <div class="taskViewHead">
-                    <!--<a class="btn btn-success btn-sm pull-right" >Add <i class="fa fa-caret-down"></i></a>-->
 
                     <div class="nav-item dropdown">
-                        <!--<a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownMenuButton" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">
-                        Add <i class="fa fa-caret-down"></i>
-                    </a>-->
 
                         <a class="btn btn-success btn-sm pull-right" data-toggle="dropdown" href="#pk" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-caret-down"></i>
@@ -260,13 +255,11 @@
                 <div class='taskSideBar'>
                     <p>{{data.admin.info}}</p>
                     <p>{{data.admin.task_date}}</p>
-                    <!--{{ isAdmin() == true ? 'You' : data.admin.first_name }}-->
                     <br>
                     <p>Created By
                         <span ng-show="isAdmin()" class="green">You</span>
                         <span ng-hide="isAdmin()" class="green">{{data.admin.first_name}}</span>
                     </p>
-                    <!--<img class="smlr profile " src="<?php echo base_url() ?>{{data.admin.img_url}}" alt="profile" title="{{data.admin.first_name}}"/>-->
                     <br>
                     <p>Shared With
                         <span><a ng-show="isAdmin()" class="btn btn-success btn-link btn-sm add" id="ppButton" onClick="showAddUser()" title="Add New User">
@@ -277,7 +270,6 @@
                             <img class="smlr profile " src="<?php echo base_url() ?>{{data.img_url}}" title="{{data.first_name}}" alt="profile" />
                         </div>
                     </div>
-                    <!--<img class="sml add profile " src="<?php echo base_url() ?>/assets/images/add.png" title="Add New User"/>-->
                 </div>
             </div>
         </div>

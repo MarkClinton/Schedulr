@@ -23,8 +23,8 @@
     <div class="mobile_welcome">
       <h1 style="color:white;">Your day? Sorted.</h1>
       <br>
-      <h4 style="color:white;">Schedulr is an organizational tool designed to show you a snapshot of your weekly, 
-      monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you</h4>
+      <h4 style="color:white;">Schedulr is an organizational tool designed to show you a snapshot of your weekly,
+        monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you</h4>
       <br>
       <h4 style="color:white;">Sign up now to enjoy!</h4>
     </div>
@@ -70,7 +70,11 @@
             <!--<button type="button" onclick="closeLogin()" class="btn btn-danger btn-round">Close</button>-->
           </div>
           <div class="left margin-left">
-            <a href="forgot_password"><h6 style="color: #51bcda"><h6 style="color: #51bcda">Forgot Password?</h6></h6></a>
+            <a href="forgot_password">
+              <h6 style="color: #51bcda">
+                <h6 style="color: #51bcda">Forgot Password?</h6>
+              </h6>
+            </a>
           </div>
         </fieldset>
       </form>
@@ -114,7 +118,6 @@
           </div>
           <div class="left margin-left">
             <button type="submit" class="btn btn-success">Sign Me Up</button>
-            <!--<button type="button" onclick="closeReg()" class="btn btn-danger btn-round">Close</button>-->
           </div>
         </fieldset>
       </form>
@@ -174,15 +177,18 @@
   <br><br>
   <a class="btn btn-stretch btn-info btn-lg" onClick="openReg()">Sign Up</a>
   <br>
-  <!--<img class="img-icon-2" src="assets/images/79.png" alt="main_icon">-->
 </div>
 
 <div class="foot_index bg-blue">
   <br>
   <br>
-  <center><a href="https://github.com/MarkClinton/Schedulr"><span><i style="color:white" class="fa fa-github-square fa-10x"></i>
+  <center>
+    <a href="https://github.com/MarkClinton/Schedulr">
+      <span><i style="color:white" class="fa fa-github-square fa-10x"></i>
         <h6 style="color:white;">Github</h6>
-      </span></a></center>
+      </span>
+    </a>
+  </center>
 </div>
 </div>
 </div>

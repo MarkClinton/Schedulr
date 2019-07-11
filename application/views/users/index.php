@@ -6,46 +6,44 @@
 
             <div id='updateTask' class="sidenav_med" ng-controller="calendarCtrl" ng-submit="submit()" ngCloak>
                 <div class="nav-header">
-                <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Quick Create</h6>
+                    <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Quick Create</h6>
                     <button type="button" onclick="closeUpdate()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
                         <i class="fa fa-times"></i>
                     </button>
                 </div>
                 <button style="display: none" id="refreshList" ng-click="updateListFunc()">{{updateList}}</button>
                 <div class="contain">
-                <div class="form-create-task margin-left-1">
+                    <div class="form-create-task margin-left-1">
 
-                    <form name="saveTaskData" class="form-horizontal" ng-submit="submit()">
-                        <div class="panel panel-primary">
-                            <div class="panel-body">
-                                <input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text" required>
+                        <form name="saveTaskData" class="form-horizontal" ng-submit="submit()">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <input class="form-control" ng-model="data.inputTaskName" placeholder="Task Name" type="text" required>
 
-                                <input ui-timepicker class="form-control-2" ng-model="data.inputTaskStart" placeholder="Task Start Time" id="selector_start_create" type="text" required>
-                                <span class="contain_text_middle">
-                                    <h4>until</h4>
-                                </span>
-                                <input ui-timepicker class="form-control-2 fc2-left" ng-model="data.inputTaskEnd" placeholder="Task End Time" id="selector_end_create" type="text" required>
+                                    <input ui-timepicker class="form-control-2" ng-model="data.inputTaskStart" placeholder="Task Start Time" id="selector_start_create" type="text" required>
+                                    <span class="contain_text_middle">
+                                        <h4>until</h4>
+                                    </span>
+                                    <input ui-timepicker class="form-control-2 fc2-left" ng-model="data.inputTaskEnd" placeholder="Task End Time" id="selector_end_create" type="text" required>
 
-                                <input style="display: none !important;" class="form-control" ng-model="data.sharedWith" type="text" id="datepicker">
+                                    <input style="display: none !important;" class="form-control" ng-model="data.sharedWith" type="text" id="datepicker">
 
-                                <datepicker date-format="yyyy-MM-dd"><input id="datefocus" class="form-control" ng-model="data.inputTaskDate" placeholder="Task Date" type="text" readonly required></datepicker>
-                                <br>
+                                    <datepicker date-format="yyyy-MM-dd"><input id="datefocus" class="form-control" ng-model="data.inputTaskDate" placeholder="Task Date" type="text" readonly required></datepicker>
+                                    <br>
 
-                                <select class="form-control" ng-model="selectedItem"
-                                ng-options="type as type.value for type in data.types" required>
-                                    <option value="" disabled selected>Choose Type</option>
-                                    
-                                </select>
+                                    <select class="form-control" ng-model="selectedItem" ng-options="type as type.value for type in data.types" required>
+                                        <option value="" disabled selected>Choose Type</option>
 
-                                <textarea class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text" required></textarea>
-                                <br>
-                                <div id="center">
-                                    <button type="submit" class="btn btn-stretch-2 btn-success btn-sm">Create</button>
+                                    </select>
+                                    <textarea class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text" required></textarea>
+                                    <br>
+                                    <div id="center">
+                                        <button type="submit" class="btn btn-stretch-2 btn-success btn-sm">Create</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
+                        </form>
+                    </div>
                 </div>
             </div>
 
@@ -195,11 +193,7 @@
                     <h5>Work</h5>
                 </div>
             </div>
-
         </div>
-
-
-
     </div>
 </div>
 </div>

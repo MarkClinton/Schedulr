@@ -6,9 +6,9 @@
 
     <script src="<?php echo base_url() ?>/assets/js/jquery.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/bootstrap.min.js"></script>
-    <script src="<?php echo base_url()?>/assets/js/bootstrap-switch.min.js"></script>
+    <script src="<?php echo base_url() ?>/assets/js/bootstrap-switch.min.js"></script>
     <script src="<?php echo base_url() ?>/assets/js/paper-kit.js"></script>
-   
+
 
     <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url() ?>/assets/images/favicon-96x96.png">
 
@@ -62,7 +62,6 @@
 
   <body>
     <div class="home" id="home">
-      <!--<nav class="navbar navbar-expand-md bg-transparent">-->
       <nav class="navbar navbar-expand-md">
         <div class="container">
           <button class="navbar-toggler navbar-toggler-right" id="menu-collapse" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

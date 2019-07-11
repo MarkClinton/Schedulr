@@ -81,7 +81,6 @@
                                     <div class="taskDetails">
                                         <p> </p>
                                         <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}} </p>
-                                        <!--<p>{{tasks.start_time}}</p>-->
                                         <p>{{tasks.info}} </p>
                                     </div>
                                 </div>
@@ -90,26 +89,6 @@
                                 <h4 style="text-align: center">No current tasks to display</h4>
                             </div>
                         </div>
-
-                        <!--<div class="center_div" ng-cloak>
-                            <div class="tasks_buffer" ng-show="filteredExpired.length > 0">
-                                <br>
-                                <h4>Expired Tasks</h4>
-                                <br>
-                            </div>
-                            <div ng-repeat="tasks in filteredExpired = (userTasks | filter: filterLess) | orderBy: tasks.task_date:true | limitTo:10">
-                                <div class="card " ng-click="showTask(tasks)">
-                                    <div ng-class="taskColor(tasks.type)" class="taskHead">
-                                        <h5 class="white">{{tasks.name}} </h5>
-                                    </div>
-                                    <div class="taskDetails">
-                                        <p> </p>
-                                        <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}} </p>
-                                        <p>{{tasks.info}} </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>-->
                     </div>
                 </div>
 
@@ -138,7 +117,9 @@
                                 </div>
                             </form>
                             <div class="left margin-left top-margin">
-                                <a onClick="showUpdatePassword()"><h6 style="color: #51bcda">Update Password</h6></a>
+                                <a onClick="showUpdatePassword()">
+                                    <h6 style="color: #51bcda">Update Password</h6>
+                                </a>
                             </div>
                         </div>
 
@@ -196,14 +177,9 @@
 
                 <div class="tab-pane" id="friends" role="tabpanel">
                     <div class="friend_search">
-                        <!--<input class="input" type="text" name="search" placeholder="Search Friends...">-->
                         <div id="overlay-back"></div>
-                        <!--<button type="button" onclick="openNav()" class="btn btn-info btn-link add_person">
-                            
-                        </button>-->
                         <button type="button" onclick="openNav()" class="btn btn-success btn-sm add_person">
                             <i class="fa fa-user-plus"></i>
-                            <!--<h6>Add Friend</h6>-->
                         </button>
                     </div>
 
@@ -236,7 +212,7 @@
                                     <i class="fa fa-times"></i>
                                 </button>
                             </div>
-          
+
                             <div class="inner_center">
                                 <br>
                                 <form ng-submit='change(text)'>
