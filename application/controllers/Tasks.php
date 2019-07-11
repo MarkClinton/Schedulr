@@ -146,7 +146,6 @@ class Tasks extends CI_Controller {
         }
         
         if($shared_with > 0) {
-            
             foreach($shared_with as $n) {
                 $this->createTaskSharedWith($task_id, $n['id']);
             }
@@ -173,8 +172,9 @@ class Tasks extends CI_Controller {
             'type_data_id' => $task_id
         );  
 
-        $response =  $this->Task_model->updateTaskShare($data_one);
+        $response =  $this->Task_model->addTaskShare($data_one);
         $this->User_model->addToUserTimeline($data_timeline);
+        
         print json_encode($response);
 
     }
