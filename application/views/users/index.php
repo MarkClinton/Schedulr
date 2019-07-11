@@ -40,7 +40,7 @@
                                 <textarea class="form-control" ng-model="data.inputTaskInfo" placeholder="Task Information" type="text" required></textarea>
                                 <br>
                                 <div id="center">
-                                    <button type="submit" class="btn btn-stretch-2 btn-success btn-sm">Update</button>
+                                    <button type="submit" class="btn btn-stretch-2 btn-success btn-sm">Create</button>
                                 </div>
                             </div>
                         </div>
