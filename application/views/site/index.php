@@ -21,7 +21,7 @@
     </div>
 
     <div class="mobile_welcome">
-      <h1 style="color:white;">Your day? Sorted!</h1>
+      <h1 style="color:white;">Your day? Sorted.</h1>
       <br>
       <h4 style="color:white;">Schedulr is an organizational tool designed to show you a snapshot of your weekly, 
       monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you</h4>
