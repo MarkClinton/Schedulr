@@ -217,9 +217,9 @@ fetch.factory('remove', function ($http, $ngConfirm) {
     return {
         deleteData: function (data) {
             $ngConfirm({
-            title: '<h3>Confirm?</h3>',
-            content: '<div style="height: 40px"><p>Are you sure you want to delete this task?</p></div>',
-            buttons: {
+                title: '<h3>Confirm?</h3>',
+                content: '<div style="height: 40px"><p>Are you sure you want to delete this task?</p></div>',
+                buttons: {
                     sayBoo: {
                         text: 'Remove',
                         btnClass: 'btn-red',
@@ -369,7 +369,12 @@ fetch.controller('displayUserCtrl', ['$scope', '$http', '$rootScope', 'notify', 
 
     $scope.filterActive = function (data) {
         return date.activeTasks(data, $scope.today);
-    }
+    };
+
+    $scope.timeFilter = function (date, time) {
+        var dateTime = date + " " + time;
+        return convertTimestampToTime(dateTime);
+    };
 
     $scope.userTasks = [];
     $scope.created_by = '';
@@ -421,8 +426,13 @@ fetch.controller('displayGroupCtrl', ['$scope', '$http', 'notify', 'getData', 'r
 
     $scope.today = date.todaysDate();
 
-    $scope.filterGreater = function (data){
+    $scope.filterGreater = function (data) {
         return date.dateGreater(data, $scope.today);
+    };
+
+    $scope.timeFilter = function (date, time) {
+        var dateTime = date + " " + time;
+        return convertTimestampToTime(dateTime);
     };
 
     $scope.groupTasks = [];
@@ -467,8 +477,13 @@ fetch.controller('displayAllCtrl', ['$scope', '$http', '$rootScope', 'notify', '
 
     $scope.today = date.todaysDate();
 
-    $scope.filterGreater = function (data){
+    $scope.filterGreater = function (data) {
         return date.dateGreater(data, $scope.today);
+    };
+
+    $scope.timeFilter = function (date, time) {
+        var dateTime = date + " " + time;
+        return convertTimestampToTime(dateTime);
     };
 
     $scope.allTasks = [];
@@ -583,7 +598,7 @@ fetch.controller('calendarCtrl', ['$scope', '$http', 'notify', 'remove', functio
             center: 'title',
             left: 'prev,next'
         },
-        dayClick: function (date, jsEvent, view, resourceObj) {     
+        dayClick: function (date, jsEvent, view, resourceObj) {
 
             $scope.data.inputTaskDate = date.format();
             $scope.data.inputTaskStart = "12:00";
@@ -647,14 +662,14 @@ fetch.controller('calendarCtrl', ['$scope', '$http', 'notify', 'remove', functio
 
             var date = event.date;
             var start_date = new Date(event.start);
-            var start = convertTimestampToTime(start_date.toUTCString());//date1.toUTCString();
+            var start = convertTimestampToTime(start_date);
 
             // For an unknown reason event.end is null if set to 12pm when task is created. 
             // Null Defaults the datetime value to Thursday, 1 January 1970 00:00:00 
             // if event.end is not null then get the timestamp. If it is null set end time to not specified
             if (event.end) {
                 var end_date = new Date(event.end);
-                var end = convertTimestampToTime(end_date.toUTCString()); //date2.toUTCString();
+                var end = convertTimestampToTime(end_date.toString()); //date2.toUTCString();
             } else {
                 var end = 'Not Specified';
             }

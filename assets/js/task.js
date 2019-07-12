@@ -5,22 +5,21 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
         $scope.googlemap = 'https://maps.google.com/maps/api/js?key=AIzaSyAKGQaIHaiRawx9GHR2CgzsGptwWdiNv2w';
         $scope.map = [
             {
-                coords: {lat: 40.7831, lng: -73.9712 }
+                coords: { lat: 40.7831, lng: -73.9712 }
             },
             {
-                coords: {lat: 40.6782, lng: -73.9442 }
+                coords: { lat: 40.6782, lng: -73.9442 }
             }
         ];
         $scope.data = {};
         $scope.data.types = [
-            {'id': 1, 'value': 'Meeting'},
-            {'id': 2, 'value': 'Event'},
-            {'id': 3, 'value': 'Personal'},
-            {'id': 4, 'value': 'Work'}
+            { 'id': 1, 'value': 'Meeting' },
+            { 'id': 2, 'value': 'Event' },
+            { 'id': 3, 'value': 'Personal' },
+            { 'id': 4, 'value': 'Work' }
         ];
-        
-        function getQueryVariable(variable)
-        {
+
+        function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
             var vars = query.split("&");
             for (var i = 0; i < vars.length; i++) {
@@ -29,44 +28,56 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                     return pair[1];
                 }
             }
-            return(false);
+            return (false);
         }
 
         var id = getQueryVariable("id");
         $scope.task_id = id;
         var tasks = $http.get("viewTask?id=" + id);
-            
+
         tasks.then(function (response) {
-            if(response.data == 400){
-                window.setTimeout(function(){window.location.href = "../index"},1); 
-            }else{
-            var task = response.data.task;
-            $scope.data.admin = task[0][0];
-            
-            $('#selector_start_update').wickedpicker({now: $scope.data.admin.start_time, twentyFour: true, title: "Start Time", show: showPicker});
-            $('#selector_end_update').wickedpicker({now: $scope.data.admin.end_time, twentyFour: true, title: "End Time", show: showPicker});
+            if (response.data == 400) {
+                window.setTimeout(function () { window.location.href = "../index" }, 1);
+            } else {
+                var task = response.data.task;
+                $scope.data.admin = task[0][0];
 
-            $scope.data.admin.typename = $scope.data.types[$scope.data.admin.type - 1];
-            $scope.data.share = task[1];
-            $scope.data.logged = response.data.admin;
-            
-            getUserFriends.getFriends().then(function(data){
-                $scope.data.friends = sharedWith.filterShareWithOnTask(data, $scope.data.share);
-            });
+                $scope.data.admin.start = convertTimestampToTime($scope.data.admin.task_date + " " + $scope.data.admin.start_time);
+                $scope.data.admin.end = convertTimestampToTime($scope.data.admin.task_date + " " + $scope.data.admin.end_time);
 
-            getTaskMedia.getMedia($scope.task_id).then(function(data){
-                $scope.data.media = data;
-            });
+                $scope.data.admin.start_time = $scope.data.admin.start_time.split(':');
+                $scope.data.admin.start_time = $scope.data.admin.start_time[0] + ' : ' + $scope.data.admin.start_time[1];
+
+                $scope.data.admin.end_time = $scope.data.admin.end_time.split(':');
+                $scope.data.admin.end_time = $scope.data.admin.end_time[0] + ' : ' + $scope.data.admin.end_time[1];
+
+                $('#selector_start_update').wickedpicker({ now: $scope.data.admin.start_time, twentyFour: true, title: "Start Time", show: showPicker });
+                $('#selector_end_update').wickedpicker({ now: $scope.data.admin.end_time, twentyFour: true, title: "End Time", show: showPicker });
+
+                $scope.data.admin.typename = $scope.data.types[$scope.data.admin.type - 1];
+                $scope.data.share = task[1];
+                $scope.data.logged = response.data.admin;
+
+                getUserFriends.getFriends().then(function (data) {
+                    $scope.data.friends = sharedWith.filterShareWithOnTask(data, $scope.data.share);
+                });
+
+                getTaskMedia.getMedia($scope.task_id).then(function (data) {
+                    $scope.data.media = data;
+                });
             }
         });
 
-        
+        function timePickerFormat(time) {
+            formatTime = time.split(':');
+            return formatTime[0] + ' : ' + formatTime[1];
+        };
 
-        $scope.isImage = function(file_name){
+        $scope.isImage = function (file_name) {
             var ext = ["jpg", "jpeg", "png", "gif"];
 
-            for(i = 0; i < ext.length; i ++){
-                if(file_name.includes(ext[i])){
+            for (i = 0; i < ext.length; i++) {
+                if (file_name.includes(ext[i])) {
                     return true;
                 }
             }
@@ -74,34 +85,34 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             return false;
         };
 
-        $scope.isAdmin = function(){
+        $scope.isAdmin = function () {
             // Errors are called because the 
             // isAdmin function is running before 
             // scope populates
-            return($scope.data.logged == $scope.data.admin.ADMIN);
+            return ($scope.data.logged == $scope.data.admin.ADMIN);
         };
 
-        $scope.createdBy = function(user_id){
+        $scope.createdBy = function (user_id) {
             // Errors are called because the 
             // isAdmin function is running before 
             // scope populates
 
-            return($scope.data.logged == user_id);
+            return ($scope.data.logged == user_id);
         };
 
-        $scope.taskColor = function(type){
-            if(type == 1){
+        $scope.taskColor = function (type) {
+            if (type == 1) {
                 return 'task-meeting';
-            }else if(type == 2){
+            } else if (type == 2) {
                 return 'task-event';
-            }else if(type == 3){
+            } else if (type == 3) {
                 return 'task-personal';
-            }else{
+            } else {
                 return 'task-work';
             }
         }
-        
-        $scope.addUsers = function(data){
+
+        $scope.addUsers = function (data) {
             var user_id = data;
 
             var addU = $http.get('addUser?taskId=' + $scope.task_id + '&userId=' + user_id);
@@ -109,29 +120,29 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             addU.then(function (response) {
                 $scope.data.friends = sharedWith.addAndRemoveFriendProject($scope.data.friends, user_id);
 
-                getTaskShareData.getParticipants($scope.task_id).then(function(data){
+                getTaskShareData.getParticipants($scope.task_id).then(function (data) {
                     $scope.data.share = data;
                 });
 
             })
-            
+
         }
 
-        $scope.removeFromShare = function(data) {
+        $scope.removeFromShare = function (data) {
             var user_id = data;
 
             var removeU = $http.get('removeUser?taskId=' + $scope.task_id + '&userId=' + user_id);
-            removeU.then(function(response) {
+            removeU.then(function (response) {
                 $scope.data.share = sharedWith.addAndRemoveFriendProject($scope.data.share, user_id);
-                
-                getUserFriends.getFriends().then(function(data){
+
+                getUserFriends.getFriends().then(function (data) {
                     $scope.data.friends = sharedWith.filterShareWithOnTask(data, $scope.data.share);
                 });
             })
-            
+
         }
 
-        $scope.deleteMedia = function(data){
+        $scope.deleteMedia = function (data) {
             $ngConfirm({
                 title: '<h3>Confirm?</h3>',
                 content: '<div style="height: 40px"><p>Are you sure you want to remove this item?</p></div>',
@@ -139,24 +150,24 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                     sayBoo: {
                         text: 'Remove',
                         btnClass: 'btn-red',
-                        action: function(button){
+                        action: function (button) {
                             var deleteMedia = $http.get('deleteMedia?media_id=' + data);
                             deleteMedia.then(function (response) {
-                                getTaskMedia.getMedia($scope.task_id).then(function(data){
+                                getTaskMedia.getMedia($scope.task_id).then(function (data) {
                                     $scope.data.media = data;
-                                });       
+                                });
                             })
                             return true; // prevent close;
                         }
                     },
-                    close: function(button){
+                    close: function (button) {
                         // closes the modal
                     },
                 }
             });
         }
 
-        $scope.deleteTask = function(){
+        $scope.deleteTask = function () {
             $ngConfirm({
                 title: '<h3>Confirm?</h3>',
                 content: '<div style="height: 40px"><p>Are you sure you want to delete this task?</p></div>',
@@ -164,23 +175,23 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                     sayBoo: {
                         text: 'Remove',
                         btnClass: 'btn-red',
-                        action: function(button){
+                        action: function (button) {
                             return $http.get('deleteTask?id=' + $scope.task_id)
                                 .then(function (response) {
-                                    notify({ message:'Task Deleted'} );
-                                    window.setTimeout(function(){window.location.href = "../index"},1000); 
+                                    notify({ message: 'Task Deleted' });
+                                    window.setTimeout(function () { window.location.href = "../index" }, 1000);
                                 });
                             return true; // close;
                         }
                     },
-                    close: function(button){
+                    close: function (button) {
                         // closes the modal
                     },
                 }
             });
         }
 
-        $scope.addNote = function(){
+        $scope.addNote = function () {
 
             var note = [{
                 "task_id": $scope.task_id,
@@ -192,16 +203,16 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                 method: 'POST',
                 url: 'addFileToProject',
                 data: JSON.stringify(note), //forms user object
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })).then(function (response) {
                 closeNote();
-                getTaskMedia.getMedia($scope.task_id).then(function(data){
+                getTaskMedia.getMedia($scope.task_id).then(function (data) {
                     $scope.data.media = data;
-                }); 
+                });
             });
         }
 
-        $scope.addLocation = function(){
+        $scope.addLocation = function () {
             // coords from map.js file
             var coords = getCoords();
 
@@ -221,16 +232,16 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                 method: 'POST',
                 url: 'addLocationToProject',
                 data: JSON.stringify(location), //forms user object
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })).then(function (response) {
-                    closeLocation();
-                    getTaskMedia.getMedia($scope.task_id).then(function(data){
-                        $scope.data.media = data;
-                    });
+                closeLocation();
+                getTaskMedia.getMedia($scope.task_id).then(function (data) {
+                    $scope.data.media = data;
+                });
             });
         }
 
-        $scope.addFile = function (){
+        $scope.addFile = function () {
             var file = $scope.imageFile;
             var uploadUrl = 'fileUpload';
             var name = $scope.imageFile.name;
@@ -241,9 +252,9 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
                 "admin": $scope.data.logged,
             }];
 
-            uploadFileData.fileToUrl(file, uploadUrl, name).then(function(result) { 
+            uploadFileData.fileToUrl(file, uploadUrl, name).then(function (result) {
                 closeFile();
-                getTaskMedia.getMedia($scope.task_id).then(function(data){
+                getTaskMedia.getMedia($scope.task_id).then(function (data) {
                     $scope.data.media = data;
                 });
             });
@@ -265,45 +276,48 @@ task.controller('taskCtrl', ['$scope', '$http', 'getTaskShareData', 'notify', 'g
             $scope.update.types = $scope.data.admin.typename.id;
             $scope.update.inputTaskInfo = $scope.data.admin.info;
 
+            $scope.data.admin.start = convertTimestampToTime($scope.update.inputTaskDate + " " + $scope.update.inputTaskStart);
+            $scope.data.admin.end = convertTimestampToTime($scope.update.inputTaskDate + " " + $scope.update.inputTaskEnd);
+
             $http(({
                 method: 'POST',
                 url: 'updateTask',
                 data: $scope.update, //forms user object
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
             })).then(function (response) {
-                    
+
                 var status = response.status;
-                if(status == 200){
-                    notify({ message:'Task Updated successfully'} );
+                if (status == 200) {
+                    notify({ message: 'Task Updated successfully' });
                     //window.setTimeout(function(){window.location.href = "../users/index"},1000); 
                     closeUpdate();
                 } else {
-                    notify({ message:'Task Could Not Be Updated. Please Try Again.', classes: 'alert-danger'} );
-                }   
+                    notify({ message: 'Task Could Not Be Updated. Please Try Again.', classes: 'alert-danger' });
+                }
             });
         };
 
     }]);
 
 
-task.factory('getTaskShareData', ['$http', function($http) {
-    return{
-        getParticipants: function(id){
-            return $http.get('viewTask?id=' + id).then(function(response) {
-                    var result = response.data.task;
-                    var share = result[1];
-                    return share;
-            }); 
+task.factory('getTaskShareData', ['$http', function ($http) {
+    return {
+        getParticipants: function (id) {
+            return $http.get('viewTask?id=' + id).then(function (response) {
+                var result = response.data.task;
+                var share = result[1];
+                return share;
+            });
         }
     };
 }]);
 
 
-task.factory('getTaskMedia', ['$http', function($http){
+task.factory('getTaskMedia', ['$http', function ($http) {
 
-    return{
-        getMedia: function(task_id){
-            return $http.get('getTaskMedia?task_id=' + task_id).then(function(response){
+    return {
+        getMedia: function (task_id) {
+            return $http.get('getTaskMedia?task_id=' + task_id).then(function (response) {
                 var result = response.data;
                 return result;
             });
@@ -326,60 +340,60 @@ task.factory('sharedWith', function () {
     };
 
     return {
-        getShared: function() {
+        getShared: function () {
             return data.shared;
         },
-        add: function(user) {
+        add: function (user) {
             data.shared.push(user);
         },
-        remove: function(user) {
-            for(var i = 0; i < data.shared.length; i++){
+        remove: function (user) {
+            for (var i = 0; i < data.shared.length; i++) {
 
                 var shared = data.shared[i];
                 var shareToDelete = user.id;
 
-                if(shared.id == shareToDelete){
+                if (shared.id == shareToDelete) {
                     data.shared.splice(i, 1);
                 }
             }
-            
-        },
-        addAndRemoveFriendProject: function(list, user){
 
-            for(var i = 0; i < list.length; i++){
+        },
+        addAndRemoveFriendProject: function (list, user) {
+
+            for (var i = 0; i < list.length; i++) {
 
                 var friend = list[i];
                 //var objToRemove = user.id;
 
-                if(friend.id == user){
+                if (friend.id == user) {
                     list.splice(i, 1);
                 }
             }
 
             return list;
         },
-        filterShareWithOnTask: function(friends, shared) {
-            if(shared != undefined && shared.length > 0){
-                for(var i = 0; i < shared.length; i++){
-                    for(var j = 0; j < friends.length; j++){
-                        if(shared[i].id === friends[j].id){
+        filterShareWithOnTask: function (friends, shared) {
+            if (shared != undefined && shared.length > 0) {
+                for (var i = 0; i < shared.length; i++) {
+                    for (var j = 0; j < friends.length; j++) {
+                        if (shared[i].id === friends[j].id) {
                             friends.splice(j, 1);
-                        } 
+                        }
                     }
                 }
-            }else{
+            } else {
                 return friends;
             }
-            return friends; 
+            return friends;
         }
-            
+
     };
 });
 
-task.factory('getUserFriends', ['$http', function($http){
-    return{
-        getFriends: function(){
-            return $http.get('../Users/getFriends').then(function(response){
+task.factory('getUserFriends', ['$http', function ($http) {
+    return {
+        getFriends: function () {
+            return $http.get('../Users/getFriends').then(function (response) {
                 var result = response.data;
                 return result;
             })
@@ -389,78 +403,78 @@ task.factory('getUserFriends', ['$http', function($http){
 
 
 
-task.controller('getFriendsCtrl', ['$scope', '$http', 'notify', 'sharedWith', 'getUserFriends', 
+task.controller('getFriendsCtrl', ['$scope', '$http', 'notify', 'sharedWith', 'getUserFriends',
     function ($scope, $http, notify, sharedWith, getUserFriends) {
 
-    $scope.friends = [];
-    $scope.added = [];
+        $scope.friends = [];
+        $scope.added = [];
 
-    getUserFriends.getFriends().then(function(data){
-        $scope.friends = data;
-    });
-
-    
-
-    /*
-     * Used to add users to a task on task page
-     */
-
-    $scope.addToShare = function(user) {
-        
-        $scope.friends = sharedWith.addAndRemoveFriendProject($scope.friends, user.id);
-        sharedWith.add(user);
-        $scope.added.push(user);
-    }
-
-    $scope.removeFromShare = function(user) {
-
-        $scope.added = sharedWith.addAndRemoveFriendProject($scope.added, user.id);
-        sharedWith.remove(user);
-        $scope.friends.push(user);
-    }
+        getUserFriends.getFriends().then(function (data) {
+            $scope.friends = data;
+        });
 
 
- 
-}]);
+
+        /*
+         * Used to add users to a task on task page
+         */
+
+        $scope.addToShare = function (user) {
+
+            $scope.friends = sharedWith.addAndRemoveFriendProject($scope.friends, user.id);
+            sharedWith.add(user);
+            $scope.added.push(user);
+        }
+
+        $scope.removeFromShare = function (user) {
+
+            $scope.added = sharedWith.addAndRemoveFriendProject($scope.added, user.id);
+            sharedWith.remove(user);
+            $scope.friends.push(user);
+        }
+
+
+
+    }]);
 
 task.controller('createCtrl', ['$scope', '$http', 'notify', 'sharedWith', function ($scope, $http, notify, sharedWith) {
 
-        $scope.data = {};
-        $scope.data.inputTaskStart = "12:00";
-        $scope.data.inputTaskEnd = "12:00";
-        $scope.data.sharedWith = {};
-        $scope.data.types = [
-            {'id': 1, 'value': 'Meeting'},
-            {'id': 2, 'value': 'Event'},
-            {'id': 3, 'value': 'Personal'},
-            {'id': 4, 'value': 'Work'}
-        ];
+    $scope.data = {};
+    $scope.data.inputTaskStart = "12:00";
+    $scope.data.inputTaskEnd = "12:00";
+    $scope.data.sharedWith = {};
+    $scope.data.types = [
+        { 'id': 1, 'value': 'Meeting' },
+        { 'id': 2, 'value': 'Event' },
+        { 'id': 3, 'value': 'Personal' },
+        { 'id': 4, 'value': 'Work' }
+    ];
 
-        $scope.selectedItem = null;
+    $scope.selectedItem = null;
 
-        $scope.submit = function () {
+    $scope.submit = function () {
 
-            $scope.data.inputTaskStart = $('#selector_start_create').val().replace(/\s/g, '');
-            $scope.data.inputTaskEnd = $('#selector_end_create').val().replace(/\s/g, '');
-            $scope.data.sharedWith = sharedWith.getShared();
-            $scope.data.types = $scope.selectedItem.id;
+        $scope.data.inputTaskStart = $('#selector_start_create').val().replace(/\s/g, '');
+        $scope.data.inputTaskEnd = $('#selector_end_create').val().replace(/\s/g, '');
+        $scope.data.sharedWith = sharedWith.getShared();
+        $scope.data.types = $scope.selectedItem.id;
 
-            $http(({
-                method: 'POST',
-                url: 'createTask',
-                data: $scope.data, //forms user object
-                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-            })).then(function (response) {
-                    
-                var status = response.status;
-                if(status == 200){
-                    notify({ message:'Task Created successfully'} );
-                    window.setTimeout(function(){window.location.href = "../users/index"},1000); 
-                } else {
-                    notify({ message:'Task Could Not Be Created. Please Try Again.', classes: 'alert-danger'} );
-                }   
-            });
+        $http(({
+            method: 'POST',
+            url: 'createTask',
+            data: $scope.data, //forms user object
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        })).then(function (response) {
 
-        };
+            var status = response.status;
+            if (status == 200) {
+                notify({ message: 'Task Created successfully' });
+                window.setTimeout(function () { window.location.href = "../users/index" }, 1000);
+            } else {
+                notify({ message: 'Task Could Not Be Created. Please Try Again.', classes: 'alert-danger' });
+            }
+        });
 
-    }]);
+    };
+
+}]);

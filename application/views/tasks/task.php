@@ -221,20 +221,20 @@
 
                 <div class="friends">
                     <div id="addUser" class="sideNav">
-                        <button type="button" onclick="closeAddUser()" class="btn btn-neutral btn-sm top-margin pull-right">
-                            <i class="fa fa-times"></i>
-                        </button>
+                    <div class="nav-header">
+                            <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Add Friend To Project</h6>
+                            <button type="button" onclick="closeAddUser()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
+                                <i class="fa fa-times"></i>
+                            </button>
+                        </div>
                         <div class="inner_center">
-                            <h3>Add Friend To Project</h3>
-                            <br>
-
                             <div class="srcResults" ng-show="data.friends == null || data.friends.length == 0">
                                 <p>All of your friends are already added to this task!</p>
                             </div>
 
                             <div class="srcResults" ng-repeat="friend in data.friends">
                                 <img class="search profile" src="<?php echo base_url() ?>{{friend.img_url}}" alt="profile" />
-                                <button type="button" style="float:right;" ng-click="addUsers(friend.id)" class="btn btn-success btn-link btn-sm">
+                                <button type="button" style="float:right;" ng-click="addUsers(friend.id)" class="btn btn-success btn-sm">
                                     <i class="fa fa-plus"></i>
                                 </button>
                                 <p>{{friend.first_name}} {{friend.last_name}}</p>
@@ -253,8 +253,9 @@
                 </div>
 
                 <div class='taskSideBar'>
-                    <p>{{data.admin.info}}</p>
                     <p>{{data.admin.task_date}}</p>
+                    <p>{{data.admin.start}} until {{data.admin.end}}</p>
+                    <p>{{data.admin.info}}</p>
                     <br>
                     <p>Created By
                         <span ng-show="isAdmin()" class="green">You</span>

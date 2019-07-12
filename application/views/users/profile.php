@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="taskDetails">
                                         <p> </p>
-                                        <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}} </p>
+                                        <p>{{tasks.task_date | date : 'dd MMM'}} @ {{timeFilter(tasks.task_date, tasks.start_time)}} </p>
                                         <p>{{tasks.info}} </p>
                                     </div>
                                 </div>

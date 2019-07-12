@@ -81,7 +81,7 @@
                                 </div>
                                 <div class="taskDetails">
                                     <p> </p>
-                                    <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}}</p>
+                                    <h5>{{tasks.task_date | date : 'dd MMMM'}} @ {{timeFilter(tasks.task_date, tasks.start_time)}}</h5>
                                     <p> {{tasks.info}} </p>
                                 </div>
                             </div>
@@ -107,7 +107,7 @@
                                 </div>
                                 <div class="taskDetails">
                                     <p> </p>
-                                    <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}}</p>
+                                    <h5>{{tasks.task_date | date : 'dd MMM'}} @ {{timeFilter(tasks.task_date, tasks.start_time)}}</h5>
                                     <p> {{tasks.info}} </p>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="taskDetails">
                                     <p> </p>
-                                    <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}}</p>
+                                    <h5>{{tasks.task_date | date : 'dd MMM'}} @ {{timeFilter(tasks.task_date, tasks.start_time)}}</h5>
                                     <p> {{tasks.info}} </p>
                                 </div>
                             </div>
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="taskDetails">
                                     <p> </p>
-                                    <p>{{tasks.task_date | date : 'dd MMM'}} @ {{tasks.start_time}}</p>
+                                    <h5>{{tasks.task_date | date : 'dd MMM'}} @ {{timeFilter(tasks.task_date, tasks.start_time)}}</h5>
                                     <p> {{tasks.info}} </p>
                                 </div>
                             </div>
