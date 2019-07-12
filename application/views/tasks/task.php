@@ -254,7 +254,7 @@
 
                 <div class='taskSideBar'>
                     <p>{{data.admin.task_date}}</p>
-                    <p>{{data.admin.start}} until {{data.admin.end}}</p>
+                    <p>{{data.admin.start}} - {{data.admin.end}}</p>
                     <p>{{data.admin.info}}</p>
                     <br>
                     <p>Created By
