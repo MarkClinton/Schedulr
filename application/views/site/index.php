@@ -123,18 +123,18 @@
 </div>
 
 <div class="about-contain">
-    <div class="about-info-main">
-        <img class="home-2" src="assets/images/woman-2.png" alt="main_icon">
-    </div>
+  <div class="about-info-main">
+    <img class="home-2" src="assets/images/woman-2.png" alt="main_icon">
+  </div>
 
-    <div class="about-info-main">
-        <br>
-        <h1 style="color:#34495E;">Organize</h1>
-        <br>
-        <h6 style="color:#34495E;">Take a glimpse of your day, week or month with Schedulr <br> and easily add tasks according to you</h6>
-        <h6 style="color:#34495E;">Collaborate with friends on tasks</h6>
-        <h6 style="color:#34495E;">Always be in control</h6>
-    </div>
+  <div class="about-info-main">
+    <br>
+    <h1 style="color:#34495E;">Organize</h1>
+    <br>
+    <h6 style="color:#34495E;">Take a glimpse of your day, week or month with Schedulr <br> and easily add tasks according to you</h6>
+    <h6 style="color:#34495E;">Collaborate with friends on tasks</h6>
+    <h6 style="color:#34495E;">Always be in control</h6>
+  </div>
 </div>
 
 <div class="about-info bg-yellow">
@@ -143,39 +143,49 @@
   </div>
   <h1 style="color:#FAFAFA;">Peace of Mind</h1>
   <br>
-  <h6 style="color:#FAFAFA;">Give youself more options.<h6> 
-  <h6 style="color:#FAFAFA;">Schedulr helps you plan it out </h6>
-  <br><br>
-  <a class="btn btn-stretch btn-info btn-lg" onClick="openReg()">Sign Up</a>
-  <br>
+  <h6 style="color:#FAFAFA;">Give youself more options.<h6>
+      <h6 style="color:#FAFAFA;">Schedulr helps you plan it out </h6>
+      <br><br>
+      <a class="btn btn-stretch btn-info btn-lg" onClick="openReg()">Sign Up</a>
+      <br>
 </div>
 
 <div class="about-contain">
-    <div class="about-info-main">
-        <br>
-        <h1 style="color:#34495E;">Relax</h1>
-        <br>
-        <h6 style="color:#34495E;">Free up your time for the things you enjoy<br> knowing that all your tasks have been completed</h6>
-        <h6 style="color:#34495E;">Meaning more time to cook that recipe you've been eyeballin'</h6>
-        <h6 style="color:#34495E;">Its that easy!</h6>
-    </div>
-    
-    <div class="about-info-main">
-        <img class="home-2" src="assets/images/man.png" alt="main_icon">
-    </div>
+  <div class="about-info-main">
+    <br>
+    <h1 style="color:#34495E;">Relax</h1>
+    <br>
+    <h6 style="color:#34495E;">Free up your time for the things you enjoy<br> knowing that all your tasks have been completed</h6>
+    <h6 style="color:#34495E;">Meaning more time to cook that recipe you've been eyeballin'</h6>
+    <h6 style="color:#34495E;">Its that easy!</h6>
+  </div>
+
+  <div class="about-info-main">
+    <img class="home-2" src="assets/images/man.png" alt="main_icon">
+  </div>
 </div>
 
 
+
 <div class="foot_index bg-blue">
-  <br>
-  <br>
-  <center>
-    <a href="https://github.com/MarkClinton/Schedulr">
-      <span><i style="color:white" class="fa fa-github-square fa-10x"></i>
-        <h6 style="color:#FAFAFA;">Github</h6>
-      </span>
-    </a>
-  </center>
+  <nav class="navbar bg-blue navbar-expand-md">
+    <div class="container bg-blue">
+      <button class="navbar-toggler navbar-toggler-right" id="menu-collapse" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+        <span class="navbar-toggler-bar"></span>
+      </button>
+      <div class="circle-logo"></div>
+      <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
+      <div class="navbar-collapse" id="navbar-success">
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item">
+              <a href="https://github.com/MarkClinton/Schedulr" target="_blank"><i style="color:white" class="fa fa-github-square fa-2x"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 </div>
 </div>
 </div>
