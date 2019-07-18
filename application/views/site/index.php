@@ -20,6 +20,8 @@
 
     <div class="mobile_welcome">
       <h1 style="color:#FAFAFA;">Take Control Of Your Day</h1>
+      <br>
+      <h6 style="color:#FAFAFA;">Schedulr is an organizational tool designed to show you a snapshot of your weekly, monthly and daily tasks</h6>
     </div>
 
     <div class="mobile_welcome_sml">
@@ -129,9 +131,9 @@
         <br>
         <h1 style="color:#34495E;">Organize</h1>
         <br>
-        <h4 style="color:#34495E;">Take a glimpse of your day, week or month with Schedulr</h4>
-        <h4 style="color:#34495E;">Easily add tasks according to your schedule</h4>
-        <h4 style="color:#34495E;">Always be in control</h4>
+        <h6 style="color:#34495E;">Take a glimpse of your day, week or month with Schedulr <br> and easily add tasks according to you</h6>
+        <h6 style="color:#34495E;">Collaborate with friends on tasks</h6>
+        <h6 style="color:#34495E;">Always be in control</h6>
     </div>
 </div>
 
@@ -141,8 +143,8 @@
   </div>
   <h1 style="color:#FAFAFA;">Peace of Mind</h1>
   <br>
-  <h4 style="color:#FAFAFA;">Schedulr allows a snapshot of your day, week and month.</h4>
-  <h4 style="color:#FAFAFA;">Easily add tasks according to your schedule</h4>
+  <h6 style="color:#FAFAFA;">Give youself more options.<h6> 
+  <h6 style="color:#FAFAFA;">Schedulr helps you plan it out </h6>
   <br><br>
   <a class="btn btn-stretch btn-info btn-lg" onClick="openReg()">Sign Up</a>
   <br>
@@ -153,7 +155,9 @@
         <br>
         <h1 style="color:#34495E;">Relax</h1>
         <br>
-        <h4 style="color:#34495E;">Free up your time for the things you enjoy knowing that all your daily tasks have been completed</h4>
+        <h6 style="color:#34495E;">Free up your time for the things you enjoy<br> knowing that all your tasks have been completed</h6>
+        <h6 style="color:#34495E;">Meaning more time to cook that recipe you've been eyeballin'</h6>
+        <h6 style="color:#34495E;">Its that easy!</h6>
     </div>
     
     <div class="about-info-main">
