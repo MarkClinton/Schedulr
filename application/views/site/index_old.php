@@ -16,20 +16,26 @@
   <div id="overlay-back"></div>
   <div class="contain_index">
 
-
-
-    <div class="mobile_welcome">
-      <h1 style="color:#FAFAFA;">Take Control Of Your Day</h1>
-    </div>
-
-    <div class="mobile_welcome_sml">
-      <h6 style="color:#FAFAFA; font-size: 26px;">Take Control Of Your Day</h6>
-    </div>
-
     <div class="image_contain_main">
       <img class="home-main" src="assets/images/home_main_2.png" alt="main_icon">
     </div>
 
+    <div class="mobile_welcome">
+      <h1 style="color:white;">Your day? Sorted.</h1>
+      <br>
+      <h4 style="color:white;">Schedulr is an organizational tool designed to show you a snapshot of your weekly,
+        monthly and daily tasks. View all tasks, your tasks, shared tasks and expired tasks created by you</h4>
+      <br>
+      <h4 style="color:white;">Sign up now to enjoy!</h4>
+    </div>
+
+    <div class="mobile_welcome_sml">
+      <h6 style="color:white; font-size: 26px;">your day? sorted!</h6>
+      <br>
+      <h4 style="color:white;">Schedulr helps you keep track of your tasks and events.</h4>
+      <h4 style="color:white;">Personal or shared!</h4>
+      <h4 style="color:white;">Sign up now to enjoy!</h4>
+    </div>
   </div>
 
 
@@ -39,7 +45,7 @@
   <div id="login" class="login sideNav-index">
 
     <div class="nav-header">
-      <h6 class="top-margin" style="color: #FAFAFA; float:left; margin-left: 10px">Login</h6>
+      <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Login</h6>
       <button type="button" onclick="closeLogin()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
         <i class="fa fa-times"></i>
       </button>
@@ -80,7 +86,7 @@
     -->
   <div id="reg" class="sideNav-index reg">
     <div class="nav-header">
-      <h6 class="top-margin" style="color: #FAFAFA; float:left; margin-left: 10px">Sign Up</h6>
+      <h6 class="top-margin" style="color: white; float:left; margin-left: 10px">Sign Up</h6>
       <button type="button" onclick="closeReg()" class="btn btn-neutral btn-link btn-sm top-margin pull-right">
         <i class="fa fa-times"></i>
       </button>
@@ -121,46 +127,57 @@
 </div>
 
 <div class="about-contain">
-    <div class="about-info-main">
-        <img class="home-2" src="assets/images/woman-2.png" alt="main_icon">
-    </div>
+  <div class="about_image">
+    <img class="home" src="assets/images/home_image_1.png" alt="main_icon">
+  </div>
 
-    <div class="about-info-main">
-        <br>
-        <h1 style="color:#34495E;">Organize</h1>
-        <br>
-        <h4 style="color:#34495E;">Take a glimpse of your day, week or month with Schedulr</h4>
-        <h4 style="color:#34495E;">Easily add tasks according to your schedule</h4>
-        <h4 style="color:#34495E;">Always be in control</h4>
-    </div>
+  <div class="about margined-top">
+    <span>
+      <h1 style="color: #5AA3D4; display:inline;">" </h1>
+      <h3 style="color:#7A7A7A; display: inline;">Organize your daily tasks. Easily.</h3>
+      <h1 style="color: #5AA3D4; display:inline"> "</h1>
+    </span>
+  </div>
+
+  <div class="about_image">
+    <img class="home" src="assets/images/home_2.png" alt="main_icon">
+  </div>
+
+  <div class="about">
+    <span>
+      <h1 style="color: #5AA3D4; display:inline;">" </h1>
+      <h3 style="color:#7A7A7A; display: inline;">Add friends and work on projects together.</h3>
+      <h1 style="color: #5AA3D4; display:inline"> "</h1>
+    </span>
+  </div>
+
+  <div class="about_image">
+    <img class="home" src="assets/images/home_3.png" alt="main_icon">
+  </div>
+
+  <div class="about">
+    <span>
+      <h1 style="color: #5AA3D4; display:inline;">" </h1>
+      <h3 style="color:#7A7A7A; display: inline;">Add files, locations and notes to tasks.</h3>
+      <h1 style="color: #5AA3D4; display:inline"> "</h1>
+    </span>
+  </div>
 </div>
 
-<div class="about-info bg-yellow">
+<div class="about-info bg-gray">
   <div class="about_image_md">
-    <img class="home-2" src="assets/images/main_secondary_3.png" alt="main_icon">
+    <img class="home-2" src="assets/images/home_main_secondary.png" alt="main_icon">
   </div>
-  <h1 style="color:#FAFAFA;">Peace of Mind</h1>
+  <h1 style="color:#7A7A7A;">peace of mind</h1>
   <br>
-  <h4 style="color:#FAFAFA;">Schedulr allows a snapshot of your day, week and month.</h4>
-  <h4 style="color:#FAFAFA;">Easily add tasks according to your schedule</h4>
+  <h4 style="color:#7A7A7A;">Schedulr allows a snapshot of your day,
+    week and month.</h4>
+  <h4 style="color:#7A7A7A;">Easily add tasks according
+    to your schedule. </h4>
   <br><br>
   <a class="btn btn-stretch btn-info btn-lg" onClick="openReg()">Sign Up</a>
   <br>
 </div>
-
-<div class="about-contain">
-    <div class="about-info-main">
-        <br>
-        <h1 style="color:#34495E;">Relax</h1>
-        <br>
-        <h4 style="color:#34495E;">Free up your time for the things you enjoy knowing that all your daily tasks have been completed</h4>
-    </div>
-    
-    <div class="about-info-main">
-        <img class="home-2" src="assets/images/man.png" alt="main_icon">
-    </div>
-</div>
-
 
 <div class="foot_index bg-blue">
   <br>
@@ -168,7 +185,7 @@
   <center>
     <a href="https://github.com/MarkClinton/Schedulr">
       <span><i style="color:white" class="fa fa-github-square fa-10x"></i>
-        <h6 style="color:#FAFAFA;">Github</h6>
+        <h6 style="color:white;">Github</h6>
       </span>
     </a>
   </center>

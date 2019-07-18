@@ -93,7 +93,7 @@ body{
 .mobile_welcome{
     width: 100%;
     text-align: center;
-    margin-top: 60px;
+    margin-bottom: 80px;
 }
 
 .mobile_welcome_sml{
@@ -110,8 +110,22 @@ body{
 }
 
 .about-contain{
-    width: 100%;
-    margin-top: -6%;
+    width: 70%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.about-info-main{
+    width: 50%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    text-align: center;
+}
+
+.bg-yellow{
+    background-color: #FFBB28;
 }
 
 .about-info{
@@ -190,10 +204,10 @@ body{
 
 .contain_main{
     width: 100%;
-    background: linear-gradient(#5AA3D4, #8FE7FF);
-    /*background-color: #5AA3D4;*/
-    height: 95%;
-    min-height: 900px;
+    /*background: linear-gradient(#5AA3D4, #8FE7FF);*/
+    background-color: #5AA3D4;
+    height: 90%;
+    min-height: 500px;
     margin-left: auto;
     margin-right: auto;
     padding-top: 20px;
@@ -999,7 +1013,7 @@ img.add{
 }
 
 .foot_index{
-    height: 100px;
+    height: 200px;
     width: 100%;
 }
 
