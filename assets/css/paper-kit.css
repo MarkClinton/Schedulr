@@ -4849,8 +4849,8 @@ select.form-control {
   .navbar-collapse {
     position: fixed;
     /*display: block;*/
-    top: 80;
-    height: 60%;
+    top: 0;
+    height: 100%;
     width: 230px;
     right: 0;
     z-index: 1032;

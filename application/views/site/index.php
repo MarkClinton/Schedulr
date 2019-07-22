@@ -1,4 +1,6 @@
 <div class="navbar-collapse" id="navbar-success">
+<div class="circle-logo"></div>
+          <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
       <a class="btn-light-blue btn btn-link btn-round btn-sm" onclick="openLogin()">Log In</a>
@@ -26,6 +28,8 @@
 
     <div class="mobile_welcome_sml">
       <h6 style="color:#FAFAFA; font-size: 26px;">Take Control Of Your Day</h6>
+      <br>
+      <p style="color:#FAFAFA;">Schedulr is an organizational tool designed to show you a snapshot of your weekly, monthly and daily tasks</p>
     </div>
 
     <div class="image_contain_main">
@@ -168,24 +172,10 @@
 
 
 <div class="foot_index bg-blue">
-  <nav class="navbar bg-blue navbar-expand-md">
-    <div class="container bg-blue">
-      <button class="navbar-toggler navbar-toggler-right" id="menu-collapse" type="button" data-toggle="collapse" data-target="#navbar-success" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-bar"></span>
-        <span class="navbar-toggler-bar"></span>
-        <span class="navbar-toggler-bar"></span>
-      </button>
-      <div class="circle-logo"></div>
-      <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
-      <div class="navbar-collapse" id="navbar-success">
-        <ul class="nav navbar-nav ml-auto">
-          <li class="nav-item">
-              <a href="https://github.com/MarkClinton/Schedulr" target="_blank"><i style="color:white" class="fa fa-github-square fa-2x"></i></a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+  <br>
+  <center>
+    <a href="https://github.com/MarkClinton/Schedulr" target="_blank"><i style="color:white" class="fa fa-github-square fa-2x"></i></a>
+  </center>
 </div>
 </div>
 </div>
