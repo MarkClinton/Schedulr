@@ -1,6 +1,4 @@
 <div class="navbar-collapse" id="navbar-success">
-<div class="circle-logo"></div>
-          <a class="navbar-brand" href="<?php echo base_url(); ?>index">Schedulr.</a>
   <ul class="nav navbar-nav ml-auto">
     <li class="nav-item">
       <a class="btn-light-blue btn btn-link btn-round btn-sm" onclick="openLogin()">Log In</a>
