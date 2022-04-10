@@ -16,6 +16,11 @@ Friends are shown under the friends tab. Friends can be added by email only.
 
 Profile tab shows your information and a list of 10 of your recent activities. There are only 3 activities which are recorded. Tasks you created, tasks you were added to and who you became friends with. 
 
+## Demo.
+Use the following credentials to access the test user
+
+user@schedulr.com
+1234
 
 
 ## Technologies.
