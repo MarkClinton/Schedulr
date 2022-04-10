@@ -1,5 +1,5 @@
 ![Untitled-1](https://user-images.githubusercontent.com/6231909/61014466-6d61c500-a33c-11e9-8523-b9133a381481.jpg)
-## [Schedulr](https://www.schedulr.cc/)
+## [Schedulr](http://www.schedulr.cc/)
 
 ## About.
 
