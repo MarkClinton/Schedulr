@@ -19,8 +19,7 @@ Profile tab shows your information and a list of 10 of your recent activities. T
 ## Demo.
 Use the following credentials to access the test user
 
-Username: user@schedulr.com
-Password: 1234
+Username: user@schedulr.com                                                                                                                           Password: 1234
 
 
 ## Technologies.
